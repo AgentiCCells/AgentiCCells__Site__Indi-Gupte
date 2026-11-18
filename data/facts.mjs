@@ -696,6 +696,8 @@ export const LANGUAGES = {
   ],
   sameInterest: { text: 'the same interest', note: 'His profile gives programming languages "the same interest" as Sanskrit.', sources: ['linkedin'] },
   learning: { text: 'Working through Harvard\'s CS50x', status: 'in progress', sources: ['linkedin'] },
+  // Round 3 (C85): the one line in Lingua's name strip.
+  speaksLine: { text: 'Speaks English, Italian and French; an interest in Sanskrit and in programming languages.', sources: ['linkedin'] },
   leadsTo: { text: 'Modern Languages and International Relations, from next autumn (his words)', sources: ['linkedin'] },
   figure: {
     title: "Indi's languages",
@@ -760,9 +762,9 @@ export const DESIGNS = [
     slug: 'lingua',
     name: 'Lingua',
     idea: 'A polyglot edition: his languages lead, and every section is titled in English, Italian and French.',
-    leadsWith: 'His name and the ask in English, Italian and French side by side, with his language tiles, in the first screen',
+    leadsWith: 'His three languages, each with the ask and the section titles in that language',
     default: false,
-    copy: { glossNote: { text: 'Italian and French section titles are the site\'s translations, not his words.', awaitingIndi: true } },
+    copy: { glossNote: { text: 'The Italian and French lines (the ask, the section titles and the weekday names) are the site\'s translations, not his words. They await Indi\'s approval.', awaitingIndi: true } },
   },
   {
     slug: 'front-page',
@@ -821,6 +823,50 @@ export const LINGUA_TITLES = [
   { id: 'looking-for', en: 'Looking for work experience', it: "Cerco un'esperienza di lavoro", fr: 'Je cherche une expérience professionnelle', awaitingIndi: true },
   { id: 'sources', en: 'Sources', it: 'Fonti', fr: 'Sources', awaitingIndi: true },
 ];
+
+// Round 3 (S1, C87): Lingua's first screen, three panels, one per language he speaks. Built from LINGUA_TITLES and
+// LANGUAGES, so the words stay the same everywhere. Every Italian and French string carries `lang` and
+// `awaitingIndi: true` (the site's translations; see DESIGNS lingua glossNote). `section` is the LINGUA_TITLES id
+// of the section the link goes to.
+const lt = id => LINGUA_TITLES.find(t => t.id === id);
+export const LINGUA_TRIPTYCH = ['en', 'it', 'fr'].map(lang => {
+  const sp = LANGUAGES.speaks.find(l => l.code === lang);
+  const tr = lang !== 'en';
+  const word = id => ({ text: lt(id)[lang], lang, ...(tr ? { awaitingIndi: true } : {}) });
+  return {
+    lang,
+    code: lang.toUpperCase(),
+    name: { text: sp.ownName, lang },
+    ask: word('looking-for'),
+    titles: ['built', 'how-i-work', 'languages'].map(id => ({ section: id, ...word(id) })),
+    sources: ['linkedin', 'whatsapp'],
+  };
+});
+
+// Round 3 (S2, C91): weekday headers of Lingua's calendar. Standard abbreviations; the Italian and French are the
+// site's translations, awaiting Indi's approval. Monday first.
+export const LINGUA_WEEKDAYS = [
+  ['mon', 'Mon', 'lun', 'lun'],
+  ['tue', 'Tue', 'mar', 'mar'],
+  ['wed', 'Wed', 'mer', 'mer'],
+  ['thu', 'Thu', 'gio', 'jeu'],
+  ['fri', 'Fri', 'ven', 'ven'],
+  ['sat', 'Sat', 'sab', 'sam'],
+  ['sun', 'Sun', 'dom', 'dim'],
+].map(([id, en, it, fr]) => ({
+  id,
+  en: { text: en, lang: 'en' },
+  it: { text: it, lang: 'it', awaitingIndi: true },
+  fr: { text: fr, lang: 'fr', awaitingIndi: true },
+}));
+
+// Round 3 (C97, conductor's decision): the Lingua share card carries the ask in English only, with the three
+// language names. No Italian or French ask on the card until Indi approves the translations.
+export const LINGUA_SHARE_CARD = {
+  ask: { text: ASK.short, lang: 'en' },
+  languagesLine: { text: 'English · Italiano · Français', sources: ['linkedin'] },
+  decision: 'Conductor, round 3, on C97: English only for the ask.',
+};
 
 // ---------------------------------------------------------------------------------------------------------------
 // NAV, STRIP, FOOTER
@@ -1057,7 +1103,7 @@ export const QUESTIONS_FOR_INDI = [
   { id: 'cards-picture', q: 'Can you share a picture of the business card you designed, for "What I built" and The Card design?' },
   { id: 'cards-wording', q: '"What I built" quotes your post ("I designed our business cards"), then gives the record: your designer agent drew the rounds, you chose your card on 4 November, and Design A was chosen for printing on 5 November. Is that right, and is there more you would add?' },
   { id: 'programming', q: 'Which programming languages do you use or want to learn? Your profile names none, so the site names none.' },
-  { id: 'lingua', q: 'Do you approve the Italian and French section titles for the Lingua design (LINGUA_TITLES), or would you write them differently?' },
+  { id: 'lingua', q: 'Do you approve the Italian and French words in the Lingua design: the ask ("Cerco un\'esperienza di lavoro", "Je cherche une expérience professionnelle"), the section titles and the weekday names on the calendar (LINGUA_TITLES, LINGUA_TRIPTYCH, LINGUA_WEEKDAYS), or would you write them differently?' },
   { id: 'front-page', q: 'Do you approve the Front Page headline ("Indi Gupte, one of the three editors of PrompTugal.news, is looking for work experience") and its "Wanted" notice?' },
   { id: 'questions', q: 'Do you approve the "Questions to ask Indi", or would you change them?' },
   { id: 'voice', q: 'The pages speak about you as "he", with first person in the menu and buttons. Would you prefer the whole site in the first person?' },
@@ -1167,12 +1213,12 @@ export const TEN_DAYS = [
       else walk(v, `${path}.${k}`);
     }
   };
-  walk({ PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, VIDEO, AGENTS, LANGUAGES, BACKGROUND, DESIGNS, STRIP, PAGES, DINIS_WORDS, HOME_LINE, HOME_FIGURES, TEN_DAYS_RANGE, TEN_DAYS }, 'facts');
+  walk({ PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, VIDEO, AGENTS, LANGUAGES, BACKGROUND, DESIGNS, STRIP, PAGES, DINIS_WORDS, HOME_LINE, HOME_FIGURES, TEN_DAYS_RANGE, TEN_DAYS, LINGUA_TRIPTYCH, LINGUA_SHARE_CARD }, 'facts');
   if (AGENTS.list.length !== AGENTS.total.value) throw new Error(`AGENTS.list has ${AGENTS.list.length} entries, not ${AGENTS.total.value}`);
   if (AGENTS.list.filter(a => a.status === 'running').length !== AGENTS.running.value) throw new Error('AGENTS: running count does not match');
 
   // Round 2 wording rules, over every string the pages can show (QUESTIONS_FOR_INDI speaks to him and is left out).
-  const shown = { PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, VIDEO, AGENTS, LANGUAGES, BACKGROUND, DESIGNS, LINGUA_TITLES, NAV, STRIP, FOOTER, PAGES, DINIS_WORDS, QUESTIONS_TO_ASK_INDI, HOME_LINE, HOME_FIGURES, TEN_DAYS_RANGE, TEN_DAYS, SOURCES };
+  const shown = { PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, VIDEO, AGENTS, LANGUAGES, BACKGROUND, DESIGNS, LINGUA_TITLES, LINGUA_TRIPTYCH, LINGUA_WEEKDAYS, LINGUA_SHARE_CARD, NAV, STRIP, FOOTER, PAGES, DINIS_WORDS, QUESTIONS_TO_ASK_INDI, HOME_LINE, HOME_FIGURES, TEN_DAYS_RANGE, TEN_DAYS, SOURCES };
   const strings = [];
   const collect = (o, path) => {
     if (typeof o === 'string') strings.push([path, o]);
@@ -1202,6 +1248,19 @@ export const TEN_DAYS = [
   if (!/Glad to talk to people/.test(dz['front-page'].copy.notice.text)) throw new Error('C26: Front Page notice');
   if (dz.console.copy.shippedTitle !== 'What we built this week' || !post.includes(dz.console.copy.shippedTitle)) throw new Error('C31: Console title');
   if (!dz.card.idea.includes(QUOTES.extracts.cards)) throw new Error('C34: The Card idea');
+
+  // Round 3: Lingua (C85, C86, C87, C90, C91, C97).
+  if (!LANGUAGES.speaksLine?.text || !LANGUAGES.speaksLine.sources.includes('linkedin')) throw new Error('C85: LANGUAGES.speaksLine');
+  const gloss = dz.lingua.copy.glossNote;
+  if (!gloss.awaitingIndi || !/ask/.test(gloss.text) || !/section titles/.test(gloss.text) || !/weekday/.test(gloss.text)) throw new Error('C86: glossNote must cover the ask, the titles and the weekday names');
+  if (!/weekday/.test(QUESTIONS_FOR_INDI.find(q => q.id === 'lingua').q)) throw new Error('C86: the lingua question must cover the weekday names');
+  if (dz.lingua.leadsWith !== 'His three languages, each with the ask and the section titles in that language') throw new Error('C90: Lingua leadsWith');
+  const foreign = [];
+  for (const p of LINGUA_TRIPTYCH) { if (p.lang !== 'en') foreign.push(p.ask, ...p.titles); }
+  for (const d of LINGUA_WEEKDAYS) foreign.push(d.it, d.fr);
+  for (const w of foreign) if (!['it', 'fr'].includes(w.lang) || w.awaitingIndi !== true || !w.text) throw new Error(`C87, C91: ${JSON.stringify(w)} needs text, lang and awaitingIndi`);
+  if (LINGUA_TRIPTYCH.length !== 3 || LINGUA_WEEKDAYS.length !== 7) throw new Error('Lingua: three panels, seven weekdays');
+  if (LINGUA_SHARE_CARD.ask.lang !== 'en' || LINGUA_SHARE_CARD.ask.text !== ASK.short) throw new Error('C97: the Lingua share card asks in English only');
 
   // HOME_LINE, HOME_FIGURES, TEN_DAYS.
   if (!post.includes(HOME_LINE.quote) || !post.includes(HOME_LINE.alternative.quote)) throw new Error('HOME_LINE is not in the post');
