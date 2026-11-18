@@ -172,8 +172,8 @@ Asked for by the conductor after Dinis Cruz's words of about 10:03 UTC, 2026-11-
 | Laptop stickers | "one corporate, two infographics, one cartoon"; "Revised after Indi's notes (4 November, evening)" | designer@web-summit.indi | 4 Nov | https://web-summit.sgit.ai/stickers/index.html | 4 stickers; a creative set of twelve | stickers-overview.jpg, sticker-gap.jpg |
 | Digital card | "The team's digital business card ... Add it to Apple Wallet in one tap" | not stated | not stated | https://web-summit.sgit.ai/card/index.html | | none |
 | Safe AI for learning | "An idea, not yet built: AI helpers for schools ..." from "Indi Gupte's brief of 4 November 2026" | education@web-summit.indi | brief 4 Nov; published 10 Nov | https://web-summit.sgit.ai/people/indi/education/index.html | | education.jpg |
-| The factory (WS-27) | "What each target company does, the risks it faces from AI agents and how RiskMandate helps, in pictures and in normal and lay terms" | dev@web-summit.indi built it "at Indi's go"; factory@web-summit.indi makes the pages | from 3 Nov, 23:30 | https://web-summit.sgit.ai/people/indi/factory/index.html | "31 companies" | factory.jpg |
-| A factory company page | a target company "in three pictures, each in normal terms and in lay terms" | factory@web-summit.indi | sources read 1 Nov | https://web-summit.sgit.ai/people/indi/factory/(a target company)/index.html | 3 pictures | factory-company.jpg |
+| The factory (WS-27) | "What each target company does, the risks it faces from AI agents and how RiskMandate helps, in pictures and in normal and lay terms" | dev@web-summit.indi built it "at Indi's go"; factory@web-summit.indi makes the pages | from 3 Nov, 23:30 | https://web-summit.sgit.ai/people/indi/factory/index.html | "31 companies" | none (the page names target companies) |
+| A target company's page | one target company "in three pictures, each in normal terms and in lay terms" (the company is not named here: target companies are prospects) | factory@web-summit.indi | sources read 1 Nov | under https://web-summit.sgit.ai/people/indi/factory/ | 3 pictures | none |
 | Newsroom workflow infographic | "from a handshake at Web Summit to a published interview, who does each step, the hand-overs, and what stays private"; "tested on a stranger (a sub-agent who knew nothing), with six terms rewritten after" | conductor-newsroom@web-summit.indi, started by conductor@web-summit.indi | 10 Nov: brief about 12:40 UTC, live 15:00 (v0.2.1706) | https://web-summit.sgit.ai/people/indi/helpers/newsroom/index.html | 14 steps on the page; "About 2 hours 20 minutes" brief to live | newsroom-steps.jpg, newsroom-workflow.jpg |
 | Who wakes when | "5 on a timetable with 10 wake-ups a day, one planned, and 9 that work when asked" | conductor@web-summit.indi | checked 8 Nov, 07:25 UTC | https://web-summit.sgit.ai/people/indi/schedules/index.html | 5, 10, 9 | schedules.jpg |
 | Token efficiency | "264 measured wakes from 37 agents cost 180.5M tokens, 65% of it cache reads. The same output could cost 24% to 53% less. Ten rules, ready for an ABP." "Written on 8 November 2026 at Indi's word." | accountant@web-summit.indi's method; the writer is not named | 8 Nov | https://web-summit.sgit.ai/people/indi/token-efficiency/index.html | as quoted | none (its chart names teammates) |
@@ -188,11 +188,11 @@ Asked for by the conductor after Dinis Cruz's words of about 10:03 UTC, 2026-11-
 | Public PrompTugal app redesign | "fewest taps per workflow, the Team app redesign's lessons, original colours, no AI-sounding text" | conductor-newsapp@web-summit.indi | last commit 11 Nov | no public page found | 3 commits | none |
 | Three apps strategy (context) | "at Dinis's word (8 November 2026, with Indi)" | conductor@web-summit.dinis, not Indi's agents | 8 Nov | https://web-summit.sgit.ai/apps/index.html | | none |
 
-Pages naming Indi: all of the above except the a target company company page and the digital card description.
+Pages naming Indi: all of the above except the target company's page and the digital card description.
 
 ### The shots (data/research/shots/)
 
-Taken with Playwright, viewport 1200 px wide, deviceScaleFactor 1, JPEG quality 72, clipped to the work; all under 150 KB (factory.jpg resized to 760 px wide to fit). For each, the text inside the clip was scanned for the names of other team members (none found), and each image was looked at: **no photograph of a person and no name other than Indi Gupte or Dinis Cruz appears in any shot.** The left-hand menu and the top bar, which carry other people's names on these pages, are outside every clip.
+Taken with Playwright, viewport 1200 px wide, deviceScaleFactor 1, JPEG quality 72, clipped to the work; all under 150 KB. Two shots of the factory were removed on the conductor's instruction, because they named target companies (prospects). For each, the text inside the clip was scanned for the names of other team members (none found), and each image was looked at: **no photograph of a person and no name other than Indi Gupte or Dinis Cruz appears in any shot.** The left-hand menu and the top bar, which carry other people's names on these pages, are outside every clip.
 
 | Shot | What it shows |
 |---|---|
@@ -202,8 +202,6 @@ Taken with Playwright, viewport 1200 px wide, deviceScaleFactor 1, JPEG quality 
 | stickers-overview.jpg | the four laptop stickers on one sheet |
 | sticker-gap.jpg | the "Control the gap" infographic sticker |
 | education.jpg | Safe AI for learning, from the title to "How it would work" |
-| factory.jpg | the factory: "RiskMandate in one picture" and the first company cards |
-| factory-company.jpg | the a target company page: what it does and its risks, as diagrams |
 | newsroom-steps.jpg | the interview workflow, steps 1 to 3 with their hand-overs |
 | newsroom-workflow.jpg | the same journey as a diagram (rows of workers, 14 numbered steps) |
 | schedules.jpg | who wakes when: the counts and the day-at-a-glance timeline |

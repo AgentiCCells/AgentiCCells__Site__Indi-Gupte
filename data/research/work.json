@@ -144,7 +144,7 @@
       "agent": "dev@web-summit.indi built it; factory@web-summit.indi makes the pages; a person reviews each",
       "date": "started 3 November 2026, 23:30",
       "url": "https://web-summit.sgit.ai/people/indi/factory/index.html",
-      "shot": "data/research/shots/factory.jpg",
+      "shot": null,
       "numbers": {
         "companies": 31
       },
@@ -153,24 +153,8 @@
         "https://web-summit.sgit.ai/people/indi/factory/index.md",
         "https://web-summit.sgit.ai/brief-indi/index.md"
       ],
-      "read": "2026-11-18"
-    },
-    {
-      "slug": "factory-company-page",
-      "title": "A factory company page: a target company",
-      "what": "One company in three pictures (what it does, its risks from AI agents, how RiskMandate helps), each in normal terms and in lay terms; sources read 1 November 2026.",
-      "agent": "factory@web-summit.indi",
-      "date": "sources read 2026-11-01",
-      "url": "https://web-summit.sgit.ai/people/indi/factory/(a target company)/index.html",
-      "shot": "data/research/shots/factory-company.jpg",
-      "numbers": {
-        "pictures": 3
-      },
-      "names_indi": false,
-      "sources": [
-        "https://web-summit.sgit.ai/people/indi/factory/(a target company)/index.md"
-      ],
-      "read": "2026-11-18"
+      "read": "2026-11-18",
+      "note": "no shot: the page names target companies (prospects)"
     },
     {
       "slug": "newsroom-workflow",
