@@ -1015,19 +1015,13 @@
    "slug": "briefing",
    "name": "The Briefing",
    "idea": "A diplomat's briefing note: the ask first, numbered paragraphs, sources in the margin.",
-   "leadsWith": "The Purpose box (the ask) and his own summary",
+   "leadsWith": "His photo, his own line from his post, the two buttons and three sourced figures; then his work in pictures and the ten-day strip",
    "default": true,
    "copy": {
     "label": {
      "text": "Briefing note · facts read 18 November 2026",
      "awaitingIndi": true,
      "note": "The date is the date the facts were read, not a date about him."
-    },
-    "purpose": {
-     "text": "Purpose: Indi is looking for work experience. Contact: LinkedIn.",
-     "sources": [
-      "whatsapp"
-     ]
     },
     "paragraphs": [
      "Summary",
