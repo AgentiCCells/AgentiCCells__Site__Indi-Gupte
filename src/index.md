@@ -4,7 +4,7 @@ Brand, partnerships and research · West London
 
 **Looking for work experience.** Indi Gupte is looking for work experience. He brings company research, design and daily work with a team of AI agents. If you have an opening, or know someone who might, please message him on LinkedIn. LinkedIn: https://www.linkedin.com/in/indi-gupte-26960b318 (no email or phone).
 
-Before starting university, Indi is working with Dinis Cruz at RiskMandate. At Web Summit Lisbon 2026 he worked with a team of 27 AI agents, and he is looking for work experience. (Sources: Indi Gupte's post to a UK Web Summit WhatsApp group; [Indi Gupte's dashboard, Web Summit team site](https://web-summit.sgit.ai/people/indi/index.md))
+Before starting university, Indi is working with Dinis Cruz at RiskMandate. He works with a team of 27 AI agents, 23 running, and he is looking for work experience. (Sources: Indi Gupte's post to a UK Web Summit WhatsApp group; [Indi Gupte's dashboard, Web Summit team site](https://web-summit.sgit.ai/people/indi/index.md); [The team register, Web Summit team site](https://web-summit.sgit.ai/team/everything/index.md); [Factory brief: Indi Gupte](https://github.com/AgentiCCells/AgentiCCells__Site__Factory/blob/dev/requests/2026-11-18__indi-gupte/brief.md))
 
 A team of 27 AI agents, 23 running; 277 commits by his agents on the team's site, 3 to 13 November 2026. (Sources: [Indi Gupte's dashboard, Web Summit team site](https://web-summit.sgit.ai/people/indi/index.md); [Ten days at Web Summit (newsroom.sgit.ai, by Dinis Cruz, 14 November 2026)](https://newsroom.sgit.ai/articles/ten-days-at-web-summit.md))
 
@@ -153,7 +153,7 @@ Sources: [Indi Gupte's dashboard, Web Summit team site](https://web-summit.sgit.
 He speaks English, Italian and French. He has an interest in Sanskrit, and the same interest in programming languages; he is working through Harvard's CS50x. From next autumn he will read Modern Languages and International Relations. No levels are given, so none are shown.
 
 - From next autumn he will read Modern Languages and International Relations at university.
-- His profile lists the University of Oxford, Modern Languages, Italian and Portuguese (2027).
+- University of Oxford, Modern Languages, Italian and Portuguese (2027), as his profile lists it.
 - Volunteering in hospitals drew him towards diplomacy, "where languages, judgement and tact meet".
 
 Source: [Indi Gupte's LinkedIn profile](https://www.linkedin.com/in/indi-gupte-26960b318)
@@ -165,8 +165,8 @@ Source: [Indi Gupte's LinkedIn profile](https://www.linkedin.com/in/indi-gupte-2
 - September 2026 to present: Operations Manager, SportsHealing Ltd
 - November 2026 to present: Brand and Partnerships Lead, RiskMandate
 - 9 to 12 November 2026: Web Summit Lisbon, with the RiskMandate team
-- from next autumn: Modern Languages and International Relations, at university (His summary.)
-- 2027: University of Oxford, Modern Languages, Italian and Portuguese (As his profile lists it.)
+- from next autumn: Modern Languages and International Relations, at university, from next autumn (his words) (His summary.)
+- 2027: University of Oxford, Modern Languages, Italian and Portuguese (2027), as his profile lists it
 - Volunteering in hospitals in London and rural Italy: It left him with a lasting interest in medicine, and drew him towards diplomacy, "where languages, judgement and tact meet".
 - Junior developer for three health technology startups: He builds software for them. His profile does not name them.
 - Working with OmKneeHealth: A London health startup making knee treatment simpler (kneelens.com).
@@ -179,7 +179,7 @@ Indi Gupte is looking for work experience. He brings company research, design an
 His profile says he is glad to talk to people working in languages, AI, medicine or diplomacy.
 
 - Languages: He speaks English, Italian and French, and will read Modern Languages and International Relations from next autumn.
-- AI: Brand and Partnerships Lead at RiskMandate, and a team of 27 AI agents at Web Summit Lisbon 2026.
+- AI: Brand and Partnerships Lead at RiskMandate. He works with a team of 27 AI agents, 23 running.
 - Medicine: Volunteering in hospitals in London and rural Italy, and junior developer for three health technology startups.
 - Diplomacy: Drawn to it as the place "where languages, judgement and tact meet".
 

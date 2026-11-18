@@ -33,12 +33,12 @@
   },
   "commits": {
    "value": 277,
-   "text": "277 commits by his agents on the team's site",
+   "text": "277 commits by his agents on the team's site, 3 to 13 November 2026",
    "window": "Counted for the ten days, 3 to 13 November 2026.",
    "sources": [
     "news-ten-days"
    ],
-   "note": "His dashboard lists a commit count for each agent; those counts add up to 309. That sum was worked out by the researcher, is not a published figure, and covers a longer window (his conductor's last listed commit is on 16 November). The site uses 277, the published figure.",
+   "note": "His dashboard lists a commit count for each agent; those counts add up to 309. That sum was worked out by the researcher, is not a published figure, and covers a longer window (his conductor's last listed commit is on 16 November). The site uses 277 (3 to 13 November 2026), the published figure.",
    "dashboardSum": {
     "value": 309,
     "derived": true,
@@ -480,11 +480,11 @@
   "short": "Looking for work experience",
   "band": {
    "lead": "Looking for work experience",
-   "rest": "I worked with 27 AI agents at Web Summit Lisbon 2026",
+   "rest": "A team of 27 AI agents, 23 running",
    "sources": [
     "whatsapp",
     "ws-people-indi",
-    "ws-home"
+    "ws-everything"
    ]
   },
   "button": {
@@ -502,13 +502,12 @@
   "panel": {
    "heading": "Looking for work experience",
    "paragraphs": [
-    "At Web Summit Lisbon 2026 Indi worked with a team of 27 AI agents on RiskMandate, PrompTugal.news and Lisbon Tech Fringe.",
-    "He brings company research, design and daily work with AI agents, and would like to talk to people working in languages, AI, medicine or diplomacy."
+    "In his words, what the team built that week: RiskMandate, PrompTugal.news and Lisbon Tech Fringe.",
+    "He brings company research, design and daily work with a team of AI agents, and is glad to talk to people working in languages, AI, medicine or diplomacy."
    ],
    "sources": [
     "whatsapp",
-    "linkedin",
-    "ws-people-indi"
+    "linkedin"
    ]
   },
   "long": {
@@ -537,10 +536,11 @@
    {
     "id": "ai",
     "name": "AI",
-    "line": "Brand and Partnerships Lead at RiskMandate, and a team of 27 AI agents at Web Summit Lisbon 2026.",
+    "line": "Brand and Partnerships Lead at RiskMandate. He works with a team of 27 AI agents, 23 running.",
     "link": "/how-i-work/",
     "sources": [
      "linkedin",
+     "whatsapp",
      "ws-people-indi"
     ]
    },
@@ -593,7 +593,7 @@
     },
     {
      "phrase": "working every day with a team of AI agents",
-     "shownBy": "27 agents, 23 running, and 277 commits by his agents on the team's site.",
+     "shownBy": "A team of 27 AI agents, 23 running, and 277 commits by his agents on the team's site from 3 to 13 November 2026.",
      "link": "/how-i-work/",
      "sources": [
       "whatsapp",
@@ -676,7 +676,7 @@
    },
    {
     "id": "university",
-    "title": "Modern Languages and International Relations, at university",
+    "title": "Modern Languages and International Relations, at university, from next autumn (his words)",
     "when": {
      "text": "from next autumn"
     },
@@ -687,12 +687,12 @@
    },
    {
     "id": "oxford",
-    "title": "University of Oxford, Modern Languages, Italian and Portuguese",
+    "title": "University of Oxford, Modern Languages, Italian and Portuguese (2027), as his profile lists it",
     "when": {
      "at": "2027",
      "text": "2027"
     },
-    "note": "As his profile lists it.",
+    "note": "As his profile lists it. Show the title whole wherever the entry appears (C39).",
     "sources": [
      "linkedin"
     ]
@@ -1074,10 +1074,11 @@
      ]
     },
     "headline": {
-     "text": "Student who worked with 27 AI agents at Web Summit is looking for work experience",
+     "text": "Indi Gupte, one of the three editors of PrompTugal.news, is looking for work experience",
      "awaitingIndi": true,
      "sources": [
-      "ws-people-indi",
+      "promptugal-home",
+      "promptugal-about",
       "whatsapp"
      ]
     },
@@ -1090,7 +1091,7 @@
     "photoCaption": "Indi Gupte. Photo used with his agreement.",
     "indexTitle": "In this edition",
     "notice": {
-     "text": "WANTED: work experience. Languages, AI, medicine or diplomacy. Reply via LinkedIn.",
+     "text": "Wanted: work experience. Glad to talk to people working in languages, AI, medicine or diplomacy. Reply via LinkedIn.",
      "awaitingIndi": true,
      "sources": [
       "whatsapp",
@@ -1103,7 +1104,7 @@
   {
    "slug": "console",
    "name": "Agent Console",
-   "idea": "The operator's view: 27 agents, 23 running, 277 commits.",
+   "idea": "The operator's view: a team of 27 AI agents, 23 running, and 277 commits from 3 to 13 November 2026.",
    "leadsWith": "The operator panel and the agent grid",
    "default": false,
    "copy": {
@@ -1115,7 +1116,7 @@
       "whatsapp"
      ]
     },
-    "shippedTitle": "Shipped",
+    "shippedTitle": "What we built this week",
     "languageRows": [
      "en English · speaks",
      "it Italian · speaks",
@@ -1128,7 +1129,7 @@
   {
    "slug": "card",
    "name": "The Card",
-   "idea": "A business card, front and back, from the person who designed the team's cards.",
+   "idea": "A business card, front and back. In his words: \"I designed our business cards\".",
    "leadsWith": "His name and \"Looking for work experience\" on the card front",
    "default": false,
    "copy": {
@@ -1140,8 +1141,13 @@
      "West London"
     ],
     "back": {
-     "kicker": "Web Summit Lisbon 2026",
-     "numbers": "27 AI agents · 23 running · 277 commits"
+     "kicker": "Working every day with a team of AI agents",
+     "numbers": "A team of 27 AI agents, 23 running · 277 commits, 3 to 13 November 2026",
+     "sources": [
+      "whatsapp",
+      "ws-people-indi",
+      "news-ten-days"
+     ]
     },
     "languagesLine": "English · Italiano · Français",
     "interestLine": "Interested in Sanskrit (संस्कृतम्) and programming languages",
@@ -1220,6 +1226,54 @@
   },
   "licence": "Code Apache-2.0, text CC BY 4.0"
  },
+ "HOME_FIGURES": [
+  {
+   "id": "agents",
+   "value": "27",
+   "label": "AI agents in his team, 23 running",
+   "text": "A team of 27 AI agents, 23 running",
+   "link": "/how-i-work/",
+   "sources": [
+    "ws-people-indi",
+    "ws-everything"
+   ]
+  },
+  {
+   "id": "commits",
+   "value": "277",
+   "label": "commits by his agents on the team's site, 3 to 13 November 2026",
+   "text": "277 commits by his agents on the team's site, 3 to 13 November 2026",
+   "link": "/how-i-work/",
+   "sources": [
+    "news-ten-days"
+   ]
+  },
+  {
+   "id": "editor",
+   "value": "1 of 3",
+   "label": "editors of PrompTugal.news",
+   "text": "One of the three editors of PrompTugal.news",
+   "link": "/built/#promptugal",
+   "sources": [
+    "promptugal-home",
+    "promptugal-about",
+    "promptugal-board"
+   ]
+  }
+ ],
+ "HOME_LINE": {
+  "quote": "What I bring: company research, design (I designed our business cards), and working every day with a team of AI agents.",
+  "attribution": "Indi Gupte, in his post to a UK Web Summit WhatsApp group",
+  "sources": [
+   "whatsapp"
+  ],
+  "alternative": {
+   "quote": "I'm looking for work experience.",
+   "sources": [
+    "whatsapp"
+   ]
+  }
+ },
  "LANGUAGES": {
   "speaks": [
    {
@@ -1281,7 +1335,7 @@
    ]
   },
   "leadsTo": {
-   "text": "Modern Languages and International Relations, from next autumn",
+   "text": "Modern Languages and International Relations, from next autumn (his words)",
    "sources": [
     "linkedin"
    ]
@@ -1307,7 +1361,7 @@
     ]
    },
    {
-    "text": "His profile lists the University of Oxford, Modern Languages, Italian and Portuguese (2027).",
+    "text": "University of Oxford, Modern Languages, Italian and Portuguese (2027), as his profile lists it.",
     "sources": [
      "linkedin"
     ]
@@ -1420,13 +1474,15 @@
   "home": {
    "path": "/",
    "title": "Indi Gupte: looking for work experience",
-   "description": "Indi Gupte, West London, worked with 27 AI agents at Web Summit Lisbon 2026 on RiskMandate, PrompTugal.news and Lisbon Tech Fringe. Seeking work experience.",
+   "description": "Indi Gupte, West London: brand, partnerships and research. He works with a team of 27 AI agents, 23 running, and is looking for work experience.",
    "kicker": "Brand, partnerships and research",
    "h1": "Indi Gupte",
-   "lede": "Before starting university, Indi is working with Dinis Cruz at RiskMandate. At Web Summit Lisbon 2026 he worked with a team of 27 AI agents, and he is looking for work experience.",
+   "lede": "Before starting university, Indi is working with Dinis Cruz at RiskMandate. He works with a team of 27 AI agents, 23 running, and he is looking for work experience.",
    "sources": [
     "whatsapp",
-    "ws-people-indi"
+    "ws-people-indi",
+    "ws-everything",
+    "factory-brief"
    ]
   },
   "built": {
@@ -1443,12 +1499,14 @@
   "how-i-work": {
    "path": "/how-i-work/",
    "title": "How I work with AI agents · Indi Gupte",
-   "description": "Indi Gupte works every day with a team of AI agents: 27 agents, 23 running, and 277 commits on the Web Summit team's site. His agents draft; he sends.",
+   "description": "Indi Gupte works with a team of 27 AI agents, 23 running: 277 commits from 3 to 13 November 2026. His agents draft; he sends every message.",
    "kicker": "How I work",
-   "h1": "A team of 27 AI agents",
-   "lede": "At Web Summit Lisbon 2026 Indi ran 27 AI agents, 23 of them running, for research, design, drafting and his daily briefings. His agents draft; he sends every message.",
+   "h1": "A team of 27 AI agents, 23 running",
+   "lede": "Indi works with a team of 27 AI agents, 23 running, for research, design, drafting and his daily briefings. His agents draft; he sends every message.",
    "sources": [
+    "whatsapp",
     "ws-people-indi",
+    "ws-everything",
     "ws-team-indi"
    ]
   },
@@ -1513,7 +1571,7 @@
      "id": "indi",
      "title": "Indi himself",
      "rule": "Help him check and improve the site. Every change about him needs his approval, through Dinis Cruz.",
-     "prompt": "Read https://indi-gupte.agenticcells.site/index.md and the open questions in https://github.com/AgentiCCells/AgentiCCells__Site__Indi-Gupte/blob/dev/team/rounds/1/copy/NOTES.md. Ask me those questions one at a time, and write down my answers with today's date, so the team can update data/facts.mjs."
+     "prompt": "Read https://indi-gupte.agenticcells.site/index.md and https://indi-gupte.agenticcells.site/questions.md. Ask me the questions in questions.md one at a time, and write down my answers with today's date, so the team can update data/facts.mjs. Every change about me goes to the team through Dinis Cruz."
     },
     {
      "id": "editor",
@@ -1621,10 +1679,11 @@
    ]
   },
   "summary": {
-   "text": "A student from West London who, before starting university, is working with Dinis Cruz at RiskMandate. At Web Summit Lisbon 2026 he worked with a team of 27 AI agents, and he is looking for work experience.",
+   "text": "A student from West London who, before starting university, is working with Dinis Cruz at RiskMandate. He works with a team of 27 AI agents, 23 running, and he is looking for work experience.",
    "sources": [
     "whatsapp",
-    "ws-people-indi"
+    "ws-people-indi",
+    "ws-everything"
    ]
   },
   "profileSummary": {
@@ -1708,7 +1767,7 @@
   },
   {
    "id": "front-page",
-   "q": "Do you approve the Front Page headline and the \"WANTED\" notice?"
+   "q": "Do you approve the Front Page headline (\"Indi Gupte, one of the three editors of PrompTugal.news, is looking for work experience\") and its \"Wanted\" notice?"
   },
   {
    "id": "questions",
@@ -1748,7 +1807,7 @@
   },
   {
    "id": "university",
-   "q": "Your summary says Modern Languages and International Relations from next autumn; your education lists University of Oxford, Modern Languages, Italian and Portuguese (2027). The site shows both as you list them. Do you want either changed?"
+   "q": "Your summary says Modern Languages and International Relations from next autumn; your education lists University of Oxford, Modern Languages, Italian and Portuguese (2027), as your profile lists it. The site shows both as you list them. Do you want either changed?"
   },
   {
    "id": "fringe-part",
@@ -2121,7 +2180,7 @@
  ],
  "STRIP": [
   {
-   "text": "27 AI agents",
+   "text": "A team of 27 AI agents, 23 running",
    "href": "/how-i-work/",
    "sources": [
     "ws-people-indi"
@@ -2156,6 +2215,166 @@
    ]
   }
  ],
+ "TEN_DAYS": [
+  {
+   "date": "2026-11-03",
+   "label": "The team's ten days begin",
+   "kind": "team",
+   "sources": [
+    "news-ten-days"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "label": "His conductor agent starts its daily schedule: 07:20, 12:20 and 17:20 GMT",
+   "kind": "his",
+   "sources": [
+    "ws-everything"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "time": "23:30",
+   "timeNote": "As his brief gives it; no time zone stated.",
+   "label": "At his go, his developer agent opens the factory of company pages",
+   "kind": "his",
+   "sources": [
+    "ws-brief-indi"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "label": "He writes a two-page brief: RiskMandate for education and children",
+   "kind": "his",
+   "sources": [
+    "ws-education",
+    "ws-brief-indi"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "label": "He votes on the round 2 card designs and chooses his card",
+   "kind": "his",
+   "sources": [
+    "ws-design",
+    "ws-cards"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "label": "He joins the team in person",
+   "kind": "his",
+   "sources": [
+    "ws-brief-indi"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "label": "Design A chosen for printing: three audience cards, about 200 of each",
+   "kind": "team",
+   "sources": [
+    "ws-cards"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "label": "His mentor agent hands over: four of his agents ran every scheduled slot for two days without a prompt",
+   "kind": "his",
+   "sources": [
+    "ws-people-indi"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "label": "Web Summit Lisbon opens (9 to 12 November)",
+   "kind": "event",
+   "sources": [
+    "ws-home"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "label": "His education idea is published on the team's site",
+   "kind": "his",
+   "sources": [
+    "ws-education"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "time": "19:09",
+   "timeNote": "As the newsroom gives it; no time zone stated.",
+   "label": "Storm Charles reaches Lisbon; Web Summit calls off its second day",
+   "kind": "event",
+   "sources": [
+    "news-ten-days"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "time": "12:57",
+   "timeNote": "As the newsroom gives it; no time zone stated.",
+   "label": "Lisbon Tech Fringe, the team's guide to the side events, goes live; his lane: communities",
+   "kind": "team",
+   "sources": [
+    "news-ten-days",
+    "ltf-storm",
+    "ltf-join"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "time": "21:11",
+   "timeNote": "As the newsroom gives it; no time zone stated.",
+   "label": "The Fringe app is out for testing",
+   "kind": "team",
+   "sources": [
+    "news-ten-days"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "label": "The team's stand, booth A1-30, on the last day of Web Summit",
+   "kind": "event",
+   "sources": [
+    "ws-home"
+   ]
+  },
+  {
+   "date": "2026-11-13",
+   "label": "The ten days end: 277 commits by his agents on the team's site, 3 to 13 November 2026",
+   "kind": "his",
+   "sources": [
+    "news-ten-days"
+   ]
+  },
+  {
+   "date": "2026-11-14",
+   "label": "Strangers in the Loop, RiskMandate's second song, produced by Indi, is released",
+   "kind": "his",
+   "derived": true,
+   "how": "The article says it was \"released the next day\" after the first song, \"released on 13 November\".",
+   "sources": [
+    "news-every-hour"
+   ]
+  }
+ ],
+ "TEN_DAYS_RANGE": {
+  "from": "2026-11-03",
+  "to": "2026-11-13",
+  "text": "3 to 13 November 2026",
+  "eventDays": {
+   "from": "2026-11-09",
+   "to": "2026-11-12",
+   "text": "9 to 12 November 2026",
+   "label": "Web Summit Lisbon"
+  },
+  "sources": [
+   "news-ten-days",
+   "ws-home"
+  ],
+  "note": "One entry, Strangers in the Loop on 14 November, falls the day after the ten days; it is kept, marked derived, because it is his."
+ },
  "VIDEO": {
   "id": "ltf-app-video",
   "title": "How Indi built the Lisbon Tech Fringe app with a team of AI agents",

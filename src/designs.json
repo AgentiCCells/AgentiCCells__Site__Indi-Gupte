@@ -5,7 +5,7 @@
    "slug": "briefing",
    "name": "The Briefing",
    "idea": "A diplomat's briefing note: the ask first, numbered paragraphs, sources in the margin.",
-   "leads_with": "The Purpose box (the ask) and his own summary",
+   "leads_with": "His photo, his own line from his post and three sourced figures",
    "path": "/",
    "url": "https://indi-gupte.agenticcells.site/",
    "thumb": "/assets/designs/briefing.jpg",
@@ -37,7 +37,7 @@
   {
    "slug": "console",
    "name": "Agent Console",
-   "idea": "The operator's view: 27 agents, 23 running, 277 commits.",
+   "idea": "The operator's view: a team of 27 AI agents, 23 running, and 277 commits from 3 to 13 November 2026.",
    "leads_with": "The operator panel and the agent grid",
    "path": "/d/console/",
    "url": "https://indi-gupte.agenticcells.site/d/console/",
