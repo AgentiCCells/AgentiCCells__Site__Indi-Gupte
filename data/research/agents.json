@@ -1,0 +1,346 @@
+{
+  "about": "Indi Gupte's agents on the Web Summit team's site, as published on 2026-11-18. Descriptions are shortened from the sources; names of other people are replaced with 'another team member'. Status and commit counts are from the team/everything page (site version v0.2.2313).",
+  "counts": {
+    "agents": 27,
+    "active": 23,
+    "proposed_not_running": 4,
+    "commits_listed": 309,
+    "source": "https://web-summit.sgit.ai/people/indi/index.md",
+    "published_line": "27 agents (23 running)",
+    "read": "2026-11-18"
+  },
+  "also_named_elsewhere": [
+    {
+      "name": "conductor.fringe@PrompTugal.indi",
+      "does": "owner of the Lisbon Tech Fringe board item '04. Communities page: who runs this week's events, how to join' (done), lane: communities",
+      "source": "https://lisbontechfringe.com/join/",
+      "read": "2026-11-18"
+    }
+  ],
+  "agents": [
+    {
+      "name": "accountant@web-summit.indi",
+      "does": "token accountant: measures the tokens Indi's agents use, finds the waste, proposes changes, briefs Indi and Dinis at 17:30 UTC daily (WS-148)",
+      "status": "active",
+      "commits": 42,
+      "last_commit_utc": "2026-11-13 17:38",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "appdev@web-summit.indi",
+      "does": "not published",
+      "status": "active",
+      "commits": 1,
+      "last_commit_utc": "2026-11-11 13:29",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "builder@web-summit.indi",
+      "does": "another team member's site and learning environment, under that team member's policies",
+      "status": "active",
+      "commits": 1,
+      "last_commit_utc": "2026-11-04 22:17",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "conductor@web-summit.indi",
+      "does": "conducts Indi's agents, keeps people/indi/, feeds the stand-ups and briefs Indi",
+      "status": "active",
+      "commits": 90,
+      "last_commit_utc": "2026-11-16 13:37",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "conductor-abpmaker@web-summit.indi",
+      "does": "not published",
+      "status": "active",
+      "commits": 1,
+      "last_commit_utc": "2026-11-11 14:34",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "conductor-map@web-summit.indi",
+      "does": "one-off helper: the venue map screen in the PrompTugal Team app (Apple Maps with our own venue drawing) and venue.geojson",
+      "status": "active",
+      "commits": 3,
+      "last_commit_utc": "2026-11-10 13:48",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "conductor-newsapp@web-summit.indi",
+      "does": "one-off helper: the UI and UX redesign of the public PrompTugal app (news.promptugal.reader): fewest taps per workflow, original colours, no AI-sounding text",
+      "status": "active",
+      "commits": 3,
+      "last_commit_utc": "2026-11-11 00:20",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "conductor-newsroom@web-summit.indi",
+      "does": "one-off helper: the unified interview-to-article workflow, its plain-words infographic on the team site, the visual newsroom map, and the pt.news redesign focused on agents",
+      "status": "active",
+      "commits": 1,
+      "last_commit_utc": "2026-11-10 14:51",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "conductor-teamapp@web-summit.indi",
+      "does": "overnight helper (10 to 11 November): the Team app's light mode, ticked-off tasks with an animation, a bigger venue-map button, every Web Summit event in Plan, and one-tap messaging",
+      "status": "proposed (in the brief), not yet running",
+      "commits": 0,
+      "last_commit_utc": null,
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "dashboard@web-summit.indi",
+      "does": "keeps Indi's dashboard (people/indi/dashboard.md) and Indi's to-do infographic's list (people/indi/todo/todo.json, from 4 November)",
+      "status": "active",
+      "commits": 30,
+      "last_commit_utc": "2026-11-13 17:33",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "demo@web-summit.indi",
+      "does": "at the stand: asks a visitor five questions, researches their company's public facts, and builds a simulation and its ABP for the side-by-side ABP demo",
+      "status": "proposed (in the brief), not yet running",
+      "commits": 0,
+      "last_commit_utc": null,
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "designer@web-summit.indi",
+      "does": "RiskMandate business cards for Web Summit: round 1 and round 2 designs, and /cards/ for a phone (WS-48)",
+      "status": "active",
+      "commits": 24,
+      "last_commit_utc": "2026-11-05 12:45",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "dev@web-summit.indi",
+      "does": "explorer developer for the factory (WS-27): a page or vault per target company, fast",
+      "status": "active",
+      "commits": 31,
+      "last_commit_utc": "2026-11-11 19:42",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "education@web-summit.indi",
+      "does": "RiskMandate for education and children (WS-209): the public page /people/indi/education/, the people to meet at Web Summit, the chat with Dinis",
+      "status": "active",
+      "commits": 2,
+      "last_commit_utc": "2026-11-10 11:51",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "factory@web-summit.indi",
+      "does": "for each target company: the analysis, the risk analysis and how RiskMandate helps, as a page or vault (WS-27)",
+      "status": "active",
+      "commits": 2,
+      "last_commit_utc": "2026-11-04 22:18",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "followups@web-summit.indi",
+      "does": "not published",
+      "status": "active",
+      "commits": 2,
+      "last_commit_utc": "2026-11-13 17:20",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "inbox@web-summit.indi",
+      "does": "reads Indi's Gmail (summit and RiskMandate mail only) and drafts replies in Gmail; never sends",
+      "status": "proposed (in the brief), not yet running",
+      "commits": 0,
+      "last_commit_utc": null,
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "infographic@web-summit.indi",
+      "does": "makes plain-word, pastel infographic pages on the team site at Indi's request, each tested on a stranger (a small sub-agent) before Indi sees it",
+      "status": "active",
+      "commits": 1,
+      "last_commit_utc": "2026-11-09 12:17",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "journalist@web-summit.indi",
+      "does": "every wake, reports what happened that matters to Indi, and once a day at the evening wake a digest",
+      "status": "active",
+      "commits": 3,
+      "last_commit_utc": "2026-11-04 21:43",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "messaging@web-summit.indi",
+      "does": "checks every new page and draft against the message",
+      "status": "active",
+      "commits": 3,
+      "last_commit_utc": "2026-11-09 17:48",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "prompter@web-summit.indi",
+      "does": "prompt engineering: writes new prompts and improves existing ones (especially rushed or garbled ones) so Indi's tasks get done in one or two prompts",
+      "status": "active",
+      "commits": 35,
+      "last_commit_utc": "2026-11-11 13:16",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "recruiter@web-summit.indi",
+      "does": "not published",
+      "status": "active",
+      "commits": 1,
+      "last_commit_utc": "2026-11-06 12:39",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "social@web-summit.indi",
+      "does": "drafts one post a day for RiskMandate's LinkedIn page (company voice, plus a reshare line in Indi's voice), with a picture suggestion and dated sources; Indi posts (WS-126)",
+      "status": "active",
+      "commits": 9,
+      "last_commit_utc": "2026-11-12 16:02",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "synthetic@web-summit.indi",
+      "does": "synthetic users: invented personas, played by sub-agents, test what Indi works on (first, the RiskMandate business cards); the runs go into a public vault",
+      "status": "active",
+      "commits": 18,
+      "last_commit_utc": "2026-11-08 16:27",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "ux@web-summit.indi",
+      "does": "the user experience of Indi's dashboard, command centre and to-do page (WS-06)",
+      "status": "active",
+      "commits": 2,
+      "last_commit_utc": "2026-11-07 17:59",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "vault@web-summit.indi",
+      "does": "Indi's SGit vaults and their keys (WS-121)",
+      "status": "proposed (in the brief), not yet running",
+      "commits": 0,
+      "last_commit_utc": null,
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "name": "video-editor@web-summit.indi",
+      "does": "not published",
+      "status": "active",
+      "commits": 4,
+      "last_commit_utc": "2026-11-11 13:25",
+      "source": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    }
+  ]
+}
