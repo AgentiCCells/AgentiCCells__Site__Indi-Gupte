@@ -261,6 +261,15 @@ export const SOURCES = {
     group: 'project-sites',
     note: 'Link only, as given in the newsroom article. Not read (streaming platforms are out of scope for the research).',
   },
+  'dinis-video': {
+    title: "Dinis Cruz's LinkedIn post with a video about Indi's Lisbon Tech Fringe app",
+    url: 'https://www.linkedin.com/feed/update/urn:li:activity:7528764173284077568/',
+    read: '2026-11-18',
+    publisher: 'Dinis Cruz, on LinkedIn, 18 November 2026',
+    namesIndi: true,
+    group: 'team-record',
+    note: 'Post text and transcript as sent by Dinis Cruz; LinkedIn linked, not read by this site.',
+  },
   repo: {
     title: 'This site\'s repository',
     url: 'https://github.com/AgentiCCells/AgentiCCells__Site__Indi-Gupte',
@@ -505,7 +514,10 @@ export const BUILT = [
     ],
     timelineNote: 'Times as the newsroom gives them; the newsroom does not say which time zone.',
     link: { url: 'https://lisbontechfringe.com', text: 'lisbontechfringe.com' },
-    sources: ['whatsapp', 'ltf-home', 'ltf-storm', 'ltf-how', 'ltf-join', 'news-ten-days'],
+    related: [
+      { text: 'Video: how Indi built the Lisbon Tech Fringe app (Dinis Cruz, on LinkedIn)', url: 'https://www.linkedin.com/feed/update/urn:li:activity:7528764173284077568/', see: 'VIDEO', sources: ['dinis-video'] },
+    ],
+    sources: ['whatsapp', 'ltf-home', 'ltf-storm', 'ltf-how', 'ltf-join', 'news-ten-days', 'dinis-video'],
   },
   {
     id: 'song',
@@ -572,6 +584,21 @@ export const BUILT = [
     sources: ['ws-education', 'ws-brief-indi'],
   },
 ];
+
+// ---------------------------------------------------------------------------------------------------------------
+// VIDEO: Dinis Cruz's video about the Lisbon Tech Fringe app. Attributed to Dinis; no words of Indi's are quoted
+// from it (we have none exactly). Set `youtube` when Dinis posts it there; until then link the LinkedIn post.
+// ---------------------------------------------------------------------------------------------------------------
+export const VIDEO = {
+  id: 'ltf-app-video',
+  title: 'How Indi built the Lisbon Tech Fringe app with a team of AI agents',
+  summary: 'At the end of Web Summit, Indi built an iOS app for Lisbon Tech Fringe in two to three hours with a team of AI agents: design agents, coding agents, and synthetic users playing attendee personas. He had no earlier iOS experience. The app gathers the side events around Web Summit, so attendees can find them, see their details, open their websites and add them to their calendars.',
+  attribution: 'Dinis Cruz, in his post with the video',
+  date: '2026-11-18',
+  linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:7528764173284077568/',
+  youtube: null,
+  sources: ['dinis-video'],
+};
 
 // ---------------------------------------------------------------------------------------------------------------
 // AGENTS: his team of AI agents at Web Summit.
@@ -1061,7 +1088,7 @@ export const QUESTIONS_FOR_INDI = [
       else walk(v, `${path}.${k}`);
     }
   };
-  walk({ PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, AGENTS, LANGUAGES, BACKGROUND, DESIGNS, STRIP, PAGES, DINIS_WORDS }, 'facts');
+  walk({ PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, VIDEO, AGENTS, LANGUAGES, BACKGROUND, DESIGNS, STRIP, PAGES, DINIS_WORDS }, 'facts');
   if (AGENTS.list.length !== AGENTS.total.value) throw new Error(`AGENTS.list has ${AGENTS.list.length} entries, not ${AGENTS.total.value}`);
   if (AGENTS.list.filter(a => a.status === 'running').length !== AGENTS.running.value) throw new Error('AGENTS: running count does not match');
 }
