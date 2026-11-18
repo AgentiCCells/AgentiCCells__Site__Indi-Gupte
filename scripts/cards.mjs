@@ -1,7 +1,8 @@
 // Make the site's rendered images. Needs Playwright with Chromium; --work also needs ImageMagick's convert.
 // Copyright 2026 AgentiCCells. Code Apache-2.0. Adapted from the Marc Noah site's scripts/cards.mjs (Apache-2.0,
 // https://github.com/AgentiCCells/AgentiCCells__Site__Marc-Noah/blob/dev/scripts/cards.mjs, read 2026-11-18).
-// Written by developer.indi-gupte@AgentiCCells.dinis, round 1.
+// Written by developer.indi-gupte@AgentiCCells.dinis, round 1. Round 2: the Briefing card's seal moves off the photo to
+// x 1020 to 1140, y 60 to 180 (R6.5); previews are remade after each design restyles its header (R2.6).
 //   node scripts/cards.mjs                       the 1200x630 share cards into src/assets/share/ (each under 300 KB),
 //                                                from his headshot in the reviewer's crop (C9, C42) and the facts
 //   node scripts/cards.mjs --designs <base-url>  the 480x300 previews for the Designs dialog into src/assets/designs/,
@@ -71,7 +72,7 @@ ${deco}
 </body></html>`;
 const CARDS = {
   'indi-gupte': card({ bg: '#1B2333', ink: '#FFFFFF', accent: '#F2C29A', sub: '#D7DCE4', deco: '<div style="position:absolute;left:0;top:0;bottom:0;width:12px;background:#F2C29A"></div>' }),
-  briefing: card({ bg: '#13233F', ink: '#F7F4EC', accent: '#F09A8E', sub: '#D7DCE4', deco: '<svg width="120" height="120" style="position:absolute;left:382px;top:438px"><circle cx="60" cy="60" r="56" fill="#13233F" stroke="#F09A8E" stroke-width="4"/><circle cx="60" cy="60" r="46" fill="none" stroke="#F09A8E" stroke-width="2"/><text x="60" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#F7F4EC">IG</text></svg>' }),
+  briefing: card({ bg: '#13233F', ink: '#F7F4EC', accent: '#F09A8E', sub: '#D7DCE4', deco: '<svg width="120" height="120" style="position:absolute;left:1020px;top:60px"><circle cx="60" cy="60" r="56" fill="#13233F" stroke="#F09A8E" stroke-width="4"/><circle cx="60" cy="60" r="46" fill="none" stroke="#F09A8E" stroke-width="2"/><text x="60" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#F7F4EC">IG</text></svg>' }),
   lingua: card({ bg: '#F5EFE3', ink: '#1F1A14', accent: '#8C2A3B', sub: '#5A5246', frame: '#1F1A14', deco: '<div style="position:absolute;left:0;right:0;bottom:0;height:16px;display:flex"><i style="flex:1;background:#1E4D8C"></i><i style="flex:1;background:#1F6B3A"></i><i style="flex:1;background:#8C2A3B"></i><i style="flex:1;background:#9A4A00"></i><i style="flex:1;background:#4B3F8C"></i></div>', line: 'English · italiano · français' }),
   'front-page': card({ bg: '#FBFAF6', ink: '#111111', accent: '#B3121B', sub: '#555049', frame: '#111111', serif: '\'Bodoni 72\',Didot,Georgia,\'DejaVu Serif\',serif', deco: '<div style="position:absolute;left:60px;right:60px;top:70px;border-top:6px solid #111;border-bottom:2px solid #111;height:8px"></div>' }),
   console: card({ bg: '#0B1016', ink: '#D7E3EA', accent: '#F2C14E', sub: '#5BD69B', frame: '#5BD69B', sans: 'ui-monospace,\'DejaVu Sans Mono\',monospace', serif: 'ui-monospace,\'DejaVu Sans Mono\',monospace', line: TEAM_LINE }),

@@ -10,7 +10,8 @@ import * as F from '../data/facts.mjs';
 import {
   esc, fmtDay, ref, note, fact, srcLine, srcMd, SRC_ORDER, srcNum, page, pageHead, headshot, languagesFigure, workFig,
   chartTeams, chartCommits, chartActivity, chartMap, agentsData, AGENT_LIST, TEAM_LINE, TEAM_SRC, COMMITS_LINE,
-  COMMITS_SRC, POST_LINES, CARDS_QUOTE, scrub, GH, designIdea, designHref, postBlock, stats, videoSlot,
+  COMMITS_SRC, POST_LINES, CARDS_QUOTE, scrub, GH, designIdea, designHref, postBlock, stats, videoSlot, imgDims, tenDays,
+  teamFigure,
 } from './lib.mjs';
 const { READ_DATE_TEXT, SOURCE_GROUPS, SOURCES, LINKEDIN, LINKEDIN_TEXT, REPO, SITE, PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, AGENTS, LANGUAGES, BACKGROUND, DESIGNS, PAGES, QUESTIONS_FOR_INDI, FOOTER } = F;
 
@@ -27,7 +28,7 @@ const workWhat = it => it.slug === 'factory' ? `One page per target company, ${i
 const WORK_ITEMS = WORK ? WORK.items.filter(it => !WORK_SKIP.has(it.slug)).map(it => ({ ...it, shots: [].concat(it.shot || []).map(s => `/assets/work/${s.split('/').pop()}`).filter(s => existsSync(`src${s}`)) })) : [];
 const srcLinks = it => (it.sources || []).map(u => `<a href="${esc(u)}">${esc(u.replace(/^https:\/\//, '').replace(/\/index\.md$/, '/'))}</a>`).join(', ');
 const workCard = it => `<article class="wk" id="work-${esc(it.slug)}">
-${it.shots.length ? `<div class="shots">${it.shots.map(s => `<a href="${s}"><img src="${s}" alt="Screenshot: ${esc(it.title)}" loading="lazy" decoding="async" width="800" height="518"></a>`).join('')}</div>` : ''}
+${it.shots.length ? `<div class="shots">${it.shots.map(s => `<a href="${s}"><img src="${s}" alt="Screenshot: ${esc(it.title)}" loading="lazy" decoding="async" ${imgDims(s)}></a>`).join('')}</div>` : ''}
 <div class="body"><h3>${it.url ? `<a href="${esc(it.url)}">${esc(it.title)}</a>` : esc(it.title)}</h3>
 <p>${esc(workWhat(it))}</p>
 <dl><dt>Agent</dt><dd>${esc(agentWords(it.agent))}</dd><dt>Date</dt><dd>${esc(it.date)}</dd><dt>Source</dt><dd>${srcLinks(it)}, read ${fmtDay(it.read || WORK.read)}</dd></dl>
@@ -65,6 +66,8 @@ const builtCase = b => `<article class="case" id="${b.id}">
 out('/built/index.html', page({
   path: '/built/', title: P.built.title, description: P.built.description, share: 'indi-gupte',
   body: `${pageHead(P.built)}
+<nav class="wrap onpage" aria-labelledby="op-h"><h2 id="op-h">On this page</h2><ul>${BUILT.map(b => `<li><a href="#${b.id}">${esc(b.title.replace(/^Also: /, ''))}</a></li>`).join('')}<li><a href="#his-work">His work at web-summit.sgit.ai</a></li><li><a href="#ten-days">His ten days</a></li></ul></nav>
+<div class="wrap">${tenDays({ id: 'ten-days' })}</div>
 <section class="wrap section"><h2>His own summary of the week</h2>${postBlock()}</section>
 <section class="wrap section" aria-label="Each piece of work">
 ${BUILT.filter(b => b.kind === 'work').map(builtCase).join('\n')}
@@ -78,6 +81,7 @@ ${workGallery()}`,
 out('/how-i-work/index.html', page({
   path: '/how-i-work/', title: P['how-i-work'].title, description: P['how-i-work'].description,
   body: `${pageHead(P['how-i-work'])}
+<section class="wrap section" id="team" aria-labelledby="team-h"><h2 id="team-h">His team: ${esc(TEAM_LINE.replace(/^A /, 'a '))}</h2>${teamFigure({ id: 'team-figure' })}</section>
 <section class="wrap section">${stats()}
 ${fact(`<blockquote>${esc(ASK.brings.quote)}</blockquote><p class="muted">His words, in his post.${ref('whatsapp')}</p>`, ['whatsapp'])}
 <h2>What he brings, and the work that shows it</h2>
@@ -87,8 +91,7 @@ ${fact(`<blockquote>${esc(WEB_SUMMIT.role.quote)}</blockquote><p>${esc(WEB_SUMMI
 </section>
 <section class="wrap section" id="teams" aria-labelledby="teams-h">
 <h2 id="teams-h">The agent teams he created and ran</h2>
-<p class="lede">${esc(AGENTS.namingNote.text)} Every chart below is drawn from the published record, with the data as a table and its source.</p>
-${chartTeams('ct', 'h3')}
+<p class="lede">${esc(AGENTS.namingNote.text)} The team, agent by agent, is drawn at the top of this page. Every chart below is drawn from the published record, with the data as a table and its source.</p>
 ${chartCommits('cc', 'h3')}
 ${chartActivity('ca', 'h3')}
 ${chartMap('cm', 'h3')}
@@ -117,7 +120,7 @@ out('/background/index.html', page({
   path: '/background/', title: P.background.title, description: P.background.description,
   body: `${pageHead(P.background)}
 <section class="wrap section"><h2>Dated, as his profile gives it</h2>
-${fact(`<ul class="timeline-list">${BACKGROUND.timeline.map(t => `<li><time>${esc(t.when.text)}</time><b>${esc(t.title)}</b>${t.note ? ` <span class="muted">${esc(t.note)}</span>` : ''}${ref(t.sources)}</li>`).join('')}</ul>`, [...new Set(BACKGROUND.timeline.flatMap(t => t.sources))])}
+${fact(`<ul class="timeline-list">${BACKGROUND.timeline.map(t => `<li><time>${esc(t.when.text)}</time><b>${esc(t.title)}</b>${t.note && !/\bC\d+\b/.test(t.note) ? ` <span class="muted">${esc(t.note)}</span>` : ''}${ref(t.sources)}</li>`).join('')}</ul>`, [...new Set(BACKGROUND.timeline.flatMap(t => t.sources))])}
 <h2>Not dated</h2>
 <div class="grid">${BACKGROUND.undated.map(u => `<div class="panel"><h3>${esc(u.title)}</h3><p>${esc(u.text)}${ref(u.sources)}</p></div>`).join('')}</div>
 <h2>The path</h2>
@@ -180,7 +183,7 @@ for (const b of BUILT) { md.push(`### ${b.title}${b.label ? ` (${b.label})` : ''
 if (WORK_ITEMS.length) { md.push('## His work at web-summit.sgit.ai', ''); for (const it of WORK_ITEMS) md.push(`- **${it.title}**: ${workWhat(it)} (${agentWords(it.agent)}; ${it.date}) ${it.url || ''}`); md.push(''); }
 md.push('## How he works with AI agents', '', `${TEAM_LINE}. ${COMMITS_LINE}.`, '', ...AGENTS.howHeWorks.map(h => `- ${h.text}`), '', '| Agent (role) | Status | Commits listed | What it does |', '|---|---|---|---|', ...AGENT_LIST.map(a => `| ${a.role} | ${a.status} | ${a.commits} | ${a.does} |`), '', `Sources: ${srcMd(['ws-people-indi', 'ws-everything', 'news-ten-days'])}. Data: ${SITE}/data/agents.json`, '');
 md.push('## Languages', '', LANGUAGES.figure.desc, '', ...LANGUAGES.whereTheyLead.map(w => `- ${w.text}`), '', `Source: ${srcMd(['linkedin'])}`, '');
-md.push('## Background', '', ...BACKGROUND.timeline.map(t => `- ${t.when.text}: ${t.title}${t.note ? ` (${t.note})` : ''}`), ...BACKGROUND.undated.map(u => `- ${u.title}: ${u.text}`), '');
+md.push('## Background', '', ...BACKGROUND.timeline.map(t => `- ${t.when.text}: ${t.title}${t.note && !/\bC\d+\b/.test(t.note) ? ` (${t.note})` : ''}`), ...BACKGROUND.undated.map(u => `- ${u.title}: ${u.text}`), '');
 md.push('## Looking for', '', ASK.long.text, '', ASK.fieldsIntro.text, '', ...ASK.fields.map(f => `- ${f.name}: ${f.line}`), '', ASK.contactLine.text, '');
 md.push('## Sources', '', ...SRC_ORDER.map(id => `${srcNum(id)}. ${SOURCES[id].title}${SOURCES[id].url ? `: ${SOURCES[id].url}` : ''} (${SOURCES[id].read ? `read ${SOURCES[id].read}` : 'link only'})`), '');
 md.push('## This site', '', `Repository: ${REPO} (branch dev). ${FOOTER.licence}. Designs: ${DESIGNS.map(d => `${d.name} (${SITE}${designHref(d)})`).join(', ')}.`, '');
