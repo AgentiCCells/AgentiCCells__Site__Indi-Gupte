@@ -1,0 +1,26 @@
+/* The Card: a business card, front and back (D3.5, C34 to C37). Light design. Code Apache-2.0. */
+.d-card{--bg:#EDEAE3;--surface:#FFFFFF;--surface-2:#E3DED3;--ink:#1A1A1A;--muted:#5B5B5B;--line:#CFC8BA;--accent:#1A1A1A;--accent-soft:#E3DED3;--on-accent:#FFFFFF;--warm:#8F3415;--focus:#B4471F;--band:#1A1A1A;--on-band:#FFFFFF;--band-link:#F2C29A;--head:"Gill Sans","Gill Sans MT",Seravek,"Trebuchet MS",system-ui,sans-serif;--lf-tile:#1E4D8C;--lf-warm:#B4471F;color-scheme:light}
+.d-card main{font-family:var(--head)}
+.desk{padding-top:36px;display:flex;flex-direction:column;align-items:center}
+.cintro{max-width:40rem;text-align:center;color:var(--muted)}
+.bcard{position:relative;width:min(680px,100%);perspective:1600px}
+.face{background:#fff;border-radius:10px;box-shadow:0 1px 0 rgba(0,0,0,.06),0 24px 48px -24px rgba(0,0,0,.35);padding:34px 38px;margin-bottom:18px}
+@media (min-width:700px){.face{aspect-ratio:85/55}}
+.front{display:flex;flex-direction:column;justify-content:space-between}
+.cf-top{display:flex;gap:18px;align-items:center}
+.cname{font-size:clamp(1.6rem,1rem + 2vw,2.5rem);font-weight:600;letter-spacing:.02em;margin:0}
+.csub{margin:0;color:var(--muted)}
+.cask{color:#B4471F;text-transform:uppercase;letter-spacing:.12em;font-weight:600;border-top:2px solid #B4471F;padding-top:12px;margin:18px 0}
+.crow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin:0;font-size:.9rem}
+.crow a{color:var(--ink);min-height:44px;display:inline-flex;align-items:center}.crow span{min-height:44px;display:inline-flex;align-items:center;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.back{background:#1E4D8C;color:#fff;--focus:#fff}
+.back ul{list-style:none;padding:0;margin:8px 0;columns:2 14rem}.back li{padding:3px 0}
+.ck,.cnum,.clang{color:#C9D8EE;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;margin:0}.cnum{margin-top:10px}.clang{text-transform:none;letter-spacing:0;font-size:.9rem;margin-top:8px}
+.bcard.js .face{position:relative;backface-visibility:hidden;transition:transform .5s;margin:0}
+.bcard.js{display:grid}.bcard.js .face{grid-area:1/1}
+.bcard.js .back{transform:rotateY(180deg)}.bcard.js.flipped .front{transform:rotateY(-180deg)}.bcard.js.flipped .back{transform:rotateY(0)}
+@media (prefers-reduced-motion:reduce){.bcard.js .face{transform:none!important;transition:opacity .2s}.bcard.js .back{opacity:0}.bcard.js.flipped .front{opacity:0}.bcard.js.flipped .back{opacity:1}}
+.cbtns{justify-content:center;margin-top:18px}
+.d-card .btn-primary{background:var(--ink);color:#fff}.d-card .btn-secondary{color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.creverse{max-width:820px;margin-top:40px}.creverse section{border-top:1px solid var(--line);padding-top:12px}
+@media print{.cbtns{display:none}.bcard.js .face{transform:none!important;position:static}.face{width:85mm;height:55mm;padding:5mm;font-size:8pt}}

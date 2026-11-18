@@ -1,0 +1,476 @@
+{
+ "about": "Indi Gupte's AI agent teams, as published on the Web Summit team's site and on Lisbon Tech Fringe. Agent names are the role, then @, the project, then the person; this file and the site's pages give the role. Descriptions are shortened from the sources; no person other than Indi Gupte and Dinis Cruz is named.",
+ "read": "2026-11-18",
+ "sources": [
+  {
+   "id": "ws-people-indi",
+   "title": "Indi Gupte's dashboard, Web Summit team site",
+   "url": "https://web-summit.sgit.ai/people/indi/index.md",
+   "read": "2026-11-18"
+  },
+  {
+   "id": "ws-everything",
+   "title": "The team register, Web Summit team site",
+   "url": "https://web-summit.sgit.ai/team/everything/index.md",
+   "read": "2026-11-18"
+  },
+  {
+   "id": "ltf-join",
+   "title": "Lisbon Tech Fringe, join",
+   "url": "https://lisbontechfringe.com/join/",
+   "read": "2026-11-18"
+  },
+  {
+   "id": "news-ten-days",
+   "title": "Ten days at Web Summit (newsroom.sgit.ai, by Dinis Cruz, 14 November 2026)",
+   "url": "https://newsroom.sgit.ai/articles/ten-days-at-web-summit.md",
+   "read": "2026-11-18"
+  }
+ ],
+ "counts": {
+  "agents": 27,
+  "running": 23,
+  "not_running": 4,
+  "published_line": "27 agents (23 running)"
+ },
+ "commits_published": {
+  "value": 277,
+  "text": "277 commits by his agents on the team's site",
+  "window": "Counted for the ten days, 3 to 13 November 2026.",
+  "source": "https://newsroom.sgit.ai/articles/ten-days-at-web-summit.md"
+ },
+ "commits_per_agent_note": "Per-agent counts as listed on his dashboard (site version v0.2.2313); they cover a longer window than the published total.",
+ "groups": {
+  "lead": "Leads the team",
+  "building": "Building pages, apps and the factory (including one-off helpers)",
+  "design": "Design and user experience",
+  "research and writing": "Research, writing and prompts",
+  "operations": "Operations: dashboard, tokens, follow-ups, inbox, vaults",
+  "safeguards": "Safeguards and checks: the message, synthetic users, behaviour policies"
+ },
+ "groups_note": "Grouped by this site (a proposal by its researcher), not by the source.",
+ "teams": [
+  {
+   "id": "web-summit.indi",
+   "what": "the Web Summit team's site (web-summit.sgit.ai)",
+   "note": null,
+   "agents": [
+    {
+     "role": "accountant",
+     "group": "operations",
+     "status": "running",
+     "commits": 42,
+     "first_date": null,
+     "last_commit_utc": "2026-11-13 17:38",
+     "does": "token accountant: measures the tokens Indi's agents use, finds the waste, proposes changes, briefs Indi and Dinis at 17:30 UTC daily (WS-148)"
+    },
+    {
+     "role": "appdev",
+     "group": "building",
+     "status": "running",
+     "commits": 1,
+     "first_date": null,
+     "last_commit_utc": "2026-11-11 13:29",
+     "does": "not published"
+    },
+    {
+     "role": "builder",
+     "group": "building",
+     "status": "running",
+     "commits": 1,
+     "first_date": null,
+     "last_commit_utc": "2026-11-04 22:17",
+     "does": "another team member's site and learning environment, under that team member's policies"
+    },
+    {
+     "role": "conductor",
+     "group": "lead",
+     "status": "running",
+     "commits": 90,
+     "first_date": "3 November (scheduled task from that day)",
+     "last_commit_utc": "2026-11-16 13:37",
+     "does": "conducts Indi's agents, keeps people/indi/, feeds the stand-ups and briefs Indi"
+    },
+    {
+     "role": "conductor-abpmaker",
+     "group": "safeguards",
+     "status": "running",
+     "commits": 1,
+     "first_date": null,
+     "last_commit_utc": "2026-11-11 14:34",
+     "does": "not published"
+    },
+    {
+     "role": "conductor-map",
+     "group": "building",
+     "status": "running",
+     "commits": 3,
+     "first_date": null,
+     "last_commit_utc": "2026-11-10 13:48",
+     "does": "one-off helper: the venue map screen in the PrompTugal Team app and venue.geojson"
+    },
+    {
+     "role": "conductor-newsapp",
+     "group": "building",
+     "status": "running",
+     "commits": 3,
+     "first_date": null,
+     "last_commit_utc": "2026-11-11 00:20",
+     "does": "one-off helper: the UI and UX redesign of the public PrompTugal app: fewest taps per workflow, original colours, no AI-sounding text"
+    },
+    {
+     "role": "conductor-newsroom",
+     "group": "building",
+     "status": "running",
+     "commits": 1,
+     "first_date": null,
+     "last_commit_utc": "2026-11-10 14:51",
+     "does": "one-off helper: the unified interview-to-article workflow, its plain-words infographic on the team site, the visual newsroom map, and the pt.news redesign focused on agents"
+    },
+    {
+     "role": "conductor-teamapp",
+     "group": "building",
+     "status": "not running",
+     "commits": 0,
+     "first_date": null,
+     "last_commit_utc": null,
+     "does": "overnight helper (10 to 11 November): the Team app's light mode, ticked-off tasks with an animation, a bigger venue-map button, every Web Summit event in Plan, and one-tap messaging"
+    },
+    {
+     "role": "dashboard",
+     "group": "operations",
+     "status": "running",
+     "commits": 30,
+     "first_date": "4 November (to-do list kept from that day)",
+     "last_commit_utc": "2026-11-13 17:33",
+     "does": "keeps Indi's dashboard (people/indi/dashboard.md) and Indi's to-do infographic's list (people/indi/todo/todo.json, from 4 November)"
+    },
+    {
+     "role": "demo",
+     "group": "operations",
+     "status": "not running",
+     "commits": 0,
+     "first_date": null,
+     "last_commit_utc": null,
+     "does": "at the stand: asks a visitor five questions, researches their company's public facts, and builds a simulation and its ABP for the side-by-side ABP demo"
+    },
+    {
+     "role": "designer",
+     "group": "design",
+     "status": "running",
+     "commits": 24,
+     "first_date": "4 November 2026 (cards and stickers briefs)",
+     "last_commit_utc": "2026-11-05 12:45",
+     "does": "RiskMandate business cards for Web Summit: round 1 and round 2 designs, and /cards/ for a phone (WS-48)"
+    },
+    {
+     "role": "dev",
+     "group": "building",
+     "status": "running",
+     "commits": 31,
+     "first_date": "3 November 2026, 23:30 (the factory, WS-27)",
+     "last_commit_utc": "2026-11-11 19:42",
+     "does": "explorer developer for the factory (WS-27): a page or vault per target company, fast"
+    },
+    {
+     "role": "education",
+     "group": "research and writing",
+     "status": "running",
+     "commits": 2,
+     "first_date": null,
+     "last_commit_utc": "2026-11-10 11:51",
+     "does": "RiskMandate for education and children (WS-209): the public page /people/indi/education/, the people to meet at Web Summit, the chat with Dinis"
+    },
+    {
+     "role": "factory",
+     "group": "building",
+     "status": "running",
+     "commits": 2,
+     "first_date": null,
+     "last_commit_utc": "2026-11-04 22:18",
+     "does": "for each target company: the analysis, the risk analysis and how RiskMandate helps, as a page or vault (WS-27)"
+    },
+    {
+     "role": "followups",
+     "group": "operations",
+     "status": "running",
+     "commits": 2,
+     "first_date": null,
+     "last_commit_utc": "2026-11-13 17:20",
+     "does": "not published"
+    },
+    {
+     "role": "inbox",
+     "group": "operations",
+     "status": "not running",
+     "commits": 0,
+     "first_date": null,
+     "last_commit_utc": null,
+     "does": "reads Indi's summit and RiskMandate mail only, and drafts replies; never sends"
+    },
+    {
+     "role": "infographic",
+     "group": "design",
+     "status": "running",
+     "commits": 1,
+     "first_date": null,
+     "last_commit_utc": "2026-11-09 12:17",
+     "does": "makes plain-word, pastel infographic pages on the team site at Indi's request, each tested on a stranger (a small sub-agent) before Indi sees it"
+    },
+    {
+     "role": "journalist",
+     "group": "research and writing",
+     "status": "running",
+     "commits": 3,
+     "first_date": null,
+     "last_commit_utc": "2026-11-04 21:43",
+     "does": "every wake, reports what happened that matters to Indi, and once a day at the evening wake a digest"
+    },
+    {
+     "role": "messaging",
+     "group": "safeguards",
+     "status": "running",
+     "commits": 3,
+     "first_date": null,
+     "last_commit_utc": "2026-11-09 17:48",
+     "does": "checks every new page and draft against the message"
+    },
+    {
+     "role": "prompter",
+     "group": "research and writing",
+     "status": "running",
+     "commits": 35,
+     "first_date": null,
+     "last_commit_utc": "2026-11-11 13:16",
+     "does": "prompt engineering: writes new prompts and improves existing ones (especially rushed or garbled ones) so Indi's tasks get done in one or two prompts"
+    },
+    {
+     "role": "recruiter",
+     "group": "research and writing",
+     "status": "running",
+     "commits": 1,
+     "first_date": null,
+     "last_commit_utc": "2026-11-06 12:39",
+     "does": "not published"
+    },
+    {
+     "role": "social",
+     "group": "research and writing",
+     "status": "running",
+     "commits": 9,
+     "first_date": "7 November (scheduled task from that day)",
+     "last_commit_utc": "2026-11-12 16:02",
+     "does": "drafts one post a day for RiskMandate's LinkedIn page (company voice, plus a reshare line in Indi's voice), with a picture suggestion and dated sources; Indi posts (WS-126)"
+    },
+    {
+     "role": "synthetic",
+     "group": "safeguards",
+     "status": "running",
+     "commits": 18,
+     "first_date": "4 November 2026 (run 1 on the cards, WS-142)",
+     "last_commit_utc": "2026-11-08 16:27",
+     "does": "synthetic users: invented personas, played by sub-agents, test what Indi works on (first, the RiskMandate business cards); the runs go into a public vault"
+    },
+    {
+     "role": "ux",
+     "group": "design",
+     "status": "running",
+     "commits": 2,
+     "first_date": null,
+     "last_commit_utc": "2026-11-07 17:59",
+     "does": "the user experience of Indi's dashboard, command centre and to-do page (WS-06)"
+    },
+    {
+     "role": "vault",
+     "group": "operations",
+     "status": "not running",
+     "commits": 0,
+     "first_date": null,
+     "last_commit_utc": null,
+     "does": "Indi's SGit vaults and their keys (WS-121)"
+    },
+    {
+     "role": "video-editor",
+     "group": "design",
+     "status": "running",
+     "commits": 4,
+     "first_date": null,
+     "last_commit_utc": "2026-11-11 13:25",
+     "does": "not published"
+    }
+   ]
+  },
+  {
+   "id": "PrompTugal.indi",
+   "what": "Lisbon Tech Fringe, a PrompTugal.news site",
+   "note": "Not counted in the 27.",
+   "agents": [
+    {
+     "role": "conductor.fringe",
+     "group": "lead",
+     "status": "running",
+     "commits": null,
+     "first_date": "11 November 2026 (Lisbon Tech Fringe went live that day)",
+     "last_commit_utc": null,
+     "does": "his conductor on Lisbon Tech Fringe: owner of the communities page (who runs this week's events, how to join), marked done"
+    }
+   ]
+  }
+ ],
+ "wrote_to": {
+  "note": "Messages from his agents to people and agents outside his team, recipients by role.",
+  "source": {
+   "url": "https://web-summit.sgit.ai/people/indi/index.html",
+   "what": "the chart 'Indi Gupte's agents, and who they write to' (svg class 'ch ch-map'), one <title> per line: 'X wrote to Y N times'. Only edges that touch his agents or Indi are kept; edges between other people's agents are left out.",
+   "read": "2026-11-18",
+   "kept": 111,
+   "in_chart": 144
+  },
+  "edges": [
+   {
+    "from": "conductor",
+    "to": "Indi",
+    "count": 68
+   },
+   {
+    "from": "conductor",
+    "to": "teammates' conductors",
+    "count": 33
+   },
+   {
+    "from": "prompter",
+    "to": "Indi",
+    "count": 30
+   },
+   {
+    "from": "dashboard",
+    "to": "Indi",
+    "count": 28
+   },
+   {
+    "from": "conductor",
+    "to": "Dinis Cruz's agents",
+    "count": 23
+   },
+   {
+    "from": "designer",
+    "to": "Dinis Cruz's agents",
+    "count": 21
+   },
+   {
+    "from": "conductor",
+    "to": "Dinis Cruz",
+    "count": 20
+   },
+   {
+    "from": "conductor",
+    "to": "teammates",
+    "count": 15
+   },
+   {
+    "from": "prompter",
+    "to": "Dinis Cruz's agents",
+    "count": 14
+   },
+   {
+    "from": "dev",
+    "to": "Indi",
+    "count": 12
+   },
+   {
+    "from": "accountant",
+    "to": "Dinis Cruz's agents",
+    "count": 10
+   },
+   {
+    "from": "social",
+    "to": "Indi",
+    "count": 7
+   },
+   {
+    "from": "prompter",
+    "to": "Dinis Cruz",
+    "count": 5
+   },
+   {
+    "from": "synthetic",
+    "to": "Dinis Cruz's agents",
+    "count": 5
+   },
+   {
+    "from": "video-editor",
+    "to": "Indi",
+    "count": 4
+   },
+   {
+    "from": "conductor-newsapp",
+    "to": "Indi",
+    "count": 3
+   },
+   {
+    "from": "conductor-map",
+    "to": "Indi",
+    "count": 3
+   },
+   {
+    "from": "dev",
+    "to": "Dinis Cruz",
+    "count": 3
+   },
+   {
+    "from": "dev",
+    "to": "Dinis Cruz's agents",
+    "count": 3
+   },
+   {
+    "from": "journalist",
+    "to": "Indi",
+    "count": 2
+   },
+   {
+    "from": "followups",
+    "to": "Dinis Cruz's agents",
+    "count": 1
+   },
+   {
+    "from": "dev",
+    "to": "teammates' conductors",
+    "count": 1
+   },
+   {
+    "from": "conductor-abpmaker",
+    "to": "Indi",
+    "count": 1
+   },
+   {
+    "from": "appdev",
+    "to": "Indi",
+    "count": 1
+   },
+   {
+    "from": "conductor-newsroom",
+    "to": "Indi",
+    "count": 1
+   },
+   {
+    "from": "conductor-newsroom",
+    "to": "Dinis Cruz",
+    "count": 1
+   },
+   {
+    "from": "education",
+    "to": "Indi",
+    "count": 1
+   },
+   {
+    "from": "social",
+    "to": "teammates' conductors",
+    "count": 1
+   }
+  ],
+  "between_his_own_agents": {
+   "links": 59,
+   "msgs": 147
+  }
+ }
+}

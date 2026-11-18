@@ -1,0 +1,24 @@
+/* Lingua: a polyglot edition (D3.2). Light design. Code Apache-2.0. */
+.d-lingua{--bg:#F5EFE3;--surface:#FBF7EE;--surface-2:#EDE3D0;--ink:#1F1A14;--muted:#5A5246;--line:#D8CCB4;--accent:#1E4D8C;--accent-soft:#E7E4EA;--on-accent:#FFFFFF;--warm:#8C2A3B;--focus:#1E4D8C;--band:#1F1A14;--on-band:#F5EFE3;--band-link:#F2C29A;--en:#1E4D8C;--it:#1F6B3A;--fr:#8C2A3B;--sa:#9A4A00;--code:#4B3F8C;--lf-tile:#1E4D8C;--lf-warm:#9A4A00;color-scheme:light}
+.d-lingua .btn-primary{background:var(--ink);color:#fff}
+.lhero{display:grid;gap:28px;padding-top:36px;padding-bottom:20px}
+@media (min-width:960px){.lhero{grid-template-columns:5fr 7fr;gap:48px;align-items:start}}
+.d-lingua h1{font-size:clamp(2.5rem,1.6rem + 3vw,3.6rem);margin:0 0 10px}
+.lline{font-family:var(--serif);font-size:1.25rem;font-style:italic}
+.ask-line{border-top:2px solid var(--fr);padding-top:10px}
+.lphoto{display:flex;gap:14px;align-items:flex-end;margin-top:18px}.lphoto p{font-size:.78rem;margin:0}
+@media (max-width:699px){.lphoto .headshot{--size:140px!important}}
+.lfig{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;overflow:hidden}
+.lfig .langs{position:relative}
+.wm{position:absolute;right:-10px;bottom:-30px;font-family:var(--deva);font-size:160px;line-height:1;color:var(--sa);opacity:.08;pointer-events:none;z-index:0}.lfig .langs{z-index:1;white-space:nowrap}
+.d-lingua .lf .t-en{fill:var(--en)}.d-lingua .lf .t-it{fill:var(--it)}.d-lingua .lf .t-fr{fill:var(--fr)}.d-lingua .lf .t-sa{stroke:var(--sa)}.d-lingua .lf .t-pl{stroke:var(--code)}
+.lbody section{padding:26px 0 6px;border-top:1px solid var(--line)}
+.lh{display:grid;gap:2px 32px;margin-bottom:12px}
+@media (min-width:960px){.lh{grid-template-columns:minmax(0,7fr) minmax(0,4fr);align-items:baseline}}
+.lh h2{margin:0;color:var(--en)}
+.gloss{margin:0;font-family:var(--serif);font-style:italic;display:flex;flex-wrap:wrap;gap:4px 18px}
+.gloss [lang=it]{color:var(--it)}.gloss [lang=fr]{color:var(--fr)}
+.glossnote{font-size:.85rem;color:var(--muted)}
+.works{list-style:none;padding:0}.works li{padding:8px 0;border-bottom:1px dotted var(--line)}.works span{color:var(--muted)}
+.lf-fields{padding-left:1.1em}
+.lend{background:var(--surface-2);padding:24px!important;border-radius:12px;border-top:0!important;margin-top:20px}

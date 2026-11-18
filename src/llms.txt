@@ -1,47 +1,36 @@
 # Indi Gupte
 
-> Personal site of Indi Gupte, from West London: brand, partnerships and research at RiskMandate, working every day with a team of AI agents, and looking for work experience. Contact: LinkedIn only, https://www.linkedin.com/in/indi-gupte-26960b318 (no email address or phone number is published).
+> Indi Gupte, West London: brand, partnerships and research. Indi Gupte is looking for work experience. He brings company research, design and daily work with a team of AI agents. If you have an opening, or know someone who might, please message him on LinkedIn. Contact by LinkedIn only: https://www.linkedin.com/in/indi-gupte-26960b318
 
-Site version: __VERSION__. Facts come from Indi's LinkedIn profile and a post he wrote in a UK Web Summit WhatsApp group, both read 2026-11-18, and from the public records linked below. Quotes are his words as written. Nothing here should be taken as more than these sources say.
+A team of 27 AI agents, 23 running (https://web-summit.sgit.ai/people/indi/index.md); 277 commits by his agents on the team's site, 3 to 13 November 2026 (https://newsroom.sgit.ai/articles/ten-days-at-web-summit.md).
 
-## Now
-- Brand and Partnerships Lead, RiskMandate.ai, November 2026 to present.
-- Operations Manager, SportsHealing Ltd, September 2026 to present.
-- Working with OmKneeHealth, a London health startup making knee treatment simpler (https://kneelens.com).
+## Who this is for
 
-## What he built (Web Summit, November 2026)
-- RiskMandate: Agent Behaviour Policies, "a record of what each AI agent can reach, what it's allowed to do, and the gap between the two." https://riskmandate.ai
-- PrompTugal.news: "a newsroom mapping AI in Portugal, run by people and AI agents together." He is one of its three editors. https://promptugal.news
-- Lisbon Tech Fringe: "when Storm Charles cancelled Wednesday, we built a guide to the side events, and an app, the same day." https://lisbontechfringe.com
-- Strangers in the Loop, RiskMandate's second song, produced by Indi Gupte. Source: https://newsroom.sgit.ai/articles/every-hour-is-twenty-years.md
-- The team's business cards, which he designed.
-
-## How he works
-- A team of 27 AI agents, 23 running (https://web-summit.sgit.ai/people/indi/index.md).
-- 277 commits by his agents on the team's site (https://newsroom.sgit.ai/articles/ten-days-at-web-summit.md).
-- Web Summit team role: "The message, outreach, and the factory of examples" (https://web-summit.sgit.ai/team/indi/index.md).
-- In his words: "What I bring: company research, design (I designed our business cards), and working every day with a team of AI agents."
-
-## Languages
-- Speaks English, Italian and French.
-- An interest in Sanskrit, and the same interest in programming languages.
-- Working through Harvard's CS50x; builds software as a junior developer for three health technology startups.
-
-## Background
-- Harrow School, September 2021 to June 2026.
-- Harrow Diploma, University of Buckingham, May 2026.
-- Education as his profile lists it: University of Oxford, Modern Languages, Italian and Portuguese (2027). His summary says he will read Modern Languages and International Relations at university from next autumn.
-- Volunteered in hospitals in London and rural Italy: a lasting interest in medicine, and a pull towards diplomacy, "where languages, judgement and tact meet".
-- Top skills: web design, web development, debating.
-
-## Looking for
-- Work experience.
-- Glad to talk to people working in languages, AI, medicine or diplomacy.
+- An employer, a mentor or a university contact: Read only. Use only facts that carry a source; say when something is not on the site.
+- Indi himself: Help him check and improve the site. Every change about him needs his approval, through Dinis Cruz.
+- Someone editing the site: Change data/facts.mjs, not the pages: every page is generated from it. Every fact needs a source id.
 
 ## Pages
-- Home: https://indi-gupte.agenticcells.site/
-- What I built: https://indi-gupte.agenticcells.site/built/
-- How I work: https://indi-gupte.agenticcells.site/how-i-work/
-- Languages: https://indi-gupte.agenticcells.site/languages/
-- Background: https://indi-gupte.agenticcells.site/background/
-- Looking for: https://indi-gupte.agenticcells.site/looking-for/
+
+- [Home (The Briefing)](https://indi-gupte.agenticcells.site/)
+- [What I built](https://indi-gupte.agenticcells.site/built/)
+- [How I work, with charts of his agent teams](https://indi-gupte.agenticcells.site/how-i-work/)
+- [Languages](https://indi-gupte.agenticcells.site/languages/)
+- [Background](https://indi-gupte.agenticcells.site/background/)
+- [Looking for work experience](https://indi-gupte.agenticcells.site/looking-for/)
+- [Sources](https://indi-gupte.agenticcells.site/sources/)
+- [Use with AI](https://indi-gupte.agenticcells.site/agents/)
+- [Five designs](https://indi-gupte.agenticcells.site/d/)
+- [Behind the scenes](https://indi-gupte.agenticcells.site/behind-the-scenes/)
+
+## Files
+
+- [index.md](https://indi-gupte.agenticcells.site/index.md): the whole site as Markdown
+- [facts.json](https://indi-gupte.agenticcells.site/facts.json): every fact with its source ids
+- [data/agents.json](https://indi-gupte.agenticcells.site/data/agents.json): his agent teams
+- [designs.json](https://indi-gupte.agenticcells.site/designs.json)
+- [questions.md](https://indi-gupte.agenticcells.site/questions.md): questions for Indi
+
+## Source
+
+- Repository: https://github.com/AgentiCCells/AgentiCCells__Site__Indi-Gupte (branch dev). Code Apache-2.0, text CC BY 4.0.

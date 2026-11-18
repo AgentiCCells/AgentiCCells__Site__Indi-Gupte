@@ -1,0 +1,60 @@
+{
+ "about": "The five designs of https://indi-gupte.agenticcells.site: the same facts, laid out five ways.",
+ "designs": [
+  {
+   "slug": "briefing",
+   "name": "The Briefing",
+   "idea": "A diplomat's briefing note: the ask first, numbered paragraphs, sources in the margin.",
+   "leads_with": "The Purpose box (the ask) and his own summary",
+   "path": "/",
+   "url": "https://indi-gupte.agenticcells.site/",
+   "thumb": "/assets/designs/briefing.jpg",
+   "share": "https://indi-gupte.agenticcells.site/assets/share/briefing.jpg",
+   "default": true
+  },
+  {
+   "slug": "lingua",
+   "name": "Lingua",
+   "idea": "A polyglot edition: his languages lead, with section titles in English, Italian and French.",
+   "leads_with": "The languages figure, beside his name and the ask",
+   "path": "/d/lingua/",
+   "url": "https://indi-gupte.agenticcells.site/d/lingua/",
+   "thumb": "/assets/designs/lingua.jpg",
+   "share": "https://indi-gupte.agenticcells.site/assets/share/lingua.jpg",
+   "default": false
+  },
+  {
+   "slug": "front-page",
+   "name": "Front Page",
+   "idea": "A newspaper front page about his week, from one of PrompTugal.news's editors.",
+   "leads_with": "The lead story about his week, with the Notice beside it",
+   "path": "/d/front-page/",
+   "url": "https://indi-gupte.agenticcells.site/d/front-page/",
+   "thumb": "/assets/designs/front-page.jpg",
+   "share": "https://indi-gupte.agenticcells.site/assets/share/front-page.jpg",
+   "default": false
+  },
+  {
+   "slug": "console",
+   "name": "Agent Console",
+   "idea": "The operator's view: 27 agents, 23 running, 277 commits.",
+   "leads_with": "The operator panel and the agent grid",
+   "path": "/d/console/",
+   "url": "https://indi-gupte.agenticcells.site/d/console/",
+   "thumb": "/assets/designs/console.jpg",
+   "share": "https://indi-gupte.agenticcells.site/assets/share/console.jpg",
+   "default": false
+  },
+  {
+   "slug": "card",
+   "name": "The Card",
+   "idea": "A business card, front and back. In his words: \"I designed our business cards\".",
+   "leads_with": "His name and \"Looking for work experience\" on the card front",
+   "path": "/d/card/",
+   "url": "https://indi-gupte.agenticcells.site/d/card/",
+   "thumb": "/assets/designs/card.jpg",
+   "share": "https://indi-gupte.agenticcells.site/assets/share/card.jpg",
+   "default": false
+  }
+ ]
+}

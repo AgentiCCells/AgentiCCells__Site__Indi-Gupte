@@ -1,0 +1,5 @@
+.chooser{list-style:none;padding:0;display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))}
+.chooser a{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.chooser a:hover,.chooser a:focus-visible{box-shadow:0 0 0 2px var(--accent)}
+.chooser img,.chooser .nothumb{width:100%;height:auto;aspect-ratio:480/300;display:block;border-radius:8px;background:var(--accent-soft)}
+.chooser .cn{display:flex;gap:8px;align-items:center;font-size:1.2rem;margin-top:6px}.chooser .more{color:var(--accent)}

@@ -1,0 +1,22 @@
+/* Agent Console: the operator's view (D3.4, C30 to C33). Dark design. Code Apache-2.0. */
+.d-console{--bg:#0B1016;--surface:#121A23;--surface-2:#16212C;--ink:#D7E3EA;--muted:#8395A3;--line:#1F2B38;--accent:#5BD69B;--accent-soft:#16302A;--on-accent:#0B1016;--warm:#F2C14E;--focus:#F2C14E;--band:#05080C;--on-band:#D7E3EA;--band-link:#F2C14E;--head:var(--mono);--lf-tile:#5BD69B;--lf-on:#0B1016;--c-on:#5BD69B;--c-on-t:#0B1016;--c-off:#8395A3;--c-bar:#5BD69B;--c-mark:rgba(242,193,78,.12);--c-link:rgba(91,214,155,.45);color-scheme:dark}
+.d-console .bar{background:#0E151D}
+.status{background:#05080C;border-bottom:1px solid var(--line);font:600 .8rem var(--mono)}
+.status .wrap{display:flex;flex-wrap:wrap;gap:4px 22px;align-items:center;min-height:44px}
+.status a{color:var(--warm);min-height:44px;display:inline-flex;align-items:center}.amber{color:var(--warm)}
+.con{display:grid;gap:16px;padding-top:20px;grid-template-columns:repeat(12,minmax(0,1fr))}
+.con>.pn{grid-column:1/-1;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+@media (min-width:960px){.op{grid-column:1/8!important}.counters{grid-column:8/13!important}.half{grid-column:span 6!important}}
+.pn h2,.pn .ch-h{font-family:var(--mono);font-size:1rem;text-transform:lowercase;color:var(--accent);margin:0 0 8px}
+.pn .chart{background:transparent;border:0;padding:0;margin:0}
+.op{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}.op h1{font-family:var(--mono);font-size:1.8rem;margin:0 0 4px}
+.dim{color:var(--muted)}
+.counters{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-content:center}
+.counters p{margin:0}.counters b{display:block;font:600 2.6rem/1 var(--mono)}.counters .g{color:var(--accent)}.counters span{display:block;font-size:.78rem;color:var(--muted);margin-top:6px}
+@media (max-width:699px){.counters b{font-size:1.9rem}}
+.log{list-style:none;padding:0;margin:0;font-family:var(--mono);font-size:.88rem}.log li{padding:6px 0;border-bottom:1px solid var(--line)}.log a{color:var(--ink)}.ok{color:var(--accent)}
+.d-console .ch .c-on{animation:pulse 2.4s ease-in-out infinite alternate}
+@keyframes pulse{from{opacity:1}to{opacity:.72}}
+.lrows{width:100%;max-width:420px;height:auto}.lrows text{font:13px var(--mono);fill:var(--ink)}
+.lr-on{fill:#16302A;stroke:#5BD69B}.lr-off{fill:none;stroke:#8395A3;stroke-dasharray:4 3}.lr-k{fill:#5BD69B!important;font-weight:700}.lr-s{fill:#8395A3!important}.lr-br{fill:none;stroke:#F2C14E;stroke-width:2}
+.d-console .note{border-color:var(--line)}
