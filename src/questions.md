@@ -5,7 +5,7 @@ For Indi's own AI assistant: ask him these one at a time, write down each answer
 1. Can you share a picture of the business card you designed, for "What I built" and The Card design?
 2. "What I built" quotes your post ("I designed our business cards"), then gives the record: your designer agent drew the rounds, you chose your card on 4 November, and Design A was chosen for printing on 5 November. Is that right, and is there more you would add?
 3. Which programming languages do you use or want to learn? Your profile names none, so the site names none.
-4. Do you approve the Italian and French section titles for the Lingua design (LINGUA_TITLES), or would you write them differently?
+4. Do you approve the Italian and French words in the Lingua design: the ask ("Cerco un'esperienza di lavoro", "Je cherche une expérience professionnelle"), the section titles and the weekday names on the calendar (LINGUA_TITLES, LINGUA_TRIPTYCH, LINGUA_WEEKDAYS), or would you write them differently?
 5. Do you approve the Front Page headline ("Indi Gupte, one of the three editors of PrompTugal.news, is looking for work experience") and its "Wanted" notice?
 6. Do you approve the "Questions to ask Indi", or would you change them?
 7. The pages speak about you as "he", with first person in the menu and buttons. Would you prefer the whole site in the first person?

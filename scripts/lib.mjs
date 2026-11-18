@@ -93,9 +93,9 @@ const navLinks = (path, style) => NAV.map((n, i) => n.external
   : `<a href="${n.href}"${n.href === path ? ' aria-current="page"' : ''}>${navText(n, i, style)}</a>`).join('');
 export const header = (path, { band, logo, extra = '', nav } = {}) => `<a class="skip" href="#main">Skip to content</a>
 <header class="site">
-<div class="band"><div class="wrap">
+${band === false ? '' : `<div class="band"><div class="wrap">
 ${band || BAND_DEFAULT()}
-</div></div>
+</div></div>`}
 <div class="bar"><div class="wrap">
 <a class="home" href="/"${path === '/' ? ' aria-current="page"' : ''}>${logo || `${SEAL('seal logo-seal')}<span class="home-name">${esc(PERSON.name)}</span>`}</a>
 ${extra}<nav class="nav-wide" aria-label="Main">${navLinks(path, nav)}</nav>
@@ -113,8 +113,8 @@ export const designHref = d => (d.default ? '/' : `/d/${d.slug}/`);
 export const thumb = (slug, { eager = false, w = 480, h = 300 } = {}) => existsSync(`src/assets/designs/${slug}.jpg`)
   ? `<img src="/assets/designs/${slug}.jpg" width="${w}" height="${h}" alt="" ${eager ? 'loading="eager" fetchpriority="low"' : 'loading="lazy"'} decoding="async">`
   : `<span class="nothumb" aria-hidden="true"></span>`;
-// Round 2: R1 removed the Purpose box, so The Briefing's leadsWith in facts.mjs no longer describes it (writer to update).
-export const designLeads = d => (d.slug === 'briefing' && /Purpose box/.test(d.leadsWith) ? 'His photo, his own line from his post and three sourced figures' : d.leadsWith);
+// Round 3: the writer brought every leadsWith up to date, so it is shown as it is.
+export const designLeads = d => d.leadsWith;
 export const designIdea = d => (d.slug === 'card' ? `A business card, front and back. In his words: "${CARDS_QUOTE}".` : d.idea); // C34, C38
 export const designsDialog = cur => `<dialog id="designs" class="dlg" aria-labelledby="dlg-h">
 <div class="dlg-head"><div><h2 id="dlg-h" tabindex="-1">${esc(PAGES.d.dialogHeading)}</h2><p>${esc(PAGES.d.dialogLine)}</p></div>
@@ -144,6 +144,8 @@ export const footer = () => `<footer class="foot"><div class="wrap foot-in">
 // ---------- the head, with the link preview on every page (D5, C44) ----------
 export const SHARE_ALT = `${PERSON.name}: ${ASK.short.toLowerCase()}`;
 export const shareUrl = (name = 'indi-gupte') => `${SITE}/assets/share/${name}.jpg`;
+// Round 3 (S3): each design's pages use its own card, and the alt text names the design.
+const shareAlt = name => { const d = DESIGNS.find(x => x.slug === name); return d ? `${PERSON.name}, ${ASK.short.toLowerCase()}: the ${d.name} design` : SHARE_ALT; };
 export function head({ title, description, path, share = 'indi-gupte', css = [], extra = '', canonical, refresh, scheme = 'light dark' }) {
   const url = `${SITE}${path}`;
   return `<!doctype html>
@@ -167,7 +169,7 @@ ${refresh ? `<meta http-equiv="refresh" content="0; url=${esc(refresh)}">\n` : '
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="${esc(SHARE_ALT)}">
+<meta property="og:image:alt" content="${esc(shareAlt(share))}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
@@ -501,20 +503,29 @@ const dayHtml = iso => {
   const list = TEN_DAYS.filter(e => e.date === iso && !e.derived);
   return `<li class="day${list.length ? '' : ' blank'}"><time class="dl" datetime="${iso}">${dayLabel(iso)}</time>${list.length ? `<ul class="evs">${list.map(entryHtml).join('')}</ul>` : ''}</li>`;
 };
-export const tenDays = ({ id = 'ten-days', h = 'h2', title = `His ten days, ${TEN_DAYS_RANGE.text}`, cls = '' } = {}) => {
+export const tenDays = ({ id = 'ten-days', h = 'h2', title = `His ten days, ${TEN_DAYS_RANGE.text}`, titleHtml = '', cls = '' } = {}) => {
   const days = dayList(), E = TEN_DAYS_RANGE.eventDays;
   const before = days.filter(d => d < E.from), during = days.filter(d => d >= E.from && d <= E.to), after = days.filter(d => d > E.to);
   const tail = TEN_DAYS.filter(e => e.derived);
   return `<section class="tendays${cls ? ` ${cls}` : ''}" id="${id}" aria-labelledby="${id}-h">
-<${h} id="${id}-h">${esc(title)}</${h}>
+<${h} id="${id}-h">${titleHtml || esc(title)}</${h}>
 <div class="td-cols">
 <ol class="td-col">${before.map(dayHtml).join('')}</ol>
 <div class="td-col"><div class="evband"><p class="evband-l">${esc(E.label)}, ${esc(E.text.replace(/ 2026$/, ''))}</p><ol>${during.map(dayHtml).join('')}</ol></div><ol>${after.map(dayHtml).join('')}</ol></div>
 </div>
-${tail.map(e => `<p class="td-after">After the ten days: ${fmtDay(e.date).replace(/ 2026$/, '')}, ${esc(e.label)} <span class="muted">(date derived: ${esc(e.how)})</span>${ref(e.sources)}</p>`).join('')}
-<p class="td-note">Times as the sources give them; no time zone stated. Days with no dated record are left blank.${ref(TEN_DAYS_RANGE.sources)}</p>
+${tdAfter()}
+${tdNote()}
 </section>`;
 };
+// Round 3 (S2): the parts each design draws in its own style. The words stay the same everywhere (C73 to C78, C94).
+export const TD_KIND = KIND;
+export const tdDays = (from = TEN_DAYS_RANGE.from, to = TEN_DAYS_RANGE.to) => { const out = []; for (let t = Date.parse(from + 'T12:00Z'); t <= Date.parse(to + 'T12:00Z'); t += 864e5) out.push(new Date(t).toISOString().slice(0, 10)); return out; };
+export const tdOn = iso => TEN_DAYS.filter(e => e.date === iso && !e.derived);
+export const tdInEvent = iso => iso >= TEN_DAYS_RANGE.eventDays.from && iso <= TEN_DAYS_RANGE.eventDays.to;
+export const tdEventLabel = () => `${TEN_DAYS_RANGE.eventDays.label}, ${TEN_DAYS_RANGE.eventDays.text.replace(/ 2026$/, '')}`;
+export const tdAfter = (cls = 'td-after') => TEN_DAYS.filter(e => e.derived).map(e => `<p class="${cls}">After the ten days: ${fmtDay(e.date).replace(/ 2026$/, '')}, ${esc(e.label)} <span class="muted">(date derived: ${esc(e.how)})</span>${ref(e.sources)}</p>`).join('');
+export const tdNote = (cls = 'td-note') => `<p class="${cls}">Times as the sources give them; no time zone stated. Days with no dated record are left blank.${ref(TEN_DAYS_RANGE.sources)}</p>`;
+export const tdTitle = `His ten days, ${TEN_DAYS_RANGE.text}`;
 // The same entries as a log, one line each (Agent Console, R2.4).
 export const tenDaysLog = () => `<ol class="tlog">${TEN_DAYS.map(e => `<li><time datetime="${e.date}">${e.date}</time> <span class="tl-t">${e.time ? esc(e.time) : '     '}</span> <span class="tl-k">${e.derived ? 'derived' : KIND[e.kind].replace(/^the /, '').replace(/^his work$/, 'his')}</span> <span class="tl-x">${esc(e.label)}${ref(e.sources)}</span></li>`).join('')}</ol><p class="dim td-note">Times as the sources give them; no time zone stated. 7 and 8 November: no dated record. 14 November is derived: ${esc(TEN_DAYS.find(e => e.derived).how)}</p>`;
 

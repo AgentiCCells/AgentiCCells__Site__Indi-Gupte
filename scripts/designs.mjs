@@ -11,13 +11,13 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import {
   LINKEDIN, LINKEDIN_TEXT, PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, AGENTS, LANGUAGES, BACKGROUND,
-  DESIGNS, LINGUA_TITLES, PAGES, SITE, HOME_FIGURES,
+  DESIGNS, LINGUA_TITLES, PAGES, SITE, HOME_FIGURES, LINGUA_TRIPTYCH, LINGUA_WEEKDAYS, TEN_DAYS, TEN_DAYS_RANGE,
 } from '../data/facts.mjs';
 import {
   esc, ref, note, fact, page, head, headshot, languagesFigure, workFig, chartCommits, chartMap, chartActivity,
   postBlock, TEAM_LINE, TEAM_SRC, COMMITS_LINE, COMMITS_SRC, WE_BUILT, CARDS_QUOTE, thumb, designHref, designIdea, designLeads,
   videoSlot, SEAL, BAND_DEFAULT, linkedinLabel, ARROW, LINE, BRING_PHRASES, lineSource, homeFigures, workPics, tenDays,
-  tenDaysLog, teamFigure,
+  teamFigure, WORK_PICS, imgDims, TD_KIND, tdDays, tdOn, tdInEvent, tdEventLabel, tdAfter, tdNote, tdTitle,
 } from './lib.mjs';
 
 const out = (p, s) => { const f = `src${p}`; mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, s); };
@@ -36,7 +36,7 @@ const lineQuote = cls => `<figure class="${cls}"><blockquote><p>${esc(LINE.quote
 const B = D.briefing.copy;
 const para = (n, title, body, id = '') => `<section class="bp"${id ? ` id="${id}"` : ''} aria-labelledby="bp${n}"><h2 id="bp${n}"><span class="pn">${n}.</span> ${esc(title)}</h2>${body}</section>`;
 const briefing = page({
-  path: '/', title: PAGES.home.title, description: DESC, share: 'indi-gupte', css: ['/d/briefing/style.css'], cls: 'd-briefing', design: 'briefing',
+  path: '/', title: PAGES.home.title, description: DESC, share: 'briefing', css: ['/d/briefing/style.css'], cls: 'd-briefing', design: 'briefing',
   hdr: { band: BAND_DEFAULT('<span class="band-pre">Briefing note · </span>') },
   body: `<div class="wrap bwrap">
 <section class="bhero" aria-labelledby="bh-name">
@@ -48,10 +48,10 @@ ${lineQuote('hline')}
 ${homeFigures()}
 <p class="hsrc"><a href="/sources/">Sources for this screen</a></p>
 </section>
-<section class="bwork" aria-labelledby="bw-h"><div class="sec-head"><h2 id="bw-h">His work, in pictures</h2><a class="more" href="/built/">Everything he built</a></div>
+<section class="bwork" aria-labelledby="bw-h"><div class="sec-head"><h2 id="bw-h"><span class="annex">Annex A.</span> His work, in pictures</h2><a class="more" href="/built/">Everything he built</a></div>
 ${workPics({ eager: true })}
 </section>
-${tenDays({ id: 'ten-days' })}
+${tenDays({ id: 'ten-days', titleHtml: `<span class="annex">Annex B.</span> ${esc(tdTitle)}` })}
 <div class="sheet">
 ${para(1, B.paragraphs[0], fact(postBlock(), ['whatsapp']))}
 ${para(2, B.paragraphs[1], `${WORKS.map(b => fact(`<div class="bw">${workFig(b.id, b.title, 'sm')}<div><h3><a href="/built/#${b.id}">${esc(b.title)}</a></h3><p>${esc(b.oneLine)} <span class="muted">His part: ${esc(b.role)}.</span></p></div></div>`, b.sources)).join('\n')}
@@ -66,7 +66,7 @@ ${para(7, B.paragraphs[6], `<p>${esc(B.nextStep.text)} ${esc(PERSON.contactNote.
 </div>`,
 });
 out('/index.html', briefing);
-out('/d/briefing/index.html', `${head({ title: designTitle(D.briefing), description: DESC, path: '/d/briefing/', refresh: '/', canonical: '/' })}
+out('/d/briefing/index.html', `${head({ title: designTitle(D.briefing), description: DESC, path: '/d/briefing/', refresh: '/', canonical: '/', share: 'briefing' })}
 <body><main class="wrap" style="padding:48px 16px"><h1>${esc(D.briefing.name)}</h1><p>The Briefing is the home page: <a href="/">open it</a>.</p></main></body></html>
 `);
 // The Briefing's header is the main system's header (in /style.css), so moving from home to an inner page keeps it.
@@ -121,6 +121,10 @@ out('/d/briefing/style.css', `/* The Briefing: a briefing paper on a desk in a m
 .d-briefing .pics{grid-auto-columns:78%}
 .tendays{margin-top:36px;border-top:1px solid var(--line);padding-top:20px}
 .tendays>h2{margin-top:0;font-size:1.55rem}
+/* round 3 (S2): the two strips are annexes of the note */
+.bwork .sec-head h2,.d-briefing .tendays>h2{font:600 1.55rem/1.2 var(--serif)}
+@media (min-width:960px){.bwork .sec-head h2,.d-briefing .tendays>h2{font-size:28px}}
+.annex{color:var(--warm)}
 .sheet{margin-top:40px}
 @media (min-width:960px){.sheet{background:var(--surface);border:1px solid var(--line);padding:24px 56px 32px;box-shadow:0 30px 60px -40px rgba(19,35,63,.4)}}
 .bp{padding:28px 0 8px;border-bottom:1px solid var(--line)}
@@ -133,31 +137,67 @@ out('/d/briefing/style.css', `/* The Briefing: a briefing paper on a desk in a m
 @media print{.sheet{box-shadow:none;border:0;padding:0}.bp{break-inside:avoid}}
 `);
 
-// ======================= Lingua: a parallel-text edition (R2.2) =======================
+// ======================= Lingua: a triptych, one panel per language he speaks (R3 S1, S2; C85 to C95) =======================
 const LT = Object.fromEntries(LINGUA_TITLES.map(t => [t.id, t]));
 const trow = (id, h = 'h2') => { const t = LT[id]; return `<div class="trow"><${h} id="lt-${id}" class="t-en">${esc(t.en)}</${h}><p class="t-it" lang="it">${esc(t.it)}</p><p class="t-fr" lang="fr">${esc(t.fr)}</p></div>`; };
 const lsec = (id, body, cls = '') => `<section class="ls${cls ? ` ${cls}` : ''}" aria-labelledby="lt-${id}">${trow(id)}${body}</section>`;
-const LOOK = LT['looking-for'];
+// Every Italian and French string carries its lang attribute (C87); English sits in the page's en-GB.
+const L = w => (w.lang && w.lang !== 'en' ? ` lang="${w.lang}"` : '');
+const panel = p => `<li class="tp tp-${p.lang}"${L(p)}>
+<p class="tp-code" aria-hidden="true">${esc(p.code)}</p>
+<p class="tp-name"${L(p.name)}>${esc(p.name.text)}</p>
+<p class="tp-ask"${L(p.ask)}>${esc(p.ask.text)}</p>
+<ul class="tp-titles">${p.titles.map(t => `<li><a href="#lt-${t.section}"${L(t)}>${esc(t.text)}</a></li>`).join('')}</ul>
+</li>`;
+// S2: a two-week wall calendar, Monday 2 to Sunday 15 November 2026; weekday headers in three languages (C91);
+// 2, 14 and 15 November hold no entry (C95; 14 November's derived entry is the line under the calendar, C78, C93).
+const WEEKDAY = Object.fromEntries(LINGUA_WEEKDAYS.map((w, i) => [(i + 1) % 7, w]));
+const wdOf = iso => WEEKDAY[new Date(iso + 'T12:00Z').getUTCDay()];
+const dayNum = iso => Number(iso.slice(8, 10));
+const calEntry = e => `<li class="ce k-${e.kind}"><span class="kind">${TD_KIND[e.kind]}</span> ${e.time ? `<time class="ce-t">${esc(e.time)}</time> ` : ''}${esc(e.label)}${ref(e.sources)}</li>`;
+const calDay = iso => {
+  const list = tdOn(iso), w = wdOf(iso), out = iso < TEN_DAYS_RANGE.from || iso > TEN_DAYS_RANGE.to;
+  return `<li class="cd${out ? ' out' : ''}${tdInEvent(iso) ? ' ev' : ''}${!out && !list.length ? ' blank' : ''}"><p class="cd-d"><time datetime="${iso}"><b>${dayNum(iso)}</b><span class="cd-w"> <span class="w-en">${esc(w.en.text)}</span> <span class="w-it" lang="it">${esc(w.it.text)}</span> <span class="w-fr" lang="fr">${esc(w.fr.text)}</span></span><span class="vh"> November</span></time></p>${list.length ? `<ul class="ces">${list.map(calEntry).join('')}</ul>` : ''}</li>`;
+};
+const calendar = () => {
+  const days = tdDays('2026-11-02', '2026-11-15');
+  return `<section class="ls lcal-s" aria-labelledby="lcal-h"><h2 id="lcal-h" class="lplain">${esc(tdTitle)}</h2>
+<div class="cal">
+<div class="dows" aria-hidden="true">${LINGUA_WEEKDAYS.map(w => `<p class="dow"><span>${esc(w.en.text)}</span><span lang="it">${esc(w.it.text)}</span><span lang="fr">${esc(w.fr.text)}</span></p>`).join('')}</div>
+<ol class="cds">${days.slice(0, 7).map(calDay).join('')}</ol>
+<p class="cal-ev"><span>${esc(tdEventLabel())}</span></p>
+<ol class="cds">${days.slice(7).map(calDay).join('')}</ol>
+</div>
+${tdAfter()}
+${tdNote()}
+</section>`;
+};
+const lplates = () => `<ul class="lpics">${WORK_PICS.map(w => `<li><a href="${w.href}"><span class="plate"><img src="${w.src}" ${imgDims(w.src)} alt="${esc(w.alt)}" loading="lazy" decoding="async"></span><span class="pl-t">${esc(w.title)}</span><span class="pl-l">${esc(w.line)}</span></a></li>`).join('')}</ul>`;
+const SA = LANGUAGES.interest[0], PL = LANGUAGES.interest[1];
 const lingua = page({
   path: '/d/lingua/', title: designTitle(D.lingua), description: DESC, share: 'lingua', css: ['/d/lingua/style.css'], cls: 'd-lingua', design: 'lingua', scheme: 'light',
   hdr: {
-    band: `<p class="lb lb-en"><b>${esc(LOOK.en)}</b></p><p class="lb lb-it" lang="it">${esc(LOOK.it)}</p><p class="lb lb-fr" lang="fr">${esc(LOOK.fr)}</p>
-<a class="band-link" href="${LINKEDIN}">${linkedinLabel}${ARROW}</a>`,
-    logo: `<span class="home-name">${esc(PERSON.name)}</span><span class="ltag" aria-hidden="true"><span class="c-en">EN</span> · <span class="c-it">IT</span> · <span class="c-fr">FR</span></span>`,
+    band: false,
+    logo: `<span class="home-name">${esc(PERSON.name)}</span>`,
     nav: n => esc(n.text.replace(/^./, c => c.toLowerCase())),
   },
-  body: `<div class="wrap lwrap">
-<section class="lhero" aria-labelledby="lh-name">
-<p class="kicker">${esc(PERSON.tagline.text)}</p>
-<h1 id="lh-name">${esc(PERSON.name)}</h1>
-<figure class="lphoto">${headshot({ size: 200, eager: true })}<figcaption>${esc(PERSON.photo.credit)}</figcaption></figure>
-${lineQuote('lline')}
-<p class="btns">${linkBtn()}${lookBtn()}</p>
+  body: `<section class="lhero" aria-labelledby="lh-name">
+<div class="wrap lstrip">
+${headshot({ size: 96, eager: true, cls: 'lphoto' })}
+<div class="lid"><h1 id="lh-name">${esc(PERSON.name)}</h1><p class="lspeaks">${esc(LANGUAGES.speaksLine.text)}${ref(LANGUAGES.speaksLine.sources)}</p></div>
+${linkBtn('btn lbtn')}
+</div>
+<div class="wrap">
+<ul class="tript" aria-label="His languages">${LINGUA_TRIPTYCH.map(panel).join('\n')}</ul>
+<p class="glossnote">${esc(D.lingua.copy.glossNote.text)}</p>
+<div class="lints"><p class="itile i-sa"><span class="it-own" lang="sa">${esc(SA.ownName)}</span> ${esc(SA.name)}</p><p class="itile i-pl"><span class="it-own" aria-hidden="true">${esc(PL.ownName)}</span> ${esc(PL.name)}</p><p class="ilearn">${esc(LANGUAGES.learning.text)}${ref(LANGUAGES.learning.sources)}</p></div>
+</div>
 </section>
-<div class="lfig"><span class="wm" lang="sa" aria-hidden="true">${esc(LANGUAGES.interest[0].ownName)}</span>${languagesFigure('llf')}</div>
-<p class="glossnote">${esc(D.lingua.copy.glossNote.text)} They await Indi's approval.</p>
+<div class="wrap lwrap">
+<div class="lfig"><span class="wm" lang="sa" aria-hidden="true">${esc(SA.ownName)}</span>${languagesFigure('llf')}</div>
 ${lsec('summary', fact(PERSON.profileSummary.paragraphs.slice(0, 4).map(p => `<p>${esc(p)}</p>`).join(''), ['linkedin']))}
-${lsec('built', `${fact(worksList(), ['whatsapp'])}${workPics({ cls: 'lpics' })}`)}
+${lsec('built', `${fact(worksList(), ['whatsapp'])}${lplates()}`)}
+${calendar()}
 ${lsec('how-i-work', fact(`<blockquote>${esc(QUOTES.extracts.bring)}</blockquote><p>${esc(TEAM_LINE)}. ${esc(COMMITS_LINE)}. ${esc(WEB_SUMMIT.rules.text)}</p><p><a class="more" href="/how-i-work/">His agent teams, drawn</a></p>`, ['whatsapp', ...TEAM_SRC, ...COMMITS_SRC]))}
 ${lsec('languages', LANGUAGES.whereTheyLead.map(w => fact(`<p>${esc(w.text)}</p>`, w.sources)).join(''))}
 ${lsec('background', fact(`${timeline()}<p>${esc(BACKGROUND.undated[0].title)}. ${esc(BACKGROUND.undated[0].text)}</p>`, ['linkedin', 'ws-home']))}
@@ -167,69 +207,146 @@ ${lsec('sources', `<p><a class="more" href="/sources/">Every source, with its ad
 </div>`,
 });
 out('/d/lingua/index.html', lingua);
-out('/d/lingua/style.css', `/* Lingua: a parallel-text edition, English, Italian and French side by side (R2.2, C41, C69, C72). Fixed light palette. Code Apache-2.0. */
-.d-lingua{--bg:#F5EFE3;--surface:#FBF7EE;--surface-2:#EDE3D0;--ink:#1F1A14;--muted:#5A5246;--line:#CFC3AE;--accent:#1E4D8C;--accent-soft:#E7E4EA;--on-accent:#FFFFFF;--warm:#8C2A3B;--focus:#1E4D8C;--en:#1E4D8C;--it:#1F6B3A;--fr:#8C2A3B;--sa:#9A4A00;--code:#4B3F8C;--lf-tile:#1E4D8C;--lf-warm:#9A4A00;color-scheme:light}
+out('/d/lingua/style.css', `/* Lingua: a triptych, one panel per language he speaks, on a cool grey ground (R3 S1, S2; C85 to C95; R2.2, C41, C72).
+   Fixed light palette. Code Apache-2.0. */
+.d-lingua{--bg:#EEF1F4;--surface:#FFFFFF;--surface-2:#E1E6EC;--ink:#16202B;--muted:#4A5563;--line:#C9D0D8;--accent:#1E4D8C;--accent-soft:#DCE6F5;--on-accent:#FFFFFF;--warm:#8C2A3B;--focus:#16202B;--en:#1E4D8C;--it:#1F6B3A;--fr:#8C2A3B;--sa:#9A4A00;--code:#4B3F8C;--lf-tile:#1E4D8C;--lf-warm:#9A4A00;--evband:#E1E6EC;color-scheme:light}
 .d-lingua main{font-family:var(--serif)}
-.d-lingua .band{border-top:0;border-bottom:0}.d-lingua .designs-btn .lbl{font-variant-caps:normal;font-size:inherit;letter-spacing:inherit}.d-lingua .home,.d-lingua .menu summary,.d-lingua .src-icon,.d-lingua .designs-btn{color:var(--ink);border-color:var(--line)}.d-lingua .nav-wide a+a::before{content:none}.d-lingua .band-ask{font-variant-caps:normal}.d-lingua .home-name{font:inherit;letter-spacing:0;font-variant-caps:normal}
-/* header: three rules, then the band in three languages, then the bar */
-.d-lingua header.site{border-top:12px solid transparent;border-image:linear-gradient(#1E4D8C 0 4px,#1F6B3A 4px 8px,#8C2A3B 8px 12px) 12 0 0 0 / 12px 0 0 0}
-.d-lingua .band{background:var(--bg);color:var(--ink);border-bottom:1px solid var(--line);font-family:var(--serif)}
-.d-lingua .band .wrap{display:flex;align-items:center;gap:0 16px;min-height:44px}
-.d-lingua .lb{margin:0;font-size:.95rem}.d-lingua .lb-en{color:var(--en);flex:1}.d-lingua .lb-it{color:var(--it);font-style:italic;display:none}.d-lingua .lb-fr{color:var(--fr);font-style:italic;display:none}
-.d-lingua .band-link{color:var(--en);font-weight:600;font-family:var(--serif)}
-@media (min-width:960px){.d-lingua .band .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto}.d-lingua .lb-it,.d-lingua .lb-fr{display:block}.d-lingua .ll-long{display:inline}}
-.d-lingua .bar{background:var(--bg);border-bottom:1px solid var(--line)}
-.d-lingua .home{font:italic 400 1.3rem var(--serif);gap:12px}
-.d-lingua .ltag{font:600 .62rem var(--sans);letter-spacing:.1em;font-style:normal}.c-en{color:var(--en)}.c-it{color:var(--it)}.c-fr{color:var(--fr)}
-.d-lingua .nav-wide a{font:italic .95rem var(--serif);padding:0 8px}
-.d-lingua .nav-wide a[aria-current=page]{text-decoration-color:var(--en);text-decoration-thickness:2px;text-underline-offset:6px;font-weight:400}
-.d-lingua .menu summary,.d-lingua .src-icon{border-color:var(--ink);border-radius:22px;font-family:var(--serif);font-style:italic;font-weight:400}
-.d-lingua .designs-btn{border:1px solid var(--ink);border-radius:22px;font:italic 400 .95rem var(--serif)}
-.d-lingua .designs-btn .ic{display:none}
-.d-lingua .designs-btn::before{content:"";width:14px;height:14px;background:linear-gradient(#1E4D8C 0 4px,transparent 4px 5px,#1F6B3A 5px 9px,transparent 9px 10px,#8C2A3B 10px 14px)}
-.d-lingua .designs-btn .lbl{text-transform:lowercase}
-/* the page: three columns */
-.lwrap{padding-top:28px}
-.lhero{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:0 16px;align-items:center}
-.lhero>.kicker,.lhero>.lline,.lhero>.btns{grid-column:1/-1}
-.lhero .kicker{color:var(--muted);font:600 .8rem var(--sans);letter-spacing:.12em}
-.d-lingua h1{font-size:2.6rem;margin:0;line-height:1}
-.lphoto{margin:0}.lphoto .headshot{--size:112px!important;border-radius:6px}.lphoto figcaption{display:none}
-.lline{margin:18px 0 0}.lline blockquote{border:0;padding:0;font:italic 1.18rem/1.45 var(--serif);color:var(--ink)}.lline blockquote p{margin:0}
-.lline figcaption{font:.82rem var(--sans)}.lline .attr{color:var(--muted);display:inline-flex;align-items:center;min-height:44px}
-.d-lingua .btn-primary{background:var(--ink);color:#fff;border-radius:22px}.d-lingua .btn-secondary{color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);border-radius:22px}
-@media (min-width:960px){
-  .lhero{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px;align-items:start;padding-bottom:12px}
-  .lhero>.kicker,.lhero>h1,.lhero>.lline,.lhero>.btns{grid-column:1/3}
-  .lphoto{grid-column:3;grid-row:1/span 4;justify-self:start;border-left:1px solid var(--line);padding-left:24px}
-  .lphoto .headshot{--size:200px!important}.lphoto figcaption{display:block;font:.75rem var(--sans);color:var(--muted);margin-top:8px}
-  .d-lingua h1{font-size:4rem}.lline blockquote{font-size:1.33rem}
+/* header: one dark bar, no band (S1 item 1) */
+.d-lingua .bar{background:#16202B;border-bottom:0;--focus:#FFFFFF}
+.d-lingua .bar .wrap{min-height:56px}
+.d-lingua .home{color:#FFFFFF}
+.d-lingua .home-name{font:700 14px var(--sans);letter-spacing:.12em;text-transform:uppercase;font-variant-caps:normal}
+.d-lingua .nav-wide a+a::before{content:none}
+.d-lingua .nav-wide a{font:400 14px var(--sans);font-variant-caps:normal;letter-spacing:0;color:#FFFFFF;padding:0 9px}
+.d-lingua .nav-wide a[aria-current=page]{color:#FFFFFF;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+.d-lingua .menu summary,.d-lingua .src-icon{color:#FFFFFF;border-color:#FFFFFF;border-radius:22px;font-family:var(--sans)}
+.d-lingua .designs-btn{color:#FFFFFF;border:1px solid #FFFFFF;border-radius:22px;font:600 14px var(--sans)}
+.d-lingua .designs-btn .ic{color:#FFFFFF}
+@media (min-width:700px){.d-lingua .designs-btn .ic{display:none}}
+.d-lingua .designs-btn .lbl{font-variant-caps:normal;font-size:inherit;letter-spacing:0;text-transform:lowercase}
+@media (min-width:700px){.d-lingua .home-name{font-size:15px}}
+/* the name strip (S1 item 2) */
+.lhero{font-family:var(--sans)}
+.lstrip{display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:12px;align-items:center;padding-top:16px;padding-bottom:12px}
+.lphoto{--size:64px!important;border-radius:0!important;box-shadow:none!important;border:0!important}
+.d-lingua h1{font:700 24px/1.15 var(--sans);margin:0;color:var(--ink);letter-spacing:0}
+.lspeaks{margin:4px 0 0;font-size:15px;line-height:1.35;color:var(--ink)}
+.lbtn{grid-column:1/-1;margin-top:12px;justify-content:center;background:#16202B;color:#FFFFFF;border-radius:0}
+@media (max-width:699px){.lspeaks{font-size:14px}}
+@media (min-width:700px){
+  .lstrip{grid-template-columns:96px minmax(0,1fr) auto;column-gap:24px;padding-top:24px;padding-bottom:24px}
+  .lphoto{--size:96px!important}
+  .d-lingua h1{font-size:28px}.lspeaks{font-size:16px}
+  .lbtn{grid-column:auto;margin-top:0}
 }
-.lfig{position:relative;background:var(--surface);border:1px solid var(--line);padding:22px;overflow:hidden;margin-top:24px}
+/* the triptych (S1 item 3) */
+.tript{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:0}
+.tp{color:#FFFFFF;padding:16px 20px 10px;--focus:#FFFFFF}
+.tp-en{background:var(--en)}.tp-it{background:var(--it)}.tp-fr{background:var(--fr)}
+.tp p{margin:0}
+.tp-code{font:700 12px/1 var(--sans);letter-spacing:.16em;margin-bottom:6px!important}
+.tp-en .tp-code{color:#DCE6F5}.tp-it .tp-code{color:#D6EBDD}.tp-fr .tp-code{color:#F5DCE1}
+.tp-name{font:700 36px/1 var(--sans);letter-spacing:-.01em}
+.tp-ask{font:600 19px/1.25 var(--sans);margin-top:8px!important;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.45)}
+.tp-titles{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;column-gap:16px}
+.tp-titles a{display:inline-flex;align-items:center;min-height:44px;color:#FFFFFF;font:400 15px/1.2 var(--sans);text-underline-offset:4px}
+@media (max-width:959px){.tp-code{display:inline-block;margin-right:10px}.tp-name{display:inline-block}}
+@media (min-width:960px){
+  .tript{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tp{min-height:400px;padding:32px}
+  .tp-code{font-size:13px;margin-bottom:14px!important}
+  .tp-name{font-size:64px}
+  .tp-ask{font-size:26px;margin-top:18px!important;padding-bottom:18px;min-height:4.3em}
+  .tp-titles{flex-direction:column;margin-top:10px}
+  .tp-titles a{font-size:17px}
+}
+/* the note and the interest tiles (S1 item 4) */
+.glossnote{font:13px/1.45 var(--sans);color:var(--muted);margin:12px 0 0}
+.lints{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:12px 0 0;font-family:var(--sans)}
+.itile{margin:0;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border:2px dashed currentColor;font-weight:600;font-size:15px}
+.i-sa{color:var(--sa)}.i-pl{color:var(--code)}
+.it-own{font:600 20px var(--deva)}.i-pl .it-own{font-family:var(--mono)}
+.ilearn{margin:0;font-size:15px;color:var(--ink)}
+/* further down: the languages figure, the title rows, the calendar */
+.lwrap{padding-top:8px}
+.lfig{position:relative;background:var(--surface);border:1px solid var(--line);padding:22px;overflow:hidden;margin-top:28px}
 .lfig .langs{position:relative;z-index:1}.lfig .langs svg{max-width:none}
 .lfig .langs figcaption{max-width:none}
 .wm{position:absolute;right:-10px;bottom:-40px;font-family:var(--deva);font-size:180px;line-height:1;color:var(--sa);opacity:.07;pointer-events:none;z-index:0}
 .d-lingua .lf .t-en{fill:var(--en)}.d-lingua .lf .t-it{fill:var(--it)}.d-lingua .lf .t-fr{fill:var(--fr)}.d-lingua .lf .t-sa{stroke:var(--sa)}.d-lingua .lf .t-pl{stroke:var(--code)}
-.glossnote{font:.82rem var(--sans);color:var(--muted);margin:14px 0 0}
-.ls{padding:28px 0 6px;border-top:1px solid var(--line);margin-top:24px}
+.ls{padding:28px 0 6px;border-top:2px solid var(--ink);margin-top:28px}
 .trow{display:block;margin-bottom:16px}
-.trow h2{margin:0;font-size:1.75rem;color:var(--en)}
-.trow p{display:inline;margin:0;font:italic 1rem var(--serif)}
+.trow h2{margin:0;font:700 1.75rem/1.2 var(--sans);color:var(--en)}
+.trow p{display:inline;margin:0;font:600 1rem var(--sans)}
 .trow .t-it{color:var(--it)}.trow .t-fr{color:var(--fr)}.trow .t-it::after{content:" · ";color:var(--muted)}
+.lplain{margin:0 0 16px;font:700 1.75rem/1.2 var(--sans);color:var(--ink)}
 @media (min-width:960px){
-  .trow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px;align-items:last baseline}
-  .trow h2{font-size:2.2rem}.trow p{display:block;font-size:1.65rem;border-left:1px solid var(--line);padding-left:24px}.trow .t-it::after{content:none}
+  .trow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;align-items:stretch}
+  .trow h2,.trow p{display:block;font:700 1.6rem/1.2 var(--sans);padding:0 16px 0 0}
+  .trow p{border-left:4px solid currentColor;padding-left:16px}.trow h2{border-left:4px solid currentColor;padding-left:16px}.trow .t-it::after{content:none}
   .d-lingua .fact{grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:0 48px}
   .d-lingua .fact .note{border-left:1px solid var(--line)}
 }
-.works{list-style:none;padding:0}.works li{padding:8px 0;border-bottom:1px dotted var(--line)}.works span{color:var(--muted)}
+.works{list-style:none;padding:0}.works li{padding:8px 0;border-bottom:1px solid var(--line)}.works span{color:var(--muted)}
 .works a{display:inline-flex;align-items:center;min-height:44px}
-.lpics{margin-top:18px}
+/* S2: the pictures as plates in a bilingual edition */
+.lpics{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:24px;font-family:var(--sans)}
+.lpics a{display:block;color:var(--ink);text-decoration:none}
+.plate{display:block;background:#FFFFFF;border:1px solid #16202B;aspect-ratio:4/3;padding:8px}
+.plate img{width:100%;height:100%;object-fit:contain;display:block}
+.pl-t{display:block;font:700 15px/1.3 var(--sans);margin-top:8px}.pl-l{display:block;font-size:14px;color:var(--muted)}
+.lpics a:hover .pl-t,.lpics a:focus-visible .pl-t{text-decoration:underline}
+@media (min-width:700px){.lpics{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* S2: the trilingual calendar; a list of days at 390, a seven-column grid from 960 */
+.cal{font:14px/1.35 var(--sans);color:var(--ink);border-top:2px solid #16202B}
+.dows{display:none}
+.cds{list-style:none;margin:0;padding:0}
+.cd{display:grid;grid-template-columns:72px minmax(0,1fr);gap:0 10px;padding:8px 0;border-bottom:1px solid var(--line);background:#FFFFFF}
+.cd-d{margin:0}
+.cd-d b{display:block;font:700 22px/1 var(--sans)}
+.cd-w{display:block;font-size:12px;line-height:1.3}.cd-w>span{display:block}
+.w-en{color:var(--en);font-weight:600}.w-it{color:var(--it)}.w-fr{color:var(--fr)}
+.cd.out{display:none}
+.cd.blank{padding:4px 0}.cd.blank .cd-w{display:inline}.cd.blank .cd-w>span{display:inline}.cd.blank b{display:inline;font-size:16px;margin-right:6px}
+.ces{list-style:none;margin:0;padding:0}
+.ce{margin:0 0 8px}.ce:last-child{margin-bottom:0}
+.kind{display:block;font:700 11px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ce-t{font:600 13px var(--mono)}
+.cd.ev{box-shadow:inset 4px 0 0 #16202B;padding-left:10px}
+.cal-ev{margin:0;padding:8px 0 6px;font:700 12px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.lcal-s .td-after,.lcal-s .td-note{font:.85rem/1.45 var(--sans);margin:10px 0 0}
+@media (min-width:960px){
+  .cal{border-left:1px solid #C9D0D8}
+  .dows,.cds{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+  .dow{margin:0;font:600 13px/1.3 var(--sans);padding:8px;border-right:1px solid #C9D0D8;border-bottom:1px solid #C9D0D8}
+  .dow span{display:block}.dow span:nth-child(1){color:#1E4D8C}.dow span:nth-child(2){color:#1F6B3A}.dow span:nth-child(3){color:#8C2A3B}
+  .cd,.cd.blank,.cd.out{display:block;min-height:150px;padding:8px;border-right:1px solid #C9D0D8;border-bottom:1px solid #C9D0D8}
+  .cd .cd-w{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .cd-d b,.cd.blank b{display:block;font-size:22px;margin:0 0 6px}
+  .cd.out{background:#EEF1F4;color:#4A5563}
+  .cd.ev{box-shadow:inset 0 4px 0 #16202B;padding-left:8px}
+  .cal-ev{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));padding:0;border-right:1px solid #C9D0D8;border-bottom:1px solid #C9D0D8;background:#EEF1F4}
+  .cal-ev span{grid-column:1/5;padding:8px;font-size:12px}
+}
 .lf-fields{padding-left:1.1em}
-.lend{background:var(--surface-2);padding:24px!important;border-top:0!important}
+.lend{background:#FFFFFF;padding:24px!important;border-top:2px solid var(--ink)!important}
+.d-lingua .btn-primary{background:#16202B;color:#FFFFFF;border-radius:0}.d-lingua .btn-secondary{color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);border-radius:0}
 `);
 
 // ======================= Front Page: a broadsheet (R2.3) =======================
+// R3 S2: the ten days as news briefs in columns, each day a dateline (C92: 7 and 8 November a dateline only), and
+// the pictures as a picture desk with a credit line. Text is TEN_DAYS[].label and WORK_PICS as they are (C94).
+const WDL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const longDay = iso => `${WDL[new Date(iso + 'T12:00Z').getUTCDay()]} ${Number(iso.slice(8, 10))} November`;
+const briefs = () => `<section class="briefs-s" aria-labelledby="br-h"><p class="fkicker">Briefs</p><h2 id="br-h">${esc(tdTitle)}</h2>
+<div class="briefs">${tdDays().map((iso, i, all) => {
+  const list = tdOn(iso), ev = tdInEvent(iso), first = ev && !tdInEvent(all[i - 1] || '');
+  return `<div class="bday${ev ? ' ev' : ''}">${first ? `<p class="evl">${esc(tdEventLabel())}</p>` : ''}<h3 class="dl"><time datetime="${iso}">${longDay(iso)}</time></h3>${list.map(e => `<p><span class="kind">${TD_KIND[e.kind]}</span> ${e.time ? `<time class="t">${esc(e.time)}</time> ` : ''}${esc(e.label)}${ref(e.sources)}</p>`).join('')}</div>`;
+}).join('')}</div>
+${tdAfter()}
+${tdNote()}
+</section>`;
+const fpPics = () => `<ul class="fpics">${WORK_PICS.map(w => `<li><a href="${w.href}"><span class="fmat"><img src="${w.src}" ${imgDims(w.src)} alt="${esc(w.alt)}" loading="lazy" decoding="async"></span><span class="fp-t">${esc(w.title)}</span><span class="fp-c">Picture: ${esc(w.line)}</span></a></li>`).join('')}</ul>`;
 const FP = D['front-page'].copy;
 const front = page({
   path: '/d/front-page/', title: designTitle(D['front-page']), description: DESC, share: 'front-page', css: ['/d/front-page/style.css'], cls: 'd-front', design: 'front-page', scheme: 'light',
@@ -250,14 +367,14 @@ const front = page({
 <p>${esc(PERSON.profileSummary.paragraphs[0])} ${esc(PERSON.profileSummary.paragraphs[3])}${ref('linkedin')}</p>
 <p class="fquote">"${esc(LINE.quote)}"${ref('whatsapp')}</p>
 </article>
-<section class="inpics" aria-labelledby="ip-h"><h2 id="ip-h">In pictures</h2>${workPics({ cls: 'fpics' })}</section></div>
+<section class="inpics" aria-labelledby="ip-h"><h2 id="ip-h">In pictures</h2>${fpPics()}</section></div>
 <aside class="notice" aria-labelledby="nt-h"><h2 id="nt-h">Notice</h2><p>${esc(FP.notice.text)}${ref(FP.notice.sources)}</p><p>${linkBtn('btn fp-btn')}</p></aside>
 <aside class="side">
 <h2>${esc(FP.indexTitle)}</h2>
 <ol class="index">${WORKS.map(b => `<li><a href="#fp-${b.id}">${esc(b.title)}</a></li>`).join('')}</ol>
-${tenDays({ id: 'fp-week', title: 'The week in dates', cls: 'narrow' })}
 </aside>
 </div>
+${briefs()}
 <div class="cols">${WORKS.map(b => `<article class="story" id="fp-${b.id}">${workFig(b.id, b.title, 'fp')}<h3>${esc(b.title)}</h3><p>${esc(b.paragraph)}${ref(b.sources)}</p><p class="by">His part: ${esc(b.role)}. <a href="${esc(b.link.url)}">${esc(b.link.text)}</a></p></article>`).join('')}</div>
 <section class="numbers" aria-labelledby="bn-h"><h2 id="bn-h">${esc(FP.numbersTitle)}</h2>
 <div class="nums">${HOME_FIGURES.map(f => `<p><b>${esc(f.value)}</b> ${esc(f.label)}${ref(f.sources)}</p>`).join('')}</div>
@@ -270,7 +387,7 @@ out('/d/front-page/index.html', front);
 out('/d/front-page/style.css', `/* Front Page: a broadsheet front page; the header is the masthead with two ears (R2.3, C25 to C29, C69). Fixed light palette. Code Apache-2.0. */
 .d-front{--bg:#FBFAF6;--surface:#FFFFFF;--surface-2:#F1EEE6;--ink:#111111;--muted:#555049;--line:#111111;--accent:#B3121B;--accent-soft:#F4E4E2;--on-accent:#FFFFFF;--warm:#B3121B;--focus:#B3121B;--head:"Bodoni 72",Didot,"Bodoni MT","Big Caslon",Georgia,serif;--evband:#F1EEE6;--run:#111111;--lf-tile:#111111;--lf-warm:#B3121B;--c-on:#111;--c-bar:#111;color-scheme:light}
 .d-front main{font-family:Georgia,"Times New Roman",serif}
-.d-front .band{border-top:0;border-bottom:0}.d-front .designs-btn .lbl{font-variant-caps:normal;font-size:inherit;letter-spacing:inherit}.d-front .home,.d-front .menu summary,.d-front .src-icon,.d-front .designs-btn{color:var(--ink);border-color:var(--line)}.d-front .nav-wide a+a::before{content:none}.d-front .band-ask{font-variant-caps:normal}.d-front .home-name{font:inherit}
+.d-front .band{border-top:0;border-bottom:0;--focus:#B3121B}.d-front .designs-btn .lbl{font-variant-caps:normal;font-size:inherit;letter-spacing:inherit}.d-front .home,.d-front .menu summary,.d-front .src-icon,.d-front .designs-btn{color:var(--ink);border-color:var(--line)}.d-front .nav-wide a+a::before{content:none}.d-front .band-ask{font-variant-caps:normal}.d-front .home-name{font:inherit}
 /* the masthead: ears, name, dateline, index */
 .d-front header.site{background:var(--bg);position:relative}
 .d-front .band{background:var(--bg);color:var(--ink);font-family:var(--sans)}
@@ -304,7 +421,7 @@ out('/d/front-page/style.css', `/* Front Page: a broadsheet front page; the head
 }
 .paper{padding-top:24px}
 .fp-top{display:grid;gap:22px}
-@media (min-width:960px){.fp-top{grid-template-columns:8fr 4fr;grid-template-areas:"lead notice" "lead side"}.leadcol{grid-area:lead;border-right:1px solid var(--ink);padding-right:24px}.notice{grid-area:notice}.side{grid-area:side}}
+@media (min-width:960px){.fp-top{grid-template-columns:8fr 4fr;grid-template-rows:auto 1fr;grid-template-areas:"lead notice" "lead side"}.leadcol{grid-area:lead;border-right:1px solid var(--ink);padding-right:24px}.notice{grid-area:notice}.side{grid-area:side}}
 .notice{border:3px double var(--ink);padding:14px 16px;background:var(--surface);align-self:start}
 .notice h2{font:700 .8rem var(--sans);text-transform:uppercase;letter-spacing:.12em;margin:0 0 6px;color:var(--accent)}
 .notice p{font-size:1.05rem;margin:0 0 8px}
@@ -316,13 +433,34 @@ out('/d/front-page/style.css', `/* Front Page: a broadsheet front page; the head
 @media (max-width:699px){.leadpic{float:none;margin:0 0 12px}.leadpic .headshot{--size:180px!important}}
 .drop::first-letter{float:left;font-family:var(--head);font-size:3.6em;line-height:.85;padding:4px 8px 0 0;font-weight:700}
 .fquote{font:italic 1.15rem Georgia,serif;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:10px 0;clear:both}
-.side h2,.numbers h2,.inpics h2,.fplang h2,.tendays.narrow>h2{font:700 .8rem var(--sans);text-transform:uppercase;letter-spacing:.12em;border-bottom:2px solid var(--ink);padding-bottom:4px;margin:0 0 8px}
+.side h2,.numbers h2,.inpics h2,.fplang h2{font:700 .8rem var(--sans);text-transform:uppercase;letter-spacing:.12em;border-bottom:2px solid var(--ink);padding-bottom:4px;margin:0 0 8px}
 .index{padding-left:1.3em;margin:0 0 18px}.index li{font-family:var(--head);font-size:1.15rem}.index a{color:var(--ink);min-height:44px;display:inline-flex;align-items:center}
-.d-front .tendays.narrow .evband{border-radius:0}
 .inpics{margin-top:28px;border-top:3px solid var(--ink);padding-top:8px}
-.fpics img{filter:grayscale(1) contrast(1.1);transition:filter .3s}
+/* R3 S2: the picture desk */
+.fpics{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;border-top:1px solid #111111;border-bottom:1px solid #111111}
+.fpics li{padding:12px 0;border-bottom:1px solid #111111}.fpics li:last-child{border-bottom:0}
+.fpics a{display:block;color:#111111;text-decoration:none}
+.fmat{display:block;aspect-ratio:1/1;background:#F1EEE6;border:1px solid #111111;padding:10px}
+.fmat img{width:100%;height:100%;object-fit:contain;display:block;filter:grayscale(1) contrast(1.1);transition:filter .3s}
 .fpics a:hover img,.fpics a:focus-visible img{filter:none}
-.fpics .mat{border-radius:0;background:var(--surface-2)}
+.fp-t{display:block;font:700 15px/1.3 Georgia,serif;margin-top:8px}.fpics a:hover .fp-t,.fpics a:focus-visible .fp-t{text-decoration:underline}
+.fp-c{display:block;font:12px/1.35 var(--sans);color:#555049;text-transform:uppercase;letter-spacing:.06em}
+@media (min-width:700px){.fpics{grid-template-columns:repeat(3,minmax(0,1fr))}.fpics li{padding:12px;border-bottom:0;border-right:1px solid #111111}.fpics li:first-child{padding-left:0}.fpics li:last-child{border-right:0;padding-right:0}}
+/* R3 S2: the briefs, in newspaper columns */
+.briefs-s{margin-top:28px}
+.briefs-s>h2{font:700 clamp(1.5rem,1.1rem + 1.4vw,2.2rem)/1.1 var(--head);margin:4px 0 10px}
+.briefs{column-count:1;column-gap:32px;column-rule:1px solid #111111;border-top:4px solid #111111;padding-top:12px}
+.bday{break-inside:avoid;margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid #111111}
+.briefs .dl{break-after:avoid;font:700 11px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#B3121B;margin:0 0 4px}
+.briefs p{font:15px/1.4 Georgia,serif;color:#111111;margin:0 0 6px}
+.briefs .t{font:700 13px var(--mono)}
+.briefs .kind{display:block;font:700 10px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#555049}
+.bday.ev{background:#F1EEE6;padding:8px}
+.evl{font:700 11px/1.3 var(--sans)!important;letter-spacing:.1em;text-transform:uppercase;border-bottom:2px solid #111111;padding-bottom:4px}
+.briefs-s .td-after,.briefs-s .td-note{font:.85rem/1.45 var(--sans);color:#555049}
+.briefs-s .td-after{color:#111111}
+@media (min-width:700px){.briefs{column-count:2}.bday{border-bottom:0}}
+@media (min-width:1100px){.briefs{column-count:4}}
 .cols{display:grid;gap:0;margin-top:28px;border-top:3px solid var(--ink)}
 @media (min-width:760px){.cols{grid-template-columns:repeat(3,1fr)}.story{border-left:1px solid var(--line);padding:16px 18px!important}.story:nth-child(3n+1){border-left:0;padding-left:0!important}}
 .story{padding:16px 0;border-bottom:1px solid var(--line)}
@@ -341,6 +479,21 @@ const langRows = () => {
   const rows = [...LANGUAGES.speaks.map(l => [l.code, l.name, 'speaks']), ...LANGUAGES.interest.map(l => [l.code || '{ }', l.name, 'an interest in'])];
   return `<svg class="lrows" viewBox="0 0 360 ${rows.length * 36 + 30}" role="img" aria-labelledby="clr-t clr-d"><title id="clr-t">Languages</title><desc id="clr-d">${esc(LANGUAGES.figure.desc)}</desc>${rows.map((r, i) => `<g transform="translate(0 ${i * 36})"><rect width="300" height="28" rx="4" class="${r[2] === 'speaks' ? 'lr-on' : 'lr-off'}"/><text x="12" y="19" class="lr-k">${esc(r[0])}</text><text x="64" y="19">${esc(r[1])}</text><text x="288" y="19" text-anchor="end" class="lr-s">${esc(r[2])}</text></g>`).join('')}<path d="M308 112 h8 V172 h-8" class="lr-br"/><text x="0" y="${rows.length * 36 + 20}" class="lr-s">bracket: ${esc(LANGUAGES.sameInterest.text)} (his words)</text></svg>`;
 };
+// R3 S2: the ten days as one log, with a line number gutter and kind as a word in its colour; 7 and 8 November a
+// date only (C92); 14 November marked derived. Pictures as image viewer windows with their real file names and the
+// dates as /built/ gives them (C94).
+const KSHORT = e => (e.derived ? 'derived' : { his: 'his work', team: 'the team', event: 'the event' }[e.kind]);
+const conLog = () => {
+  const rows = [];
+  for (const iso of tdDays()) {
+    const list = tdOn(iso);
+    if (!list.length) rows.push(`<li class="gap"><span class="meta"><time datetime="${iso}">${iso}</time></span></li>`);
+    for (const e of list) rows.push(`<li class="k-${e.kind}"><span class="meta"><time datetime="${iso}">${iso}</time> <span class="tl-t">${e.time ? esc(e.time) : ''}</span> <span class="tl-k">${KSHORT(e)}</span></span> <span class="tl-x">${esc(e.label)}${ref(e.sources)}</span></li>`);
+  }
+  for (const e of TEN_DAYS.filter(x => x.derived)) rows.push(`<li class="derived"><span class="meta"><time datetime="${e.date}">${e.date}</time> <span class="tl-t"></span> <span class="tl-k">derived</span></span> <span class="tl-x">${esc(e.label)} <span class="dim">(date derived: ${esc(e.how)})</span>${ref(e.sources)}</span></li>`);
+  return `<ol class="clog">${rows.join('')}</ol>${tdNote('dim td-note')}`;
+};
+const conWins = () => `<ul class="wins" aria-labelledby="pics-h">${WORK_PICS.map(w => `<li class="win"><a href="${w.href}"><span class="wbar"><span class="wf">${esc(w.src.split('/').pop())}</span> <span class="wd">${esc(w.line)}</span></span><img src="${w.src}" ${imgDims(w.src)} alt="${esc(w.alt)}" loading="lazy" decoding="async"><span class="wt">${esc(w.title)}</span></a></li>`).join('')}</ul>`;
 const consolePage = page({
   path: '/d/console/', title: designTitle(D.console), description: DESC, share: 'console', css: ['/d/console/style.css'], cls: 'd-console', design: 'console', scheme: 'dark',
   hdr: {
@@ -355,10 +508,10 @@ const consolePage = page({
 <div class="counters">${HOME_FIGURES.map(f => `<p><b class="${f.id === 'agents' ? 'g' : ''}">${esc(f.value)}</b><span>${esc(f.label)}${ref(f.sources)}</span></p>`).join('')}</div>
 </section>
 <section class="pn tfp" aria-labelledby="tf-h"><h2 id="tf-h">team: web-summit.indi</h2>${teamFigure({ id: 'cteam' })}</section>
-<section class="pn wide" aria-labelledby="wk-h"><h2 id="wk-h">the week: ${esc('3 to 13 November 2026')}</h2>${tenDaysLog()}</section>
+<section class="pn wide" aria-labelledby="wk-h"><h2 id="wk-h">tail ten-days.log</h2><p class="dim">${esc(tdTitle)}</p>${conLog()}</section>
 <section class="pn wide" aria-labelledby="log-h"><h2 id="log-h">${esc(WE_BUILT)}</h2><p class="dim">His words, from his post${ref('whatsapp')}.</p>
 <ul class="log">${WORKS.map(b => `<li><span class="ok" aria-hidden="true">✓</span> <a href="/built/#${b.id}">${esc(b.title)}</a> <span class="dim">· ${esc(b.link.text)}</span></li>`).join('')}</ul>
-${workPics({ cls: 'cpics' })}</section>
+<h3 class="ls-h" id="pics-h">ls pictures/</h3>${conWins()}</section>
 <section class="pn wide">${chartCommits('ccc', 'h2')}</section>
 <section class="pn wide">${chartMap('ccm', 'h2')}</section>
 <section class="pn wide">${chartActivity('cca', 'h2')}</section>
@@ -408,11 +561,26 @@ out('/d/console/style.css', `/* Agent Console: a terminal multiplexer; the heade
 .counters b{font:600 1.7rem/1 var(--mono);white-space:nowrap}.counters .g{color:var(--accent)}.counters span{font-size:.8rem;color:var(--muted)}
 .log{list-style:none;padding:0;margin:0;font-family:var(--mono);font-size:.85rem}.log li{padding:6px 0;border-bottom:1px solid var(--line)}.log a{color:var(--ink);display:inline-flex;align-items:center;min-height:44px}.ok{color:var(--accent)}
 .log time{display:inline;color:var(--muted);margin-right:8px}
-.tlog{list-style:none;padding:0;margin:0;font:.82rem/1.5 var(--mono)}
-.tlog li{display:grid;grid-template-columns:auto;padding:6px 0;border-bottom:1px solid var(--line)}
-.tlog time{color:var(--muted)}.tl-t{color:var(--warm);white-space:pre}.tl-k{color:var(--accent)}.tl-x{font-family:var(--sans);font-size:.92rem}
-@media (min-width:760px){.tlog li{grid-template-columns:96px 52px 70px 1fr;gap:10px;align-items:baseline}}
-.cpics{margin-top:16px}.cpics .mat{background:#0E151D;border:1px solid var(--line);border-radius:0}
+/* R3 S2: the log, line numbered */
+.clog{counter-reset:ln;list-style:none;margin:0;padding:6px 0;font:13px/1.6 var(--mono);background:#0B1016;border:1px solid #1F2B38}
+.clog li{counter-increment:ln;display:grid;grid-template-columns:28px minmax(0,1fr);gap:0 10px;padding:4px 12px}
+.clog li::before{content:counter(ln,decimal-leading-zero);color:#8395A3;grid-row:1/3}
+.clog .meta{display:flex;flex-wrap:wrap;gap:0 12px}
+.clog time{color:#8395A3}
+.clog .tl-t{color:#F2C14E}.clog .tl-t:empty{display:none}
+.clog .tl-k{font-weight:700}
+.clog .k-his .tl-k{color:#5BD69B}.clog .k-team .tl-k{color:#D7E3EA}.clog .k-event .tl-k{color:#F2C14E}.clog .derived .tl-k{color:#F2C14E}
+.clog .tl-x{color:#D7E3EA;grid-column:2}
+@media (min-width:760px){.clog li{grid-template-columns:40px 96px 48px 80px minmax(0,1fr);gap:0 12px;align-items:baseline}.clog li::before{grid-row:auto}.clog .meta{display:contents}.clog .tl-t:empty{display:block}.clog .tl-x{grid-column:auto}}
+/* R3 S2: the pictures as image viewer windows */
+.ls-h{font:600 1rem var(--mono);color:var(--accent);margin:22px 0 10px}.ls-h::before{content:"$ ";color:var(--muted)}
+.wins{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:760px){.wins{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.win{background:#121A23;border:1px solid #1F2B38}
+.win a{display:block;color:#D7E3EA;text-decoration:none}
+.wbar{display:flex;flex-wrap:wrap;gap:0 10px;font:12px/1.4 var(--mono);color:#8395A3;padding:6px 10px;border-bottom:1px solid #1F2B38}.wf{color:#D7E3EA}
+.win img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#0B1016}
+.wt{display:block;font:600 13px var(--mono);padding:8px 10px;color:#5BD69B}.win a:hover .wt,.win a:focus-visible .wt{text-decoration:underline}
 /* the team figure in the dark palette */
 .d-console .teamfig .chip{background:#0E151D}
 .d-console .tf-groups{grid-template-columns:1fr}
@@ -430,6 +598,17 @@ out('/d/console/style.css', `/* Agent Console: a terminal multiplexer; the heade
 const CA = D.card.copy;
 const LANG_CODES = ['en', 'it', 'fr'];
 const marks = '<span class="cm tl" aria-hidden="true"></span><span class="cm tr" aria-hidden="true"></span><span class="cm bl" aria-hidden="true"></span><span class="cm br" aria-hidden="true"></span>';
+// R3 S2: inside More, the two strips lie on the desk: each picture an 85:55 card, each day a small index card; the
+// event days on the card-back blue; 7 and 8 November dashed, the day label only (C92); 14 November in the line under.
+const SWD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const deskStrip = () => `<div class="desk-strip">
+<section aria-labelledby="ks-p"><h2 id="ks-p">His work, in pictures</h2><ul class="kpics">${WORK_PICS.map(w => `<li><a href="${w.href}"><span class="kc"><img src="${w.src}" ${imgDims(w.src)} alt="${esc(w.alt)}" loading="lazy" decoding="async"></span><span class="kt">${esc(w.title)}</span><span class="kl">${esc(w.line)}</span></a></li>`).join('')}</ul></section>
+<section aria-labelledby="ks-d"><h2 id="ks-d">${esc(tdTitle)}</h2><p class="kev-l"><span class="kev-sw" aria-hidden="true"></span>Blue cards: ${esc(tdEventLabel())}</p>
+<ol class="kdays">${tdDays().map(iso => { const list = tdOn(iso), d = new Date(iso + 'T12:00Z'); return `<li class="${list.length ? '' : 'empty'}${tdInEvent(iso) ? ' ev' : ''}"><time class="d" datetime="${iso}">${SWD[d.getUTCDay()]} ${d.getUTCDate()}</time>${list.length ? `<ul>${list.map(e => `<li><span class="kk">${TD_KIND[e.kind]}</span>${e.time ? ` <time class="kti">${esc(e.time)}</time>` : ''} ${esc(e.label)}${ref(e.sources)}</li>`).join('')}</ul>` : ''}</li>`; }).join('')}</ol>
+${tdAfter()}
+${tdNote()}
+</section>
+</div>`;
 const cardPage = page({
   path: '/d/card/', title: designTitle(D.card), description: DESC, share: 'card', css: ['/d/card/style.css'], cls: 'd-card', design: 'card', scheme: 'dark', ask: false,
   hdr: {
@@ -458,9 +637,9 @@ const cardPage = page({
 </div>
 <div class="wrap">
 <details id="more" class="cmore"><summary>More about Indi</summary>
+${deskStrip()}
 <div class="msheet">
-<section><h2>What he built</h2>${fact(worksList(), ['whatsapp'])}${workPics({ cls: 'mpics' })}${fact(`<p>In his words: "${esc(CARDS_QUOTE)}". ${esc(BUILT.find(b => b.id === 'cards').paragraph)}</p>`, BUILT.find(b => b.id === 'cards').sources)}</section>
-<section>${tenDays({ id: 'card-days', title: 'His ten days, 3 to 13 November 2026', cls: 'narrow' })}</section>
+<section><h2>What he built</h2>${fact(worksList(), ['whatsapp'])}${fact(`<p>In his words: "${esc(CARDS_QUOTE)}". ${esc(BUILT.find(b => b.id === 'cards').paragraph)}</p>`, BUILT.find(b => b.id === 'cards').sources)}</section>
 <section><h2>How he works</h2>${fact(`<p>${esc(TEAM_LINE)}. ${esc(COMMITS_LINE)}. ${esc(AGENTS.howHeWorks[0].text)}</p><p><a class="more" href="/how-i-work/">His agent teams, drawn</a></p>`, [...TEAM_SRC, ...COMMITS_SRC, ...AGENTS.howHeWorks[0].sources])}</section>
 <section><h2>Languages</h2>${languagesFigure('clf')}</section>
 <section><h2>Background</h2>${fact(timeline(), ['linkedin', 'ws-home'])}</section>
@@ -475,7 +654,7 @@ out('/d/card/style.css', `/* The Card: his personal card, front and back, on a d
 .d-card{--bg:#24231F;--surface:#2E2C27;--surface-2:#34322C;--ink:#EDEAE3;--muted:#B5B0A5;--line:#3A3832;--accent:#F2B38F;--accent-soft:#3A342D;--on-accent:#1A1A1A;--warm:#F2B38F;--focus:#F2B38F;--head:"Gill Sans","Gill Sans MT",Seravek,"Trebuchet MS",system-ui,sans-serif;--lf-tile:#F2B38F;--lf-on:#1A1A1A;--lf-warm:#F2B38F;--c-on:#F2B38F;--c-on-t:#1A1A1A;--c-bar:#F2B38F;color-scheme:dark}
 .d-card body,.d-card{background:#24231F}
 .d-card main{font-family:var(--head)}
-.d-card .band{border-top:0;border-bottom:0}.d-card .designs-btn .lbl{font-variant-caps:normal;font-size:inherit;letter-spacing:inherit}.d-card .home,.d-card .menu summary,.d-card .src-icon,.d-card .designs-btn{color:var(--ink);border-color:var(--line)}.d-card .nav-wide a+a::before{content:none}.d-card .band-ask{font-variant-caps:normal}.d-card .home-name{font:inherit;font-variant-caps:normal}
+.d-card .band{border-top:0;border-bottom:0;--focus:#F2B38F}.d-card .designs-btn .lbl{font-variant-caps:normal;font-size:inherit;letter-spacing:inherit}.d-card .home,.d-card .menu summary,.d-card .src-icon,.d-card .designs-btn{color:var(--ink);border-color:var(--line)}.d-card .nav-wide a+a::before{content:none}.d-card .band-ask{font-variant-caps:normal}.d-card .home-name{font:inherit;font-variant-caps:normal}
 /* header on the desk */
 .d-card .band{background:transparent;color:var(--ink);font-family:var(--head)}
 .d-card .band-ask{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
@@ -529,13 +708,37 @@ out('/d/card/style.css', `/* The Card: his personal card, front and back, on a d
 }
 @media (max-width:1099px) and (prefers-reduced-motion:reduce){.cards.js .cw{transform:none!important;transition:opacity .2s!important}.cards.js .back-w{opacity:0}.cards.js.flipped .front-w{opacity:0}.cards.js.flipped .back-w{opacity:1}}
 /* More: everything that does not fit on a card, on a light sheet */
-.cmore{margin:32px auto 0;max-width:820px}
+.cmore{margin:32px auto 0;max-width:1120px}
+.cmore>summary,.msheet{max-width:820px;margin-left:auto;margin-right:auto}
 .cmore>summary{min-height:48px;display:flex;align-items:center;justify-content:center;font:600 .9rem var(--head);letter-spacing:.14em;text-transform:uppercase;border:1px solid #5A5750;color:var(--ink);list-style:none}
 .cmore>summary::-webkit-details-marker{display:none}
 .msheet{--bg:#EDEAE3;--surface:#FFFFFF;--surface-2:#E3DED3;--ink:#1A1A1A;--muted:#5B5B5B;--line:#CFC8BA;--accent:#1E4D8C;--accent-soft:#E3DED3;--on-accent:#FFFFFF;--warm:#8F3415;--focus:#B4471F;--evband:#E3DED3;--run:#1F7A4D;--lf-tile:#1E4D8C;--lf-on:#FFFFFF;--lf-warm:#8F3415;background:#EDEAE3;color:#1A1A1A;padding:8px 24px 24px;margin-top:12px}
 .msheet section{border-top:1px solid var(--line);padding-top:12px}.msheet section:first-child{border-top:0}
 .msheet .btn-primary{background:#1A1A1A;color:#fff}
 .d-card .foot{background:#24231F}
+/* R3 S2: the strips on the desk */
+.desk-strip{max-width:1120px;margin:0 auto;padding:32px 0 8px;color:#EDEAE3;--focus:#F2B38F}
+.desk-strip h2{font:600 1.3rem var(--head);letter-spacing:.06em;color:#EDEAE3;margin:0 0 16px}
+.desk-strip section+section{margin-top:36px}
+.kpics{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:32px}
+.kpics a{display:block;color:#EDEAE3;text-decoration:none}
+.kc{display:block;aspect-ratio:85/55;background:#FFFFFF;border-radius:6px;padding:10px;box-shadow:0 2px 0 rgba(0,0,0,.25),0 20px 40px -16px rgba(0,0,0,.6)}
+.kc img{width:100%;height:100%;object-fit:contain;display:block}
+.kt{display:block;font:600 15px/1.3 var(--head);margin-top:12px}.kl{display:block;font:13px/1.4 var(--head);color:#EDEAE3}
+.kpics a:hover .kt,.kpics a:focus-visible .kt{text-decoration:underline}
+.kev-l{display:flex;align-items:center;gap:8px;font:13px var(--head);color:#EDEAE3;margin:-6px 0 14px}.kev-sw{width:18px;height:12px;border-radius:2px;background:#1E4D8C;outline:1px solid #C9D8EE}
+.kdays{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.kdays>li{background:#FFFFFF;color:#1A1A1A;border-radius:6px;padding:12px;font:14px/1.35 var(--head);box-shadow:0 1px 0 rgba(0,0,0,.25),0 12px 24px -12px rgba(0,0,0,.6);--focus:#B4471F;min-width:0}
+.kdays .d{display:block;font:600 13px var(--head);letter-spacing:.12em;text-transform:uppercase;color:#B4471F;margin-bottom:6px}
+.kdays ul{list-style:none;margin:0;padding:0}.kdays ul li{margin:0 0 8px;overflow-wrap:break-word}.kdays ul li:last-child{margin:0}
+.kk{display:block;font:700 10px/1.4 var(--head);letter-spacing:.1em;text-transform:uppercase;color:#5B5B5B}
+.kti{font:600 13px var(--mono)}
+.kdays>li .refs a{color:#B4471F}
+.kdays>li.ev{background:#1E4D8C;color:#FFFFFF;--focus:#FFFFFF}.kdays .ev .d,.kdays .ev .kk{color:#C9D8EE}.kdays>li.ev .refs a{color:#FFFFFF}
+.kdays>li.empty{background:transparent;border:1px dashed #B5B0A5;box-shadow:none}.kdays .empty .d{color:#EDEAE3}
+.desk-strip .td-after,.desk-strip .td-note{font:.85rem/1.45 var(--head);color:#EDEAE3;margin:14px 0 0}
+.desk-strip .td-after .muted{color:#B5B0A5}.desk-strip .refs a{color:#F2B38F}
+@media (min-width:700px){.kpics{grid-template-columns:repeat(3,minmax(0,1fr))}.kdays{grid-template-columns:repeat(auto-fill,minmax(168px,1fr))}}
 @media print{.cbtns{display:none}.cards.js .cw{transform:none!important}.cmore{display:block}}
 `);
 

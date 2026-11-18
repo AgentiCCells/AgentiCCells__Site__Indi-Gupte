@@ -1,7 +1,7 @@
 // Make the site's rendered images. Needs Playwright with Chromium; --work also needs ImageMagick's convert.
 // Copyright 2026 AgentiCCells. Code Apache-2.0. Adapted from the Marc Noah site's scripts/cards.mjs (Apache-2.0,
 // https://github.com/AgentiCCells/AgentiCCells__Site__Marc-Noah/blob/dev/scripts/cards.mjs, read 2026-11-18).
-// Written by developer.indi-gupte@AgentiCCells.dinis, round 1. Round 2: the Briefing card's seal moves off the photo to
+// Written by developer.indi-gupte@AgentiCCells.dinis, round 1. Round 3: a share card per design (S3). Round 2: the Briefing card's seal moves off the photo to
 // x 1020 to 1140, y 60 to 180 (R6.5); previews are remade after each design restyles its header (R2.6).
 //   node scripts/cards.mjs                       the 1200x630 share cards into src/assets/share/ (each under 300 KB),
 //                                                from his headshot in the reviewer's crop (C9, C42) and the facts
@@ -12,7 +12,8 @@
 import { mkdirSync, statSync, readFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { PERSON, ASK, DESIGNS, SITE } from '../data/facts.mjs';
+import { PERSON, ASK, DESIGNS, SITE, LINGUA_SHARE_CARD } from '../data/facts.mjs';
+const CARD_FRONT = DESIGNS.find(d => d.slug === 'card').copy.front;
 import { TEAM_LINE } from './lib.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const args = process.argv.slice(2);
@@ -60,23 +61,76 @@ if (args[0] === '--designs') {
 const PHOTO = `data:image/jpeg;base64,${readFileSync('src/assets/indi-gupte.jpg').toString('base64')}`;
 const crop = (size, extra = '') => `<div style="width:${size}px;height:${size}px;overflow:hidden;position:relative;${extra}"><img src="${PHOTO}" style="position:absolute;width:129.032%;left:-29.032%;top:-8.065%;max-width:none"></div>`;
 const host = SITE.replace(/^https:\/\//, '');
-const card = ({ bg, ink, accent, sub, serif = 'Charter,\'Bitstream Charter\',\'Iowan Old Style\',Georgia,\'DejaVu Serif\',serif', frame = '#FAF7F1', deco = '', line = PERSON.tagline.text, sans = 'system-ui,\'DejaVu Sans\',sans-serif' }) => `<html><body style="margin:0;width:1200px;height:630px;overflow:hidden;background:${bg};color:${ink};position:relative;font-family:${sans}">
-${deco}
-<div style="position:absolute;left:72px;top:135px;border:4px solid ${frame};border-radius:16px;overflow:hidden">${crop(360)}</div>
-<div style="position:absolute;left:510px;top:150px;right:60px">
-<div style="font-family:${serif};font-size:88px;font-weight:600;line-height:1">${PERSON.name}</div>
-<div style="font-size:48px;color:${accent};margin-top:26px;font-weight:600">${ASK.short}</div>
-<div style="font-size:30px;color:${sub};margin-top:22px">${line}</div>
-</div>
-<div style="position:absolute;right:60px;bottom:58px;font-size:28px">${host}</div>
-</body></html>`;
+
+// Round 3 (S3, C96 to C98): a card per design, each drawn in its design's look with the page's own font stacks.
+// Every card: the crop (never the whole photo, C9), the name, "Looking for work experience" and the address.
+const F = {
+  sans: 'system-ui,-apple-system,\'Segoe UI\',Roboto,\'Helvetica Neue\',Arial,\'Noto Sans\',\'DejaVu Sans\',sans-serif',
+  serif: 'Charter,\'Bitstream Charter\',\'Iowan Old Style\',\'Palatino Linotype\',Palatino,Georgia,\'DejaVu Serif\',serif',
+  mono: 'ui-monospace,\'SF Mono\',\'Cascadia Mono\',\'Segoe UI Mono\',Menlo,Consolas,\'Liberation Mono\',\'DejaVu Sans Mono\',monospace',
+  bodoni: '\'Bodoni 72\',Didot,\'Bodoni MT\',\'Big Caslon\',Georgia,\'DejaVu Serif\',serif',
+  georgia: 'Georgia,\'Times New Roman\',\'DejaVu Serif\',serif',
+  gill: '\'Gill Sans\',\'Gill Sans MT\',Seravek,\'Trebuchet MS\',system-ui,\'DejaVu Sans\',sans-serif',
+};
+const at = (x, y, style, html) => `<div style="position:absolute;left:${x}px;top:${y}px;${style}">${html}</div>`;
+const sheet = (bg, body, font = F.sans) => `<html><body style="margin:0;width:1200px;height:630px;overflow:hidden;background:${bg};position:relative;font-family:${font}">${body}</body></html>`;
+const NAME = PERSON.name, ASKS = ASK.short;
+const card = (deco, ask) => sheet('#1B2333', `${deco}
+${at(72, 135, 'border:4px solid #FAF7F1;border-radius:16px;overflow:hidden', crop(360))}
+${at(510, 150, 'right:60px;color:#FFFFFF', `<div style="font-family:${F.serif};font-size:88px;font-weight:600;line-height:1">${NAME}</div><div style="font-size:48px;color:#F2C29A;margin-top:26px;font-weight:600">${ask}</div><div style="font-size:30px;color:#D7DCE4;margin-top:22px">${PERSON.tagline.text}</div>`)}
+<div style="position:absolute;right:60px;bottom:58px;font-size:28px;color:#FFFFFF">${host}</div>`);
+const SEAL_SVG = (size, ink, paper) => `<svg width="${size}" height="${size}" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="${paper}" stroke="${ink}" stroke-width="4"/><circle cx="60" cy="60" r="46" fill="none" stroke="${ink}" stroke-width="2"/><text x="60" y="74" text-anchor="middle" font-family="${F.serif.replace(/'/g, '')}" font-size="40" fill="${ink}">IG</text></svg>`;
+const [EN, IT, FR] = LINGUA_SHARE_CARD.languagesLine.text.split(' · ');
+const lpanel = (x, bg, tint, code, name, ask = '') => at(x, 300, `width:400px;height:330px;box-sizing:border-box;padding:40px;background:${bg};color:#FFFFFF`,
+  `<div style="font:700 18px ${F.sans};letter-spacing:.16em;color:${tint}">${code}</div><div style="font:700 48px/1 ${F.sans};margin-top:14px">${name}</div>${ask ? `<div style="font:600 30px/1.25 ${F.sans};margin-top:22px">${ask}</div>` : ''}`);
 const CARDS = {
-  'indi-gupte': card({ bg: '#1B2333', ink: '#FFFFFF', accent: '#F2C29A', sub: '#D7DCE4', deco: '<div style="position:absolute;left:0;top:0;bottom:0;width:12px;background:#F2C29A"></div>' }),
-  briefing: card({ bg: '#13233F', ink: '#F7F4EC', accent: '#F09A8E', sub: '#D7DCE4', deco: '<svg width="120" height="120" style="position:absolute;left:1020px;top:60px"><circle cx="60" cy="60" r="56" fill="#13233F" stroke="#F09A8E" stroke-width="4"/><circle cx="60" cy="60" r="46" fill="none" stroke="#F09A8E" stroke-width="2"/><text x="60" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#F7F4EC">IG</text></svg>' }),
-  lingua: card({ bg: '#F5EFE3', ink: '#1F1A14', accent: '#8C2A3B', sub: '#5A5246', frame: '#1F1A14', deco: '<div style="position:absolute;left:0;right:0;bottom:0;height:16px;display:flex"><i style="flex:1;background:#1E4D8C"></i><i style="flex:1;background:#1F6B3A"></i><i style="flex:1;background:#8C2A3B"></i><i style="flex:1;background:#9A4A00"></i><i style="flex:1;background:#4B3F8C"></i></div>', line: 'English · italiano · français' }),
-  'front-page': card({ bg: '#FBFAF6', ink: '#111111', accent: '#B3121B', sub: '#555049', frame: '#111111', serif: '\'Bodoni 72\',Didot,Georgia,\'DejaVu Serif\',serif', deco: '<div style="position:absolute;left:60px;right:60px;top:70px;border-top:6px solid #111;border-bottom:2px solid #111;height:8px"></div>' }),
-  console: card({ bg: '#0B1016', ink: '#D7E3EA', accent: '#F2C14E', sub: '#5BD69B', frame: '#5BD69B', sans: 'ui-monospace,\'DejaVu Sans Mono\',monospace', serif: 'ui-monospace,\'DejaVu Sans Mono\',monospace', line: TEAM_LINE }),
-  card: card({ bg: '#EDEAE3', ink: '#1A1A1A', accent: '#B4471F', sub: '#5B5B5B', frame: '#FFFFFF', sans: '\'Gill Sans\',\'Gill Sans MT\',Seravek,\'Trebuchet MS\',\'DejaVu Sans\',sans-serif', serif: '\'Gill Sans\',\'Gill Sans MT\',Seravek,\'Trebuchet MS\',\'DejaVu Sans\',sans-serif' }),
+  // Inner pages: unchanged from round 2.
+  'indi-gupte': card('<div style="position:absolute;left:0;top:0;bottom:0;width:12px;background:#F2C29A"></div>', ASKS),
+  // The Briefing: the note on cream, an oxblood rule, the seal.
+  briefing: sheet('#F7F4EC', `<div style="position:absolute;left:0;right:0;top:0;height:8px;background:#8C1D18"></div>
+${at(60, 40, `font:600 20px ${F.sans};letter-spacing:.08em;color:#13233F;text-transform:uppercase`, `Briefing note · ${ASKS}`)}
+${at(60, 150, 'border:3px solid #13233F;line-height:0', crop(300))}
+${at(410, 170, `font:600 96px/1 ${F.serif};color:#13233F`, NAME)}
+${at(410, 300, `font:600 40px/1.2 ${F.serif};color:#8C1D18`, ASKS)}
+${at(410, 510, `font:26px ${F.sans};color:#4A5468`, host)}
+${at(1020, 440, '', SEAL_SVG(120, '#8C1D18', '#F7F4EC'))}
+<div style="position:absolute;left:60px;right:60px;top:590px;border-top:3px solid #13233F;border-bottom:1px solid #13233F;height:3px"></div>`),
+  // Lingua: the triptych; the ask in English only, with the three language names (C97, LINGUA_SHARE_CARD).
+  lingua: sheet('#EEF1F4', `${at(60, 30, 'line-height:0', crop(240))}
+${at(340, 60, `font:700 64px/1 ${F.sans};color:#16202B`, NAME)}
+${at(340, 150, `font:26px ${F.sans};color:#4A5563`, host)}
+${lpanel(0, '#1E4D8C', '#DCE6F5', 'EN', EN, LINGUA_SHARE_CARD.ask.text)}
+${lpanel(400, '#1F6B3A', '#D6EBDD', 'IT', IT)}
+${lpanel(800, '#8C2A3B', '#F5DCE1', 'FR', FR)}`),
+  // Front Page: the masthead, "Wanted", the headline, his photo in black and white.
+  'front-page': sheet('#FBFAF6', `<div style="position:absolute;left:60px;right:60px;top:60px;border-top:6px solid #111111"></div><div style="position:absolute;left:60px;right:60px;top:72px;border-top:2px solid #111111"></div>
+${at(60, 84, `right:60px;text-align:center;font:700 96px/106px ${F.bodoni};color:#111111`, NAME)}
+<div style="position:absolute;left:60px;right:60px;top:200px;border-top:1px solid #111111"></div>
+${at(60, 210, `right:60px;text-align:center;font:600 18px/20px ${F.sans};letter-spacing:.1em;text-transform:uppercase;color:#111111`, host)}
+<div style="position:absolute;left:60px;right:60px;top:240px;border-top:1px solid #111111"></div>
+${at(60, 280, `font:700 18px ${F.sans};letter-spacing:.1em;text-transform:uppercase;color:#B3121B`, 'Wanted')}
+${at(60, 310, `width:640px;font:700 64px/1.05 ${F.georgia};color:#111111`, ASKS)}
+${at(780, 266, 'border:1px solid #111111;line-height:0;filter:grayscale(1) contrast(1.1)', crop(300))}
+<div style="position:absolute;left:60px;right:60px;top:590px;border-top:4px solid #111111"></div>`, F.georgia),
+  // Agent Console: the status line, the operator panel, the address as a command.
+  console: sheet('#0B1016', `${at(0, 0, `right:0;height:64px;background:#5BD69B;color:#0B1016;font:700 28px/64px ${F.mono};padding-left:60px`, `● status: ${ASKS.toUpperCase()}`)}
+<div style="position:absolute;left:60px;top:110px;width:1080px;height:460px;box-sizing:border-box;background:#121A23;border:1px solid #1F2B38"></div>
+${at(100, 150, 'border:2px solid #5BD69B;line-height:0', crop(260))}
+${at(410, 160, `font:22px ${F.mono};color:#8395A3`, 'operator')}
+${at(410, 195, `font:700 72px/1.1 ${F.mono};color:#D7E3EA`, NAME)}
+${at(410, 330, `font:28px/30px ${F.mono};color:#5BD69B;white-space:nowrap`, `$ open ${host}<span style="display:inline-block;width:16px;height:30px;background:#5BD69B;vertical-align:-6px;margin-left:6px"></span>`)}
+${at(410, 390, `font:24px ${F.mono};color:#8395A3`, TEAM_LINE.replace(/^A /, 'a '))}`, F.mono),
+  // The Card: his card on the dark desk, with crop marks; the ask under the photo at 28 px (C96).
+  card: sheet('radial-gradient(60% 60% at 50% 45%, #34322C 0%, #24231F 70%)', `${[[196, 45, 'right', 'bottom'], [980, 45, 'left', 'bottom'], [196, 561, 'right', 'top'], [980, 561, 'left', 'top']].map(([x, y, a, b]) => `<div style="position:absolute;left:${x}px;top:${y}px;width:24px;height:24px;border-${a}:1px solid #8A857A;border-${b}:1px solid #8A857A"></div>`).join('')}
+<div style="position:absolute;left:220px;top:69px;width:760px;height:492px;background:#FFFFFF;border-radius:10px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);font-family:${F.gill};color:#1A1A1A">
+${at(48, 48, 'border-radius:8px;overflow:hidden;line-height:0', crop(180))}
+${at(260, 60, 'font-size:64px;font-weight:600;line-height:1.05', NAME)}
+${at(260, 140, 'font-size:24px;color:#5B5B5B;width:452px;line-height:1.3', CARD_FRONT[1])}
+<div style="position:absolute;left:48px;top:262px;width:300px;height:6px;background:#B4471F"></div>
+${at(48, 288, 'font-size:28px;letter-spacing:.12em;text-transform:uppercase;color:#B4471F;font-weight:600;white-space:nowrap', ASKS)}
+${at(48, 410, 'font-size:24px', host)}
+${at(48, 414, 'width:664px;text-align:right;font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:#5B5B5B', PERSON.place.text)}
+</div>`, F.gill),
 };
 mkdirSync('src/assets/share', { recursive: true });
 const browser = await chromium.launch();

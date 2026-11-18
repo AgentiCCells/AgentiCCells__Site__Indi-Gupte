@@ -1044,11 +1044,11 @@
    "slug": "lingua",
    "name": "Lingua",
    "idea": "A polyglot edition: his languages lead, and every section is titled in English, Italian and French.",
-   "leadsWith": "His name and the ask in English, Italian and French side by side, with his language tiles, in the first screen",
+   "leadsWith": "His three languages, each with the ask and the section titles in that language",
    "default": false,
    "copy": {
     "glossNote": {
-     "text": "Italian and French section titles are the site's translations, not his words.",
+     "text": "The Italian and French lines (the ask, the section titles and the weekday names) are the site's translations, not his words. They await Indi's approval.",
      "awaitingIndi": true
     }
    }
@@ -1328,6 +1328,12 @@
     "linkedin"
    ]
   },
+  "speaksLine": {
+   "text": "Speaks English, Italian and French; an interest in Sanskrit and in programming languages.",
+   "sources": [
+    "linkedin"
+   ]
+  },
   "leadsTo": {
    "text": "Modern Languages and International Relations, from next autumn (his words)",
    "sources": [
@@ -1367,6 +1373,19 @@
     ]
    }
   ]
+ },
+ "LINGUA_SHARE_CARD": {
+  "ask": {
+   "text": "Looking for work experience",
+   "lang": "en"
+  },
+  "languagesLine": {
+   "text": "English · Italiano · Français",
+   "sources": [
+    "linkedin"
+   ]
+  },
+  "decision": "Conductor, round 3, on C97: English only for the ask."
  },
  "LINGUA_TITLES": [
   {
@@ -1424,6 +1443,236 @@
    "it": "Fonti",
    "fr": "Sources",
    "awaitingIndi": true
+  }
+ ],
+ "LINGUA_TRIPTYCH": [
+  {
+   "lang": "en",
+   "code": "EN",
+   "name": {
+    "text": "English",
+    "lang": "en"
+   },
+   "ask": {
+    "text": "Looking for work experience",
+    "lang": "en"
+   },
+   "titles": [
+    {
+     "section": "built",
+     "text": "What I built",
+     "lang": "en"
+    },
+    {
+     "section": "how-i-work",
+     "text": "How I work",
+     "lang": "en"
+    },
+    {
+     "section": "languages",
+     "text": "Languages",
+     "lang": "en"
+    }
+   ],
+   "sources": [
+    "linkedin",
+    "whatsapp"
+   ]
+  },
+  {
+   "lang": "it",
+   "code": "IT",
+   "name": {
+    "text": "italiano",
+    "lang": "it"
+   },
+   "ask": {
+    "text": "Cerco un'esperienza di lavoro",
+    "lang": "it",
+    "awaitingIndi": true
+   },
+   "titles": [
+    {
+     "section": "built",
+     "text": "Cosa ho costruito",
+     "lang": "it",
+     "awaitingIndi": true
+    },
+    {
+     "section": "how-i-work",
+     "text": "Come lavoro",
+     "lang": "it",
+     "awaitingIndi": true
+    },
+    {
+     "section": "languages",
+     "text": "Lingue",
+     "lang": "it",
+     "awaitingIndi": true
+    }
+   ],
+   "sources": [
+    "linkedin",
+    "whatsapp"
+   ]
+  },
+  {
+   "lang": "fr",
+   "code": "FR",
+   "name": {
+    "text": "français",
+    "lang": "fr"
+   },
+   "ask": {
+    "text": "Je cherche une expérience professionnelle",
+    "lang": "fr",
+    "awaitingIndi": true
+   },
+   "titles": [
+    {
+     "section": "built",
+     "text": "Ce que j'ai construit",
+     "lang": "fr",
+     "awaitingIndi": true
+    },
+    {
+     "section": "how-i-work",
+     "text": "Comment je travaille",
+     "lang": "fr",
+     "awaitingIndi": true
+    },
+    {
+     "section": "languages",
+     "text": "Langues",
+     "lang": "fr",
+     "awaitingIndi": true
+    }
+   ],
+   "sources": [
+    "linkedin",
+    "whatsapp"
+   ]
+  }
+ ],
+ "LINGUA_WEEKDAYS": [
+  {
+   "id": "mon",
+   "en": {
+    "text": "Mon",
+    "lang": "en"
+   },
+   "it": {
+    "text": "lun",
+    "lang": "it",
+    "awaitingIndi": true
+   },
+   "fr": {
+    "text": "lun",
+    "lang": "fr",
+    "awaitingIndi": true
+   }
+  },
+  {
+   "id": "tue",
+   "en": {
+    "text": "Tue",
+    "lang": "en"
+   },
+   "it": {
+    "text": "mar",
+    "lang": "it",
+    "awaitingIndi": true
+   },
+   "fr": {
+    "text": "mar",
+    "lang": "fr",
+    "awaitingIndi": true
+   }
+  },
+  {
+   "id": "wed",
+   "en": {
+    "text": "Wed",
+    "lang": "en"
+   },
+   "it": {
+    "text": "mer",
+    "lang": "it",
+    "awaitingIndi": true
+   },
+   "fr": {
+    "text": "mer",
+    "lang": "fr",
+    "awaitingIndi": true
+   }
+  },
+  {
+   "id": "thu",
+   "en": {
+    "text": "Thu",
+    "lang": "en"
+   },
+   "it": {
+    "text": "gio",
+    "lang": "it",
+    "awaitingIndi": true
+   },
+   "fr": {
+    "text": "jeu",
+    "lang": "fr",
+    "awaitingIndi": true
+   }
+  },
+  {
+   "id": "fri",
+   "en": {
+    "text": "Fri",
+    "lang": "en"
+   },
+   "it": {
+    "text": "ven",
+    "lang": "it",
+    "awaitingIndi": true
+   },
+   "fr": {
+    "text": "ven",
+    "lang": "fr",
+    "awaitingIndi": true
+   }
+  },
+  {
+   "id": "sat",
+   "en": {
+    "text": "Sat",
+    "lang": "en"
+   },
+   "it": {
+    "text": "sab",
+    "lang": "it",
+    "awaitingIndi": true
+   },
+   "fr": {
+    "text": "sam",
+    "lang": "fr",
+    "awaitingIndi": true
+   }
+  },
+  {
+   "id": "sun",
+   "en": {
+    "text": "Sun",
+    "lang": "en"
+   },
+   "it": {
+    "text": "dom",
+    "lang": "it",
+    "awaitingIndi": true
+   },
+   "fr": {
+    "text": "dim",
+    "lang": "fr",
+    "awaitingIndi": true
+   }
   }
  ],
  "LINKEDIN": "https://www.linkedin.com/in/indi-gupte-26960b318",
@@ -1757,7 +2006,7 @@
   },
   {
    "id": "lingua",
-   "q": "Do you approve the Italian and French section titles for the Lingua design (LINGUA_TITLES), or would you write them differently?"
+   "q": "Do you approve the Italian and French words in the Lingua design: the ask (\"Cerco un'esperienza di lavoro\", \"Je cherche une expérience professionnelle\"), the section titles and the weekday names on the calendar (LINGUA_TITLES, LINGUA_TRIPTYCH, LINGUA_WEEKDAYS), or would you write them differently?"
   },
   {
    "id": "front-page",

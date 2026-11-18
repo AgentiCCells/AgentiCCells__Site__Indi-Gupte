@@ -49,6 +49,10 @@
 .d-briefing .pics{grid-auto-columns:78%}
 .tendays{margin-top:36px;border-top:1px solid var(--line);padding-top:20px}
 .tendays>h2{margin-top:0;font-size:1.55rem}
+/* round 3 (S2): the two strips are annexes of the note */
+.bwork .sec-head h2,.d-briefing .tendays>h2{font:600 1.55rem/1.2 var(--serif)}
+@media (min-width:960px){.bwork .sec-head h2,.d-briefing .tendays>h2{font-size:28px}}
+.annex{color:var(--warm)}
 .sheet{margin-top:40px}
 @media (min-width:960px){.sheet{background:var(--surface);border:1px solid var(--line);padding:24px 56px 32px;box-shadow:0 30px 60px -40px rgba(19,35,63,.4)}}
 .bp{padding:28px 0 8px;border-bottom:1px solid var(--line)}

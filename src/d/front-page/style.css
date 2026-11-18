@@ -1,7 +1,7 @@
 /* Front Page: a broadsheet front page; the header is the masthead with two ears (R2.3, C25 to C29, C69). Fixed light palette. Code Apache-2.0. */
 .d-front{--bg:#FBFAF6;--surface:#FFFFFF;--surface-2:#F1EEE6;--ink:#111111;--muted:#555049;--line:#111111;--accent:#B3121B;--accent-soft:#F4E4E2;--on-accent:#FFFFFF;--warm:#B3121B;--focus:#B3121B;--head:"Bodoni 72",Didot,"Bodoni MT","Big Caslon",Georgia,serif;--evband:#F1EEE6;--run:#111111;--lf-tile:#111111;--lf-warm:#B3121B;--c-on:#111;--c-bar:#111;color-scheme:light}
 .d-front main{font-family:Georgia,"Times New Roman",serif}
-.d-front .band{border-top:0;border-bottom:0}.d-front .designs-btn .lbl{font-variant-caps:normal;font-size:inherit;letter-spacing:inherit}.d-front .home,.d-front .menu summary,.d-front .src-icon,.d-front .designs-btn{color:var(--ink);border-color:var(--line)}.d-front .nav-wide a+a::before{content:none}.d-front .band-ask{font-variant-caps:normal}.d-front .home-name{font:inherit}
+.d-front .band{border-top:0;border-bottom:0;--focus:#B3121B}.d-front .designs-btn .lbl{font-variant-caps:normal;font-size:inherit;letter-spacing:inherit}.d-front .home,.d-front .menu summary,.d-front .src-icon,.d-front .designs-btn{color:var(--ink);border-color:var(--line)}.d-front .nav-wide a+a::before{content:none}.d-front .band-ask{font-variant-caps:normal}.d-front .home-name{font:inherit}
 /* the masthead: ears, name, dateline, index */
 .d-front header.site{background:var(--bg);position:relative}
 .d-front .band{background:var(--bg);color:var(--ink);font-family:var(--sans)}
@@ -35,7 +35,7 @@
 }
 .paper{padding-top:24px}
 .fp-top{display:grid;gap:22px}
-@media (min-width:960px){.fp-top{grid-template-columns:8fr 4fr;grid-template-areas:"lead notice" "lead side"}.leadcol{grid-area:lead;border-right:1px solid var(--ink);padding-right:24px}.notice{grid-area:notice}.side{grid-area:side}}
+@media (min-width:960px){.fp-top{grid-template-columns:8fr 4fr;grid-template-rows:auto 1fr;grid-template-areas:"lead notice" "lead side"}.leadcol{grid-area:lead;border-right:1px solid var(--ink);padding-right:24px}.notice{grid-area:notice}.side{grid-area:side}}
 .notice{border:3px double var(--ink);padding:14px 16px;background:var(--surface);align-self:start}
 .notice h2{font:700 .8rem var(--sans);text-transform:uppercase;letter-spacing:.12em;margin:0 0 6px;color:var(--accent)}
 .notice p{font-size:1.05rem;margin:0 0 8px}
@@ -47,13 +47,34 @@
 @media (max-width:699px){.leadpic{float:none;margin:0 0 12px}.leadpic .headshot{--size:180px!important}}
 .drop::first-letter{float:left;font-family:var(--head);font-size:3.6em;line-height:.85;padding:4px 8px 0 0;font-weight:700}
 .fquote{font:italic 1.15rem Georgia,serif;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:10px 0;clear:both}
-.side h2,.numbers h2,.inpics h2,.fplang h2,.tendays.narrow>h2{font:700 .8rem var(--sans);text-transform:uppercase;letter-spacing:.12em;border-bottom:2px solid var(--ink);padding-bottom:4px;margin:0 0 8px}
+.side h2,.numbers h2,.inpics h2,.fplang h2{font:700 .8rem var(--sans);text-transform:uppercase;letter-spacing:.12em;border-bottom:2px solid var(--ink);padding-bottom:4px;margin:0 0 8px}
 .index{padding-left:1.3em;margin:0 0 18px}.index li{font-family:var(--head);font-size:1.15rem}.index a{color:var(--ink);min-height:44px;display:inline-flex;align-items:center}
-.d-front .tendays.narrow .evband{border-radius:0}
 .inpics{margin-top:28px;border-top:3px solid var(--ink);padding-top:8px}
-.fpics img{filter:grayscale(1) contrast(1.1);transition:filter .3s}
+/* R3 S2: the picture desk */
+.fpics{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;border-top:1px solid #111111;border-bottom:1px solid #111111}
+.fpics li{padding:12px 0;border-bottom:1px solid #111111}.fpics li:last-child{border-bottom:0}
+.fpics a{display:block;color:#111111;text-decoration:none}
+.fmat{display:block;aspect-ratio:1/1;background:#F1EEE6;border:1px solid #111111;padding:10px}
+.fmat img{width:100%;height:100%;object-fit:contain;display:block;filter:grayscale(1) contrast(1.1);transition:filter .3s}
 .fpics a:hover img,.fpics a:focus-visible img{filter:none}
-.fpics .mat{border-radius:0;background:var(--surface-2)}
+.fp-t{display:block;font:700 15px/1.3 Georgia,serif;margin-top:8px}.fpics a:hover .fp-t,.fpics a:focus-visible .fp-t{text-decoration:underline}
+.fp-c{display:block;font:12px/1.35 var(--sans);color:#555049;text-transform:uppercase;letter-spacing:.06em}
+@media (min-width:700px){.fpics{grid-template-columns:repeat(3,minmax(0,1fr))}.fpics li{padding:12px;border-bottom:0;border-right:1px solid #111111}.fpics li:first-child{padding-left:0}.fpics li:last-child{border-right:0;padding-right:0}}
+/* R3 S2: the briefs, in newspaper columns */
+.briefs-s{margin-top:28px}
+.briefs-s>h2{font:700 clamp(1.5rem,1.1rem + 1.4vw,2.2rem)/1.1 var(--head);margin:4px 0 10px}
+.briefs{column-count:1;column-gap:32px;column-rule:1px solid #111111;border-top:4px solid #111111;padding-top:12px}
+.bday{break-inside:avoid;margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid #111111}
+.briefs .dl{break-after:avoid;font:700 11px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#B3121B;margin:0 0 4px}
+.briefs p{font:15px/1.4 Georgia,serif;color:#111111;margin:0 0 6px}
+.briefs .t{font:700 13px var(--mono)}
+.briefs .kind{display:block;font:700 10px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#555049}
+.bday.ev{background:#F1EEE6;padding:8px}
+.evl{font:700 11px/1.3 var(--sans)!important;letter-spacing:.1em;text-transform:uppercase;border-bottom:2px solid #111111;padding-bottom:4px}
+.briefs-s .td-after,.briefs-s .td-note{font:.85rem/1.45 var(--sans);color:#555049}
+.briefs-s .td-after{color:#111111}
+@media (min-width:700px){.briefs{column-count:2}.bday{border-bottom:0}}
+@media (min-width:1100px){.briefs{column-count:4}}
 .cols{display:grid;gap:0;margin-top:28px;border-top:3px solid var(--ink)}
 @media (min-width:760px){.cols{grid-template-columns:repeat(3,1fr)}.story{border-left:1px solid var(--line);padding:16px 18px!important}.story:nth-child(3n+1){border-left:0;padding-left:0!important}}
 .story{padding:16px 0;border-bottom:1px solid var(--line)}
