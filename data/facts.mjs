@@ -747,11 +747,11 @@ export const DESIGNS = [
     slug: 'briefing',
     name: 'The Briefing',
     idea: 'A diplomat\'s briefing note: the ask first, numbered paragraphs, sources in the margin.',
-    leadsWith: 'The Purpose box (the ask) and his own summary',
+    leadsWith: 'His photo, his own line from his post, the two buttons and three sourced figures; then his work in pictures and the ten-day strip',
     default: true,
     copy: {
       label: { text: 'Briefing note · facts read 18 November 2026', awaitingIndi: true, note: 'The date is the date the facts were read, not a date about him.' },
-      purpose: { text: 'Purpose: Indi is looking for work experience. Contact: LinkedIn.', sources: ['whatsapp'] },
+      // Round 2 (R1): the Purpose box is gone; the first screen uses HOME_LINE and HOME_FIGURES.
       paragraphs: ['Summary', 'What he built', 'How he works', 'Languages', 'Background', 'Fields he would like to talk to people in', 'Recommended next step'],
       nextStep: { text: 'Message him on LinkedIn.', sources: ['linkedin'] },
     },
@@ -1183,6 +1183,7 @@ export const TEN_DAYS = [
   const HYPE = ['world-class', 'cutting-edge', 'revolutionary', 'game-changing', 'amazing', 'incredible', 'seamless', 'unparalleled', 'groundbreaking', 'rockstar'];
   for (const [path, t] of strings) {
     if (t.includes('\u2014')) throw new Error(`${path}: em dash`);
+    if (/Purpose box|^Purpose:/.test(t)) throw new Error(`${path}: the Purpose box was removed in round 2 (R1)`);
     for (const h of HYPE) if (t.toLowerCase().includes(h)) throw new Error(`${path}: hype word "${h}"`);
     // C5: the 27 agents always with "23 running", and never in one claim with Web Summit or the three projects.
     if (/\b27\b[^.]*\bagents?\b/i.test(t)) {
