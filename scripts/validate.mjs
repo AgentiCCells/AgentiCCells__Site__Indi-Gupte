@@ -49,12 +49,13 @@ if (existsSync('team')) for (const f of walk('team').filter(f => f.endsWith('.md
     for (const e of check(data, md).errs) fail(`${f}: ${e}`);
   }
 }
-// Contact by LinkedIn only: no mailto:, no tel:, no email address other than an agent's name (@AgentiCCells.*).
+// Contact by LinkedIn only: no mailto:, no tel:, no email address other than an agent's name
+// (role@AgentiCCells.person, or role@project.indi / role@project.dinis as the team's sites write them).
 const email = /[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/g;
 for (const f of files.filter(f => /\.(html|md|txt|json|xml)$/.test(f))) {
   const s = readFileSync(f, 'utf8');
   if (/(href|content)="(mailto|tel):/i.test(s)) fail(`${f}: mailto: or tel: link (contact is by LinkedIn only)`);
-  for (const m of s.matchAll(email)) if (!/@agenticcells\./i.test(m[0])) fail(`${f}: email address ${m[0].replace(/^[^@]+/, '...')} (contact is by LinkedIn only)`);
+  for (const m of s.matchAll(email)) if (!/@agenticcells\.|@[A-Za-z0-9-]+\.(?:indi|dinis)$/i.test(m[0])) fail(`${f}: email address ${m[0].replace(/^[^@]+/, '...')} (contact is by LinkedIn only)`);
 }
 // A link preview on every page: og:image and twitter:card, the image hosted here, JPEG or PNG under 300 KB.
 for (const f of files.filter(f => f.endsWith('.html'))) {
@@ -68,6 +69,24 @@ for (const f of files.filter(f => f.endsWith('.html'))) {
   const img = join('_site', m[1]);
   if (!existsSync(img)) fail(`${f}: og:image ${m[1]} is missing`);
   else if (statSync(img).size > 300 * 1024) fail(`${f}: og:image ${m[1]} is over 300 KB`);
+}
+// Name no person except Indi Gupte and Dinis Cruz (brief rule). The first names of the other members of the
+// Web Summit team are checked by their SHA-256, so this file does not name them either. Covers the built site,
+// team/, data/, README.md and REALITY.md. Add a hash (of the lower-case name) here when a source names someone new.
+{
+  const { createHash } = await import('node:crypto');
+  const NAMES = new Set(['c9805e841751391ca18d1c3508700975438fe0e86161f2d52e5ade49cbb41776', 'e7f9a4608a5b9ab406a212a8c57a3b1af507c61b43c431eea00a72f3879e5d46', 'c5099a6000c2be06c62bd9ca2dd25526efb177e0d7193746a2a163f7f4f48947', '358ca1231c373128e8b31e69938b21e1f6226d96b740796916ed2678c1a12300', 'b6f2920002873556366ad9f9a44711e4f34b596a892bd175427071e4064a89cc', 'e4ee06d13f52021bfbfc793ebce404608a0efd7786e1accad9d113d099fbab48', '1ec4ed037766aa181d8840ad04b9fc6e195fd37dedc04c98a5767a67d3758ece', 'd233633d9524e84c71d6fe45eb3836f8919148e4a5fc2234cc9e6494ec0f11c2', '2ac81299578013795576682809a4a16d1ecca67118a797ea576c113c41786849']);
+  const named = [...files, ...['team', 'data'].flatMap(d => existsSync(d) ? walk(d) : []), 'README.md', 'REALITY.md']
+    .filter(f => existsSync(f) && /\.(html|md|txt|json|mjs|xml|js)$/.test(f));
+  for (const f of named) {
+    const seen = new Set();
+    readFileSync(f, 'utf8').split('\n').forEach((line, i) => {
+      for (const w of line.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').match(/[a-z]+/g) || []) {
+        if (seen.has(w + i)) continue; seen.add(w + i);
+        if (NAMES.has(createHash('sha256').update(w).digest('hex'))) fail(`${f}:${i + 1}: names another member of the team (only Indi Gupte and Dinis Cruz may be named)`);
+      }
+    });
+  }
 }
 if (!existsSync('_site/behind-the-scenes/index.html')) fail('no /behind-the-scenes/ (scripts/behind.mjs must run in the build)');
 if (!existsSync('_site/d/index.html')) fail('no /d/ design chooser');
