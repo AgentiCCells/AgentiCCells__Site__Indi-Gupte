@@ -746,7 +746,7 @@ export const DESIGNS = [
   {
     slug: 'briefing',
     name: 'The Briefing',
-    idea: 'A diplomat\'s briefing note: the ask first, numbered paragraphs, sources in the margin.',
+    idea: 'A diplomat\'s briefing note on cream paper: him and his own words first, every fact with a numbered note to its source.',
     leadsWith: 'His photo, his own line from his post, the two buttons and three sourced figures; then his work in pictures and the ten-day strip',
     default: true,
     copy: {
@@ -759,8 +759,8 @@ export const DESIGNS = [
   {
     slug: 'lingua',
     name: 'Lingua',
-    idea: 'A polyglot edition: his languages lead, with section titles in English, Italian and French.',
-    leadsWith: 'The languages figure, beside his name and the ask',
+    idea: 'A polyglot edition: his languages lead, and every section is titled in English, Italian and French.',
+    leadsWith: 'His name and the ask in English, Italian and French side by side, with his language tiles, in the first screen',
     default: false,
     copy: { glossNote: { text: 'Italian and French section titles are the site\'s translations, not his words.', awaitingIndi: true } },
   },
@@ -768,7 +768,7 @@ export const DESIGNS = [
     slug: 'front-page',
     name: 'Front Page',
     idea: 'A newspaper front page about his week, from one of PrompTugal.news\'s editors.',
-    leadsWith: 'The lead story about his week, with the Notice beside it',
+    leadsWith: 'The masthead with its two ears ("Wanted: work experience" and "Reply via LinkedIn"), then the lead story about his week with his pictures in black and white, and his week in dates in the sidebar',
     default: false,
     copy: {
       dateline: { text: 'West London · Web Summit Lisbon 2026 · Looking for work experience', sources: ['whatsapp', 'ws-home'] },
@@ -784,7 +784,7 @@ export const DESIGNS = [
     slug: 'console',
     name: 'Agent Console',
     idea: 'The operator\'s view: a team of 27 AI agents, 23 running, and 277 commits from 3 to 13 November 2026.',
-    leadsWith: 'The operator panel and the agent grid',
+    leadsWith: 'A green status line, then the operator panel with three sourced figures beside his team of agents drawn as one figure; then his week as a log',
     default: false,
     copy: {
       statusBar: { operator: 'Indi Gupte', status: 'LOOKING FOR WORK EXPERIENCE', contact: 'LinkedIn', sources: ['whatsapp'] },
@@ -795,8 +795,8 @@ export const DESIGNS = [
   {
     slug: 'card',
     name: 'The Card',
-    idea: 'A business card, front and back. In his words: "I designed our business cards".',
-    leadsWith: 'His name and "Looking for work experience" on the card front',
+    idea: 'His personal business card, front and back, on a dark desk. In his words: "I designed our business cards".',
+    leadsWith: 'His card on a dark desk, front and back: his photo, name, "Looking for work experience" and LinkedIn on the front, "What I bring" on the back; everything else folded under More',
     default: false,
     copy: {
       front: ['Indi Gupte', 'Brand, partnerships and research', 'Looking for work experience', LINKEDIN_TEXT, 'West London'],
@@ -1184,6 +1184,7 @@ export const TEN_DAYS = [
   for (const [path, t] of strings) {
     if (t.includes('\u2014')) throw new Error(`${path}: em dash`);
     if (/Purpose box|^Purpose:/.test(t)) throw new Error(`${path}: the Purpose box was removed in round 2 (R1)`);
+    if (/\.leadsWith$/.test(path) && /agent grid|the Notice|languages figure, beside/.test(t)) throw new Error(`${path}: describes a round 1 layout (round 2 live review, lift 5)`);
     for (const h of HYPE) if (t.toLowerCase().includes(h)) throw new Error(`${path}: hype word "${h}"`);
     // C5: the 27 agents always with "23 running", and never in one claim with Web Summit or the three projects.
     if (/\b27\b[^.]*\bagents?\b/i.test(t)) {
