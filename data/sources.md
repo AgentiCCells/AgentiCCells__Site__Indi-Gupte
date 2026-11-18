@@ -4,6 +4,8 @@ The register of every source behind `data/facts.mjs`. Each id below is a key of 
 
 "Names Indi" says whether the page itself names him.
 
+Round 2 (18 November 2026): no new source. The new exports `HOME_LINE`, `HOME_FIGURES`, `TEN_DAYS_RANGE` and `TEN_DAYS` use only the ids below. Times in `TEN_DAYS` are given as each source prints them: the newsroom (`news-ten-days`) and his brief (`ws-brief-indi`) state no time zone, so those times carry no "UTC"; his conductor's schedule (`ws-everything`) is in GMT. Two dated items in the researcher's record were left out of `TEN_DAYS` because the page read on 18 November does not carry the date: the newsroom workflow's brief and launch times on 10 November (not on https://web-summit.sgit.ai/people/indi/helpers/newsroom/index.md) and the token-efficiency note of 8 November (its source is not in this register).
+
 ## His own words
 
 | Id | Source | URL | Read | Names Indi | Supports |

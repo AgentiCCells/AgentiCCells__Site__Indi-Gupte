@@ -1,6 +1,7 @@
 // data/facts.mjs: the master copy of every fact and every piece of copy on https://indi-gupte.agenticcells.site
 //
-// Written by writer.indi-gupte@AgentiCCells.dinis, round 1, 18 November 2026.
+// Written by writer.indi-gupte@AgentiCCells.dinis, round 1, 18 November 2026; round 2 copy the same day (see
+// team/rounds/2/copy/NOTES.md).
 // The developer generates every page, /index.md, /llms.txt and /designs.json from this file. A fact that is not
 // here, with a source id, does not go on the site.
 //
@@ -18,6 +19,10 @@
 // - Dates are ISO (YYYY-MM-DD) in data fields and written out ("18 November 2026") in copy.
 // - Agent addresses such as accountant@web-summit.indi look like email addresses to scripts/validate.mjs; render
 //   AGENTS.list[].role on pages, not .address (see AGENTS.namingNote).
+// - Round 2 wording rules (reviewer C5, C25, C26, C31, C34, C39; checked at the bottom of this file):
+//   the 27 agents always as "a team of 27 AI agents, 23 running" (or his words, "working every day with a team of
+//   AI agents"), never in the same claim as Web Summit or the three projects; 277 commits always with its window,
+//   3 to 13 November 2026; the Oxford entry always with "as his profile lists it".
 //
 // Licence: text CC BY 4.0.
 
@@ -306,8 +311,8 @@ export const PERSON = {
   },
   // One line about him, for the home page, meta and llms.txt.
   summary: {
-    text: 'A student from West London who, before starting university, is working with Dinis Cruz at RiskMandate. At Web Summit Lisbon 2026 he worked with a team of 27 AI agents, and he is looking for work experience.',
-    sources: ['whatsapp', 'ws-people-indi'],
+    text: 'A student from West London who, before starting university, is working with Dinis Cruz at RiskMandate. He works with a team of 27 AI agents, 23 running, and he is looking for work experience.',
+    sources: ['whatsapp', 'ws-people-indi', 'ws-everything'],
   },
   // His LinkedIn summary, retold (not quoted, except the one phrase in quotation marks).
   profileSummary: {
@@ -391,8 +396,8 @@ export const ASK = {
   short: 'Looking for work experience',
   band: {
     lead: 'Looking for work experience',
-    rest: 'I worked with 27 AI agents at Web Summit Lisbon 2026',
-    sources: ['whatsapp', 'ws-people-indi', 'ws-home'],
+    rest: 'A team of 27 AI agents, 23 running',
+    sources: ['whatsapp', 'ws-people-indi', 'ws-everything'],
   },
   button: { text: 'Message me on LinkedIn', href: LINKEDIN },
   buttonThirdPerson: { text: 'Message Indi on LinkedIn', href: LINKEDIN },
@@ -401,10 +406,10 @@ export const ASK = {
   panel: {
     heading: 'Looking for work experience',
     paragraphs: [
-      'At Web Summit Lisbon 2026 Indi worked with a team of 27 AI agents on RiskMandate, PrompTugal.news and Lisbon Tech Fringe.',
-      'He brings company research, design and daily work with AI agents, and would like to talk to people working in languages, AI, medicine or diplomacy.',
+      'In his words, what the team built that week: RiskMandate, PrompTugal.news and Lisbon Tech Fringe.',
+      'He brings company research, design and daily work with a team of AI agents, and is glad to talk to people working in languages, AI, medicine or diplomacy.',
     ],
-    sources: ['whatsapp', 'linkedin', 'ws-people-indi'],
+    sources: ['whatsapp', 'linkedin'],
   },
   long: {
     text: 'Indi Gupte is looking for work experience. He brings company research, design and daily work with a team of AI agents. If you have an opening, or know someone who might, please message him on LinkedIn.',
@@ -414,7 +419,7 @@ export const ASK = {
   // The fields he names (LinkedIn summary), each tied to his own facts.
   fields: [
     { id: 'languages', name: 'Languages', line: 'He speaks English, Italian and French, and will read Modern Languages and International Relations from next autumn.', link: '/languages/', sources: ['linkedin'] },
-    { id: 'ai', name: 'AI', line: 'Brand and Partnerships Lead at RiskMandate, and a team of 27 AI agents at Web Summit Lisbon 2026.', link: '/how-i-work/', sources: ['linkedin', 'ws-people-indi'] },
+    { id: 'ai', name: 'AI', line: 'Brand and Partnerships Lead at RiskMandate. He works with a team of 27 AI agents, 23 running.', link: '/how-i-work/', sources: ['linkedin', 'whatsapp', 'ws-people-indi'] },
     { id: 'medicine', name: 'Medicine', line: 'Volunteering in hospitals in London and rural Italy, and junior developer for three health technology startups.', link: '/background/', sources: ['linkedin'] },
     { id: 'diplomacy', name: 'Diplomacy', line: 'Drawn to it as the place "where languages, judgement and tact meet".', link: '/background/', sources: ['linkedin'] },
   ],
@@ -425,7 +430,7 @@ export const ASK = {
     items: [
       { phrase: 'company research', shownBy: 'The factory of company pages: one page per company the team planned to meet, with what it does, the risks from AI agents and how RiskMandate helps.', link: '/built/#factory', sources: ['whatsapp', 'ws-brief-indi'] },
       { phrase: 'design (I designed our business cards)', shownBy: 'The RiskMandate business cards for Web Summit, from his designer agent\'s rounds to the card he chose.', link: '/built/#cards', sources: ['whatsapp', 'ws-cards', 'ws-design'] },
-      { phrase: 'working every day with a team of AI agents', shownBy: '27 agents, 23 running, and 277 commits by his agents on the team\'s site.', link: '/how-i-work/', sources: ['whatsapp', 'ws-people-indi', 'news-ten-days'] },
+      { phrase: 'working every day with a team of AI agents', shownBy: 'A team of 27 AI agents, 23 running, and 277 commits by his agents on the team\'s site from 3 to 13 November 2026.', link: '/how-i-work/', sources: ['whatsapp', 'ws-people-indi', 'news-ten-days'] },
     ],
     sources: ['whatsapp'],
   },
@@ -610,10 +615,10 @@ export const AGENTS = {
   publishedLine: { quote: '27 agents (23 running)', sources: ['ws-people-indi'] },
   commits: {
     value: 277,
-    text: '277 commits by his agents on the team\'s site',
+    text: '277 commits by his agents on the team\'s site, 3 to 13 November 2026',
     window: 'Counted for the ten days, 3 to 13 November 2026.',
     sources: ['news-ten-days'],
-    note: 'His dashboard lists a commit count for each agent; those counts add up to 309. That sum was worked out by the researcher, is not a published figure, and covers a longer window (his conductor\'s last listed commit is on 16 November). The site uses 277, the published figure.',
+    note: 'His dashboard lists a commit count for each agent; those counts add up to 309. That sum was worked out by the researcher, is not a published figure, and covers a longer window (his conductor\'s last listed commit is on 16 November). The site uses 277 (3 to 13 November 2026), the published figure.',
     dashboardSum: { value: 309, derived: true, sources: ['ws-people-indi'] },
   },
   legend: { text: '27 agents, 23 running, as listed on web-summit.sgit.ai/people/indi, read 18 November 2026.', sources: ['ws-people-indi'] },
@@ -691,7 +696,7 @@ export const LANGUAGES = {
   ],
   sameInterest: { text: 'the same interest', note: 'His profile gives programming languages "the same interest" as Sanskrit.', sources: ['linkedin'] },
   learning: { text: 'Working through Harvard\'s CS50x', status: 'in progress', sources: ['linkedin'] },
-  leadsTo: { text: 'Modern Languages and International Relations, from next autumn', sources: ['linkedin'] },
+  leadsTo: { text: 'Modern Languages and International Relations, from next autumn (his words)', sources: ['linkedin'] },
   figure: {
     title: "Indi's languages",
     desc: 'He speaks English, Italian and French. He has an interest in Sanskrit, and the same interest in programming languages; he is working through Harvard\'s CS50x. From next autumn he will read Modern Languages and International Relations. No levels are given, so none are shown.',
@@ -702,7 +707,7 @@ export const LANGUAGES = {
   devanagariCheck: 'संस्कृतम् = U+0938 U+0902 U+0938 U+094D U+0915 U+0943 U+0924 U+092E U+094D',
   whereTheyLead: [
     { text: 'From next autumn he will read Modern Languages and International Relations at university.', sources: ['linkedin'] },
-    { text: 'His profile lists the University of Oxford, Modern Languages, Italian and Portuguese (2027).', sources: ['linkedin'] },
+    { text: 'University of Oxford, Modern Languages, Italian and Portuguese (2027), as his profile lists it.', sources: ['linkedin'] },
     { text: 'Volunteering in hospitals drew him towards diplomacy, "where languages, judgement and tact meet".', sources: ['linkedin'] },
   ],
 };
@@ -718,8 +723,8 @@ export const BACKGROUND = {
     { id: 'sportshealing', title: 'Operations Manager, SportsHealing Ltd', when: { from: '2026-09', to: null, text: 'September 2026 to present' }, sources: ['linkedin'] },
     { id: 'riskmandate', title: 'Brand and Partnerships Lead, RiskMandate', when: { from: '2026-11', to: null, text: 'November 2026 to present' }, sources: ['linkedin'] },
     { id: 'websummit', title: 'Web Summit Lisbon, with the RiskMandate team', when: { from: '2026-11-09', to: '2026-11-12', text: '9 to 12 November 2026' }, sources: ['ws-home', 'whatsapp'] },
-    { id: 'university', title: 'Modern Languages and International Relations, at university', when: { text: 'from next autumn' }, note: 'His summary.', sources: ['linkedin'] },
-    { id: 'oxford', title: 'University of Oxford, Modern Languages, Italian and Portuguese', when: { at: '2027', text: '2027' }, note: 'As his profile lists it.', sources: ['linkedin'] },
+    { id: 'university', title: 'Modern Languages and International Relations, at university, from next autumn (his words)', when: { text: 'from next autumn' }, note: 'His summary.', sources: ['linkedin'] },
+    { id: 'oxford', title: 'University of Oxford, Modern Languages, Italian and Portuguese (2027), as his profile lists it', when: { at: '2027', text: '2027' }, note: 'As his profile lists it. Show the title whole wherever the entry appears (C39).', sources: ['linkedin'] },
   ],
   undated: [
     { id: 'hospitals', title: 'Volunteering in hospitals in London and rural Italy', text: 'It left him with a lasting interest in medicine, and drew him towards diplomacy, "where languages, judgement and tact meet".', sources: ['linkedin'] },
@@ -767,35 +772,35 @@ export const DESIGNS = [
     default: false,
     copy: {
       dateline: { text: 'West London · Web Summit Lisbon 2026 · Looking for work experience', sources: ['whatsapp', 'ws-home'] },
-      headline: { text: 'Student who worked with 27 AI agents at Web Summit is looking for work experience', awaitingIndi: true, sources: ['ws-people-indi', 'whatsapp'] },
+      headline: { text: 'Indi Gupte, one of the three editors of PrompTugal.news, is looking for work experience', awaitingIndi: true, sources: ['promptugal-home', 'promptugal-about', 'whatsapp'] },
       standfirst: { useQuote: 'intro', sources: ['whatsapp'] },
       photoCaption: 'Indi Gupte. Photo used with his agreement.',
       indexTitle: 'In this edition',
-      notice: { text: 'WANTED: work experience. Languages, AI, medicine or diplomacy. Reply via LinkedIn.', awaitingIndi: true, sources: ['whatsapp', 'linkedin'] },
+      notice: { text: 'Wanted: work experience. Glad to talk to people working in languages, AI, medicine or diplomacy. Reply via LinkedIn.', awaitingIndi: true, sources: ['whatsapp', 'linkedin'] },
       numbersTitle: 'By the numbers',
     },
   },
   {
     slug: 'console',
     name: 'Agent Console',
-    idea: 'The operator\'s view: 27 agents, 23 running, 277 commits.',
+    idea: 'The operator\'s view: a team of 27 AI agents, 23 running, and 277 commits from 3 to 13 November 2026.',
     leadsWith: 'The operator panel and the agent grid',
     default: false,
     copy: {
       statusBar: { operator: 'Indi Gupte', status: 'LOOKING FOR WORK EXPERIENCE', contact: 'LinkedIn', sources: ['whatsapp'] },
-      shippedTitle: 'Shipped',
+      shippedTitle: 'What we built this week', // his post's words (C31)
       languageRows: ['en English · speaks', 'it Italian · speaks', 'fr French · speaks', 'sa Sanskrit · interest', '{ } programming languages · interest'],
     },
   },
   {
     slug: 'card',
     name: 'The Card',
-    idea: 'A business card, front and back, from the person who designed the team\'s cards.',
+    idea: 'A business card, front and back. In his words: "I designed our business cards".',
     leadsWith: 'His name and "Looking for work experience" on the card front',
     default: false,
     copy: {
       front: ['Indi Gupte', 'Brand, partnerships and research', 'Looking for work experience', LINKEDIN_TEXT, 'West London'],
-      back: { kicker: 'Web Summit Lisbon 2026', numbers: '27 AI agents · 23 running · 277 commits' },
+      back: { kicker: 'Working every day with a team of AI agents', numbers: 'A team of 27 AI agents, 23 running · 277 commits, 3 to 13 November 2026', sources: ['whatsapp', 'ws-people-indi', 'news-ten-days'] },
       languagesLine: 'English · Italiano · Français',
       interestLine: 'Interested in Sanskrit (संस्कृतम्) and programming languages',
       turnOver: 'Turn over',
@@ -833,7 +838,7 @@ export const NAV = [
 
 // The "what he did" strip under each inner page's lede (PROPOSAL D1.5).
 export const STRIP = [
-  { text: '27 AI agents', href: '/how-i-work/', sources: ['ws-people-indi'] },
+  { text: 'A team of 27 AI agents, 23 running', href: '/how-i-work/', sources: ['ws-people-indi'] },
   { text: 'RiskMandate', href: '/built/#riskmandate', sources: ['whatsapp'] },
   { text: 'PrompTugal.news', href: '/built/#promptugal', sources: ['whatsapp'] },
   { text: 'Lisbon Tech Fringe', href: '/built/#fringe', sources: ['whatsapp'] },
@@ -862,11 +867,11 @@ export const PAGES = {
   home: {
     path: '/',
     title: 'Indi Gupte: looking for work experience',
-    description: 'Indi Gupte, West London, worked with 27 AI agents at Web Summit Lisbon 2026 on RiskMandate, PrompTugal.news and Lisbon Tech Fringe. Seeking work experience.',
+    description: 'Indi Gupte, West London: brand, partnerships and research. He works with a team of 27 AI agents, 23 running, and is looking for work experience.',
     kicker: 'Brand, partnerships and research',
     h1: 'Indi Gupte',
-    lede: 'Before starting university, Indi is working with Dinis Cruz at RiskMandate. At Web Summit Lisbon 2026 he worked with a team of 27 AI agents, and he is looking for work experience.',
-    sources: ['whatsapp', 'ws-people-indi'],
+    lede: 'Before starting university, Indi is working with Dinis Cruz at RiskMandate. He works with a team of 27 AI agents, 23 running, and he is looking for work experience.',
+    sources: ['whatsapp', 'ws-people-indi', 'ws-everything', 'factory-brief'],
   },
   built: {
     path: '/built/',
@@ -880,11 +885,11 @@ export const PAGES = {
   'how-i-work': {
     path: '/how-i-work/',
     title: 'How I work with AI agents · Indi Gupte',
-    description: 'Indi Gupte works every day with a team of AI agents: 27 agents, 23 running, and 277 commits on the Web Summit team\'s site. His agents draft; he sends.',
+    description: 'Indi Gupte works with a team of 27 AI agents, 23 running: 277 commits from 3 to 13 November 2026. His agents draft; he sends every message.',
     kicker: 'How I work',
-    h1: 'A team of 27 AI agents',
-    lede: 'At Web Summit Lisbon 2026 Indi ran 27 AI agents, 23 of them running, for research, design, drafting and his daily briefings. His agents draft; he sends every message.',
-    sources: ['ws-people-indi', 'ws-team-indi'],
+    h1: 'A team of 27 AI agents, 23 running',
+    lede: 'Indi works with a team of 27 AI agents, 23 running, for research, design, drafting and his daily briefings. His agents draft; he sends every message.',
+    sources: ['whatsapp', 'ws-people-indi', 'ws-everything', 'ws-team-indi'],
   },
   languages: {
     path: '/languages/',
@@ -941,7 +946,7 @@ export const PAGES = {
         id: 'indi',
         title: 'Indi himself',
         rule: 'Help him check and improve the site. Every change about him needs his approval, through Dinis Cruz.',
-        prompt: `Read ${SITE}/index.md and the open questions in ${REPO}/blob/dev/team/rounds/1/copy/NOTES.md. Ask me those questions one at a time, and write down my answers with today's date, so the team can update data/facts.mjs.`,
+        prompt: `Read ${SITE}/index.md and ${SITE}/questions.md. Ask me the questions in questions.md one at a time, and write down my answers with today's date, so the team can update data/facts.mjs. Every change about me goes to the team through Dinis Cruz.`,
       },
       {
         id: 'editor',
@@ -1035,7 +1040,7 @@ export const QUESTIONS_TO_ASK_INDI = {
   proposal: true,
   intro: 'If you are meeting Indi, these questions start from the work on this site.',
   items: [
-    { q: 'What did you learn from working every day with a team of 27 AI agents?', ties: '/how-i-work/' },
+    { q: 'What did you learn from working every day with a team of 27 AI agents, 23 running?', ties: '/how-i-work/' },
     { q: 'How did the team build Lisbon Tech Fringe on the day Storm Charles cancelled Wednesday, and what was your part?', ties: '/built/#fringe' },
     { q: 'How did you work with your designer agent on the business cards, and how did you choose?', ties: '/built/#cards' },
     { q: 'What do you look for when you research a company?', ties: '/built/#factory' },
@@ -1053,7 +1058,7 @@ export const QUESTIONS_FOR_INDI = [
   { id: 'cards-wording', q: '"What I built" quotes your post ("I designed our business cards"), then gives the record: your designer agent drew the rounds, you chose your card on 4 November, and Design A was chosen for printing on 5 November. Is that right, and is there more you would add?' },
   { id: 'programming', q: 'Which programming languages do you use or want to learn? Your profile names none, so the site names none.' },
   { id: 'lingua', q: 'Do you approve the Italian and French section titles for the Lingua design (LINGUA_TITLES), or would you write them differently?' },
-  { id: 'front-page', q: 'Do you approve the Front Page headline and the "WANTED" notice?' },
+  { id: 'front-page', q: 'Do you approve the Front Page headline ("Indi Gupte, one of the three editors of PrompTugal.news, is looking for work experience") and its "Wanted" notice?' },
   { id: 'questions', q: 'Do you approve the "Questions to ask Indi", or would you change them?' },
   { id: 'voice', q: 'The pages speak about you as "he", with first person in the menu and buttons. Would you prefer the whole site in the first person?' },
   { id: 'default-design', q: 'Which design should be the home page? The Briefing is proposed; Lingua is the alternative.' },
@@ -1063,13 +1068,87 @@ export const QUESTIONS_FOR_INDI = [
   { id: 'startups', q: 'May the site name the three health technology startups you build software for, and is OmKneeHealth one of them?' },
   { id: 'omknee-role', q: 'What is your role at OmKneeHealth, in your words?' },
   { id: 'sportshealing', q: 'What does SportsHealing Ltd do, and what do you do there as Operations Manager?' },
-  { id: 'university', q: 'Your summary says Modern Languages and International Relations from next autumn; your education lists University of Oxford, Modern Languages, Italian and Portuguese (2027). The site shows both as you list them. Do you want either changed?' },
+  { id: 'university', q: 'Your summary says Modern Languages and International Relations from next autumn; your education lists University of Oxford, Modern Languages, Italian and Portuguese (2027), as your profile lists it. The site shows both as you list them. Do you want either changed?' },
   { id: 'fringe-part', q: 'What was your own part in Lisbon Tech Fringe beyond the communities page?' },
   { id: 'song', q: 'Is 14 November right for the release of Strangers in the Loop, and what did producing it involve?' },
   { id: 'promptugal', q: 'Are there PrompTugal.news articles you edited that the site should link to?' },
   { id: 'sanskrit', q: 'Is it fine to show the word Sanskrit in Devanagari (संस्कृतम्) as decoration?' },
   { id: 'tagline', q: 'Is "Brand, partnerships and research" the right line under your name?' },
   { id: 'briefing-date', q: 'The Briefing is labelled with 18 November 2026, the date the facts were read. Is that fine?' },
+];
+
+// ---------------------------------------------------------------------------------------------------------------
+// HOME (round 2): the home page's first screen. HOME_LINE is his own line, quoted exactly from his post;
+// HOME_FIGURES are the three sourced figures under it. `text` is the whole figure as one phrase (for screen readers,
+// /index.md and anywhere the value and label are not shown side by side).
+// ---------------------------------------------------------------------------------------------------------------
+export const HOME_LINE = {
+  quote: QUOTES.extracts.bring,
+  attribution: 'Indi Gupte, in his post to a UK Web Summit WhatsApp group',
+  sources: ['whatsapp'],
+  // A shorter line, also exact, if the design needs one.
+  alternative: { quote: QUOTES.extracts.looking, sources: ['whatsapp'] },
+};
+
+export const HOME_FIGURES = [
+  {
+    id: 'agents',
+    value: '27',
+    label: 'AI agents in his team, 23 running',
+    text: 'A team of 27 AI agents, 23 running',
+    link: '/how-i-work/',
+    sources: ['ws-people-indi', 'ws-everything'],
+  },
+  {
+    id: 'commits',
+    value: '277',
+    label: 'commits by his agents on the team\'s site, 3 to 13 November 2026',
+    text: '277 commits by his agents on the team\'s site, 3 to 13 November 2026',
+    link: '/how-i-work/',
+    sources: ['news-ten-days'],
+  },
+  {
+    id: 'editor',
+    value: '1 of 3',
+    label: 'editors of PrompTugal.news',
+    text: 'One of the three editors of PrompTugal.news',
+    link: '/built/#promptugal',
+    sources: ['promptugal-home', 'promptugal-about', 'promptugal-board'],
+  },
+];
+
+// ---------------------------------------------------------------------------------------------------------------
+// TEN_DAYS (round 2): his ten days, 3 to 13 November 2026, as dated events, for the dated strip. Only dates printed
+// in a source (or worked out from one, marked `derived: true`). `kind`: 'his' (his own work or his agents'),
+// 'team' (the team's work, with his part named), 'event' (Web Summit itself). `time` is 'HH:MM UTC' only where the
+// source says UTC or GMT; otherwise 'HH:MM' with `timeNote`, because the source gives no time zone.
+// ---------------------------------------------------------------------------------------------------------------
+export const TEN_DAYS_RANGE = {
+  from: '2026-11-03',
+  to: '2026-11-13',
+  text: '3 to 13 November 2026',
+  eventDays: { from: '2026-11-09', to: '2026-11-12', text: '9 to 12 November 2026', label: 'Web Summit Lisbon' },
+  sources: ['news-ten-days', 'ws-home'],
+  note: 'One entry, Strangers in the Loop on 14 November, falls the day after the ten days; it is kept, marked derived, because it is his.',
+};
+
+export const TEN_DAYS = [
+  { date: '2026-11-03', label: 'The team\'s ten days begin', kind: 'team', sources: ['news-ten-days'] },
+  { date: '2026-11-03', label: 'His conductor agent starts its daily schedule: 07:20, 12:20 and 17:20 GMT', kind: 'his', sources: ['ws-everything'] },
+  { date: '2026-11-03', time: '23:30', timeNote: 'As his brief gives it; no time zone stated.', label: 'At his go, his developer agent opens the factory of company pages', kind: 'his', sources: ['ws-brief-indi'] },
+  { date: '2026-11-04', label: 'He writes a two-page brief: RiskMandate for education and children', kind: 'his', sources: ['ws-education', 'ws-brief-indi'] },
+  { date: '2026-11-04', label: 'He votes on the round 2 card designs and chooses his card', kind: 'his', sources: ['ws-design', 'ws-cards'] },
+  { date: '2026-11-05', label: 'He joins the team in person', kind: 'his', sources: ['ws-brief-indi'] },
+  { date: '2026-11-05', label: 'Design A chosen for printing: three audience cards, about 200 of each', kind: 'team', sources: ['ws-cards'] },
+  { date: '2026-11-06', label: 'His mentor agent hands over: four of his agents ran every scheduled slot for two days without a prompt', kind: 'his', sources: ['ws-people-indi'] },
+  { date: '2026-11-09', label: 'Web Summit Lisbon opens (9 to 12 November)', kind: 'event', sources: ['ws-home'] },
+  { date: '2026-11-10', label: 'His education idea is published on the team\'s site', kind: 'his', sources: ['ws-education'] },
+  { date: '2026-11-10', time: '19:09', timeNote: 'As the newsroom gives it; no time zone stated.', label: 'Storm Charles reaches Lisbon; Web Summit calls off its second day', kind: 'event', sources: ['news-ten-days'] },
+  { date: '2026-11-11', time: '12:57', timeNote: 'As the newsroom gives it; no time zone stated.', label: 'Lisbon Tech Fringe, the team\'s guide to the side events, goes live; his lane: communities', kind: 'team', sources: ['news-ten-days', 'ltf-storm', 'ltf-join'] },
+  { date: '2026-11-11', time: '21:11', timeNote: 'As the newsroom gives it; no time zone stated.', label: 'The Fringe app is out for testing', kind: 'team', sources: ['news-ten-days'] },
+  { date: '2026-11-12', label: 'The team\'s stand, booth A1-30, on the last day of Web Summit', kind: 'event', sources: ['ws-home'] },
+  { date: '2026-11-13', label: 'The ten days end: 277 commits by his agents on the team\'s site, 3 to 13 November 2026', kind: 'his', sources: ['news-ten-days'] },
+  { date: '2026-11-14', label: 'Strangers in the Loop, RiskMandate\'s second song, produced by Indi, is released', kind: 'his', derived: true, how: BUILT.find(b => b.id === 'song').released.how, sources: ['news-every-hour'] },
 ];
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -1088,7 +1167,55 @@ export const QUESTIONS_FOR_INDI = [
       else walk(v, `${path}.${k}`);
     }
   };
-  walk({ PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, VIDEO, AGENTS, LANGUAGES, BACKGROUND, DESIGNS, STRIP, PAGES, DINIS_WORDS }, 'facts');
+  walk({ PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, VIDEO, AGENTS, LANGUAGES, BACKGROUND, DESIGNS, STRIP, PAGES, DINIS_WORDS, HOME_LINE, HOME_FIGURES, TEN_DAYS_RANGE, TEN_DAYS }, 'facts');
   if (AGENTS.list.length !== AGENTS.total.value) throw new Error(`AGENTS.list has ${AGENTS.list.length} entries, not ${AGENTS.total.value}`);
   if (AGENTS.list.filter(a => a.status === 'running').length !== AGENTS.running.value) throw new Error('AGENTS: running count does not match');
+
+  // Round 2 wording rules, over every string the pages can show (QUESTIONS_FOR_INDI speaks to him and is left out).
+  const shown = { PERSON, QUOTES, ASK, WEB_SUMMIT, BUILT, VIDEO, AGENTS, LANGUAGES, BACKGROUND, DESIGNS, LINGUA_TITLES, NAV, STRIP, FOOTER, PAGES, DINIS_WORDS, QUESTIONS_TO_ASK_INDI, HOME_LINE, HOME_FIGURES, TEN_DAYS_RANGE, TEN_DAYS, SOURCES };
+  const strings = [];
+  const collect = (o, path) => {
+    if (typeof o === 'string') strings.push([path, o]);
+    else if (Array.isArray(o)) o.forEach((x, i) => collect(x, `${path}[${i}]`));
+    else if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) collect(v, `${path}.${k}`);
+  };
+  collect(shown, 'facts');
+  const HYPE = ['world-class', 'cutting-edge', 'revolutionary', 'game-changing', 'amazing', 'incredible', 'seamless', 'unparalleled', 'groundbreaking', 'rockstar'];
+  for (const [path, t] of strings) {
+    if (t.includes('\u2014')) throw new Error(`${path}: em dash`);
+    for (const h of HYPE) if (t.toLowerCase().includes(h)) throw new Error(`${path}: hype word "${h}"`);
+    // C5: the 27 agents always with "23 running", and never in one claim with Web Summit or the three projects.
+    if (/\b27\b[^.]*\bagents?\b/i.test(t)) {
+      if (/27 AI agents/.test(t) && !/27 AI agents, 23 running/.test(t)) throw new Error(`${path}: "27 AI agents" without ", 23 running"`);
+      for (const s of t.split(/(?<=\.)\s/)) if (/\b27\b[^.]*\bagents?\b/i.test(s) && /Web Summit|RiskMandate|PrompTugal|Lisbon Tech Fringe/.test(s)) throw new Error(`${path}: the 27 agents tied to Web Summit or a project`);
+    }
+    // 277 commits always with its window.
+    if (/\b277\b/.test(t) && t.length > 3 && !/3 to 13 November/.test(t)) throw new Error(`${path}: 277 without "3 to 13 November"`);
+    // C39: the Oxford entry always as his profile lists it.
+    if (/University of Oxford/.test(t) && !/as his profile lists it/.test(t)) throw new Error(`${path}: Oxford entry without "as his profile lists it"`);
+  }
+  // C25, C26, C31, C34: the four design fields as the reviewer set them.
+  const dz = Object.fromEntries(DESIGNS.map(d => [d.slug, d]));
+  if (!/^Indi Gupte, one of the three editors of PrompTugal\.news/.test(dz['front-page'].copy.headline.text)) throw new Error('C25: Front Page headline');
+  if (!/Glad to talk to people/.test(dz['front-page'].copy.notice.text)) throw new Error('C26: Front Page notice');
+  if (dz.console.copy.shippedTitle !== 'What we built this week' || !post.includes(dz.console.copy.shippedTitle)) throw new Error('C31: Console title');
+  if (!dz.card.idea.includes(QUOTES.extracts.cards)) throw new Error('C34: The Card idea');
+
+  // HOME_LINE, HOME_FIGURES, TEN_DAYS.
+  if (!post.includes(HOME_LINE.quote) || !post.includes(HOME_LINE.alternative.quote)) throw new Error('HOME_LINE is not in the post');
+  if (HOME_FIGURES.length !== 3) throw new Error('HOME_FIGURES must have three figures');
+  for (const f of HOME_FIGURES) if (!f.value || !f.label || !f.text || !f.sources?.length) throw new Error(`HOME_FIGURES ${f.id}: value, label, text and sources are required`);
+  let last = '';
+  for (const [i, e] of TEN_DAYS.entries()) {
+    const at = `TEN_DAYS[${i}]`;
+    if (!/^2026-11-\d\d$/.test(e.date)) throw new Error(`${at}: date ${e.date}`);
+    if (e.date < TEN_DAYS_RANGE.from || (e.date > TEN_DAYS_RANGE.to && !e.derived)) throw new Error(`${at}: ${e.date} is outside the ten days`);
+    if (e.date < last) throw new Error(`${at}: not in date order`);
+    last = e.date;
+    if (e.time !== undefined && !/^\d\d:\d\d( UTC)?$/.test(e.time)) throw new Error(`${at}: time ${e.time}`);
+    if (e.time && !e.time.endsWith('UTC') && !e.timeNote) throw new Error(`${at}: a time with no zone needs a timeNote`);
+    if (!e.label || !e.sources?.length) throw new Error(`${at}: label and sources are required`);
+    if (!['his', 'team', 'event'].includes(e.kind)) throw new Error(`${at}: kind ${e.kind}`);
+    if (e.derived && !e.how) throw new Error(`${at}: derived without how`);
+  }
 }
