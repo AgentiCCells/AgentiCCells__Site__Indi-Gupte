@@ -145,7 +145,7 @@ export const footer = () => `<footer class="foot"><div class="wrap foot-in">
 export const SHARE_ALT = `${PERSON.name}: ${ASK.short.toLowerCase()}`;
 export const shareUrl = (name = 'indi-gupte') => `${SITE}/assets/share/${name}.jpg`;
 // Round 3 (S3): each design's pages use its own card, and the alt text names the design.
-const shareAlt = name => { const d = DESIGNS.find(x => x.slug === name); return d ? `${PERSON.name}, ${ASK.short.toLowerCase()}: the ${d.name} design` : SHARE_ALT; };
+const shareAlt = name => { const d = DESIGNS.find(x => x.slug === name); return d ? `${PERSON.name}, ${ASK.short.toLowerCase()}: ${/^The /.test(d.name) ? d.name : `the ${d.name}`} design` : SHARE_ALT; };
 export function head({ title, description, path, share = 'indi-gupte', css = [], extra = '', canonical, refresh, scheme = 'light dark' }) {
   const url = `${SITE}${path}`;
   return `<!doctype html>

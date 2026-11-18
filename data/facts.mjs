@@ -770,7 +770,7 @@ export const DESIGNS = [
     slug: 'front-page',
     name: 'Front Page',
     idea: 'A newspaper front page about his week, from one of PrompTugal.news\'s editors.',
-    leadsWith: 'The masthead with its two ears ("Wanted: work experience" and "Reply via LinkedIn"), then the lead story about his week with his pictures in black and white, and his week in dates in the sidebar',
+    leadsWith: 'The masthead with its two ears ("Wanted: work experience" and "Reply via LinkedIn"), then the lead story about his week with his pictures in black and white, and his ten days as newspaper briefs in columns',
     default: false,
     copy: {
       dateline: { text: 'West London · Web Summit Lisbon 2026 · Looking for work experience', sources: ['whatsapp', 'ws-home'] },
