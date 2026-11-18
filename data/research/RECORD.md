@@ -156,3 +156,76 @@ Also named outside that list: `conductor.fringe@PrompTugal.indi`, owner of the L
 - **His role.** The team's site says "The message, outreach, and the factory of examples"; the newsroom says "communities and organisers"; PrompTugal.news says "editor". They describe different parts of the work, not a contradiction.
 - **Pronoun.** One line of the brief page uses "her" ("every agent of hers"); the factory brief and the newsroom use "he" and "his". Follow the factory brief.
 - **Business cards.** His post says "I designed our business cards"; the team's site credits his agent designer@web-summit.indi with the designs, and him with choosing them.
+
+## His work on web-summit.sgit.ai (round 1b)
+
+Asked for by the conductor after Dinis Cruz's words of about 10:03 UTC, 2026-11-18 ("also see the amazing work he did at web-summit.sgit.ai") and about 10:04 UTC (the agent teams as visualisations). Read on 2026-11-18. Machine-readable: `data/research/work.json` (the pieces) and `data/research/agents.json` (now in the shape of the model agents.json the conductor named, from the team's earlier personal site, with `teams`, `groups`, `edges` and `talks_to`). About 40 requests in this round (20 Markdown pages, the site's llms.txt, the dashboard's HTML, and Playwright page loads for the shots).
+
+### The pieces
+
+| Piece | What it is (the record's words, shortened) | Agent | Date | URL | Numbers | Shot |
+|---|---|---|---|---|---|---|
+| Business cards we are printing | three cards, "one per audience", Executives (gold), GRC (green), Security (blue), "No names" | designer@web-summit.indi | brief 4 Nov; Design A chosen by Dinis Cruz 5 Nov | https://web-summit.sgit.ai/cards/index.html | 3 designs, "about 200 of each", 85 x 55 mm | cards-round4-executives.jpg, cards-round4-security.jpg |
+| Earlier card rounds | "The card Indi chose on 4 November" (B Seal); six round-2 designs; round 3 "after the user tests" | designer@web-summit.indi | 4 to 5 Nov | https://web-summit.sgit.ai/cards/index.html#earlier | 6 round-2 designs | cards-round2-seal.jpg |
+| Cards brief and examples | "The cards: three, one per audience, no names (Indi, 4 November)"; "The booths and \"Web Summit Edition\" are Indi's words" | designer@web-summit.indi | 4 Nov | https://web-summit.sgit.ai/cards/brief/index.html | | none |
+| Synthetic users on the cards (WS-142) | "five invented people get a card, scan it and say what they make of it"; "Everybody in it is invented; it is not user research." | synthetic@web-summit.indi | 4 Nov (runs 1 and 2) | https://web-summit.sgit.ai/brief-indi/index.html | run 1: "5 personas, 34 steps, 51 findings: 6 blocking, 16 costly, 19 minor, 10 held"; run 2: "**Record** is picked by 4 of 5 (mean 4.0 of 5)" | none (vaults not opened) |
+| Laptop stickers | "one corporate, two infographics, one cartoon"; "Revised after Indi's notes (4 November, evening)" | designer@web-summit.indi | 4 Nov | https://web-summit.sgit.ai/stickers/index.html | 4 stickers; a creative set of twelve | stickers-overview.jpg, sticker-gap.jpg |
+| Digital card | "The team's digital business card ... Add it to Apple Wallet in one tap" | not stated | not stated | https://web-summit.sgit.ai/card/index.html | | none |
+| Safe AI for learning | "An idea, not yet built: AI helpers for schools ..." from "Indi Gupte's brief of 4 November 2026" | education@web-summit.indi | brief 4 Nov; published 10 Nov | https://web-summit.sgit.ai/people/indi/education/index.html | | education.jpg |
+| The factory (WS-27) | "What each target company does, the risks it faces from AI agents and how RiskMandate helps, in pictures and in normal and lay terms" | dev@web-summit.indi built it "at Indi's go"; factory@web-summit.indi makes the pages | from 3 Nov, 23:30 | https://web-summit.sgit.ai/people/indi/factory/index.html | "31 companies" | factory.jpg |
+| A factory company page | a target company "in three pictures, each in normal terms and in lay terms" | factory@web-summit.indi | sources read 1 Nov | https://web-summit.sgit.ai/people/indi/factory/(a target company)/index.html | 3 pictures | factory-company.jpg |
+| Newsroom workflow infographic | "from a handshake at Web Summit to a published interview, who does each step, the hand-overs, and what stays private"; "tested on a stranger (a sub-agent who knew nothing), with six terms rewritten after" | conductor-newsroom@web-summit.indi, started by conductor@web-summit.indi | 10 Nov: brief about 12:40 UTC, live 15:00 (v0.2.1706) | https://web-summit.sgit.ai/people/indi/helpers/newsroom/index.html | 14 steps on the page; "About 2 hours 20 minutes" brief to live | newsroom-steps.jpg, newsroom-workflow.jpg |
+| Who wakes when | "5 on a timetable with 10 wake-ups a day, one planned, and 9 that work when asked" | conductor@web-summit.indi | checked 8 Nov, 07:25 UTC | https://web-summit.sgit.ai/people/indi/schedules/index.html | 5, 10, 9 | schedules.jpg |
+| Token efficiency | "264 measured wakes from 37 agents cost 180.5M tokens, 65% of it cache reads. The same output could cost 24% to 53% less. Ten rules, ready for an ABP." "Written on 8 November 2026 at Indi's word." | accountant@web-summit.indi's method; the writer is not named | 8 Nov | https://web-summit.sgit.ai/people/indi/token-efficiency/index.html | as quoted | none (its chart names teammates) |
+| Daily token report and token guide | "What your agents cost today, how to spend less ... New every day at 5:30 pm" | accountant@web-summit.indi | daily (WS-148) | https://web-summit.sgit.ai/people/indi/accountant/briefs/latest.pdf | | none (not opened) |
+| To-do infographic | "64 Command Centre tasks by when they are due, 7 decisions, and 25 other tasks, rebuilt at every release" | dashboard@web-summit.indi | rebuilt each release | https://web-summit.sgit.ai/people/indi/todo/index.html | 64 open, 62 late, 7 decisions, 25 other | todo.jpg (top only) |
+| Indi's day | "Indi's day on one page in plain words" | dashboard@web-summit.indi | rebuilt each release | https://web-summit.sgit.ai/people/indi/today/index.html | | none |
+| Command centre | "tasks from the board, agents, workstreams and decisions, built from the repository" | the site's build | rebuilt each release | https://web-summit.sgit.ai/people/indi/app/index.html | | none (its main view shows other people's names) |
+| Dashboard | "The page Indi reads first" | dashboard@web-summit.indi (its own part) | rebuilt each release | https://web-summit.sgit.ai/people/indi/index.html | 27 agents (23 running) | none |
+| LinkedIn post drafts | "drafts one post a day for RiskMandate's LinkedIn page ... Indi posts"; "Friday's LinkedIn post, 'thank you, Lisbon', is drafted" | social@web-summit.indi | daily 16:00 UTC from 7 Nov | no public page found | | none |
+| Venue map | "the venue map screen in the PrompTugal Team app (Apple Maps with our own venue drawing ...) and venue.geojson" | conductor-map@web-summit.indi | last commit 10 Nov | people/indi/wayfinding/ returns 404 | 3 commits | none |
+| Team app redesign | "the Team app's light mode, ticked-off tasks with an animation, a bigger venue-map button ..." (listed as proposed, not yet running) | conductor-teamapp@web-summit.indi | 10 to 11 Nov | no public page found | 0 commits | none |
+| Public PrompTugal app redesign | "fewest taps per workflow, the Team app redesign's lessons, original colours, no AI-sounding text" | conductor-newsapp@web-summit.indi | last commit 11 Nov | no public page found | 3 commits | none |
+| Three apps strategy (context) | "at Dinis's word (8 November 2026, with Indi)" | conductor@web-summit.dinis, not Indi's agents | 8 Nov | https://web-summit.sgit.ai/apps/index.html | | none |
+
+Pages naming Indi: all of the above except the a target company company page and the digital card description.
+
+### The shots (data/research/shots/)
+
+Taken with Playwright, viewport 1200 px wide, deviceScaleFactor 1, JPEG quality 72, clipped to the work; all under 150 KB (factory.jpg resized to 760 px wide to fit). For each, the text inside the clip was scanned for the names of other team members (none found), and each image was looked at: **no photograph of a person and no name other than Indi Gupte or Dinis Cruz appears in any shot.** The left-hand menu and the top bar, which carry other people's names on these pages, are outside every clip.
+
+| Shot | What it shows |
+|---|---|
+| cards-round4-executives.jpg | the printed Executives card, front: "Do you know what your agents are doing?" |
+| cards-round4-security.jpg | the printed Security card, front: "Your AI has access. Does it have permission?" |
+| cards-round2-seal.jpg | round-2 R2-1 Seal, front: the RM seal, "Ask me what my agents did today." (no name on the front) |
+| stickers-overview.jpg | the four laptop stickers on one sheet |
+| sticker-gap.jpg | the "Control the gap" infographic sticker |
+| education.jpg | Safe AI for learning, from the title to "How it would work" |
+| factory.jpg | the factory: "RiskMandate in one picture" and the first company cards |
+| factory-company.jpg | the a target company page: what it does and its risks, as diagrams |
+| newsroom-steps.jpg | the interview workflow, steps 1 to 3 with their hand-overs |
+| newsroom-workflow.jpg | the same journey as a diagram (rows of workers, 14 numbered steps) |
+| schedules.jpg | who wakes when: the counts and the day-at-a-glance timeline |
+| todo.jpg | the to-do infographic's top: 64, 62, 7, 25, and "Your agents today" |
+
+### His agent teams (for the visualisations)
+
+- **web-summit.indi:** 27 agents, 23 running, 4 proposed (conductor-teamapp, demo, inbox, vault); four are one-off helpers (conductor-map, conductor-newsapp, conductor-newsroom, conductor-teamapp). Sources: https://web-summit.sgit.ai/people/indi/index.md, https://web-summit.sgit.ai/team/everything/index.md.
+- **PrompTugal.indi:** one agent named, conductor.fringe@PrompTugal.indi, on Lisbon Tech Fringe (https://lisbontechfringe.com/join/); no commit count published. https://promptugal.news/newsroom/index.md names no .indi agent.
+- **Also named:** mentor@web-summit.indi, which wrote notes to Indi until its handover on 6 November ("This mentor stops here."); not in the 27.
+- **Groups** in agents.json (lead, building, design, research and writing, operations, safeguards) are this researcher's proposal from each description; the sources do not group the agents.
+- **Who his agents wrote to:** from the chart "Indi Gupte's agents, and who they write to" on https://web-summit.sgit.ai/people/indi/index.html (svg class "ch ch-map"; each line has a title "X wrote to Y N times"). 111 edges touch his agents or Indi; all are in agents.json. Messages from his agents to others: Indi Gupte 161; Dinis Cruz's conductor 71; Dinis Cruz 29; four teammates' conductors 35 in all; two teammates 15; Dinis Cruz's newsroom agent 5; Dinis Cruz's security agent 1. Messages to his agents from outside his team: Dinis Cruz's conductor 44, teammates' conductors 24, Dinis Cruz's security agent 1. Teammates are written as "teammate A" to "teammate D".
+- **Activity over time:** no per-day or per-week commit series for his agents was found. Each agent's last-commit date is published and is in agents.json.
+
+### Not found in round 1b
+
+- people/indi/wayfinding/ (the venue map), any public page of the Team app or public app redesigns, the social drafts, and the synthetic-users vaults (named `nnsikio4` and `4c52covm`, not opened).
+- The accountant's PDF report and the token guide image were not opened.
+
+### Conflicts found in round 1b
+
+- **Newsroom workflow steps.** The workflow page shows 14 steps; the example page about it says "a 16-step newsroom workflow" (https://web-summit.sgit.ai/examples/pt-news-newsroom-workflow/index.md). Use the page's 14, or say "the workflow" without a number.
+- **Commits.** 277 (newsroom article, 3 to 13 November) against 309 listed per agent (to 16 November); see agents.json `commits_note`.
+- **Handles.** 27 on web-summit.indi; 29 .indi handles in all with conductor.fringe@PrompTugal.indi and mentor@web-summit.indi.
+- **Pronoun.** The 4 November report summary on the site says "her designer"; the factory brief uses "he".

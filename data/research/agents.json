@@ -1,29 +1,713 @@
 {
-  "about": "Indi Gupte's agents on the Web Summit team's site, as published on 2026-11-18. Descriptions are shortened from the sources; names of other people are replaced with 'another team member'. Status and commit counts are from the team/everything page (site version v0.2.2313).",
-  "counts": {
-    "agents": 27,
-    "active": 23,
-    "proposed_not_running": 4,
-    "commits_listed": 309,
-    "source": "https://web-summit.sgit.ai/people/indi/index.md",
-    "published_line": "27 agents (23 running)",
-    "read": "2026-11-18"
+  "about": "Indi Gupte's AI agent teams at Web Summit 2026, as published on the team's site and on Lisbon Tech Fringe. Each agent's name has the form role@project.person; his person part is indi. This file names no person other than Indi Gupte and Dinis Cruz: other teammates are 'teammate A' to 'teammate D' (the letters are arbitrary and consistent within this file).",
+  "source": "https://web-summit.sgit.ai/people/indi/index.md",
+  "read": "2026-11-18",
+  "total": 27,
+  "running": 23,
+  "published_line": "27 agents (23 running)",
+  "commits_total": 309,
+  "commits_note": "309 is the sum of the per-agent commit counts on his dashboard and the team register (site version v0.2.2313-v0.2.2314, read 2026-11-18; the last commit is 2026-11-16). The newsroom's article gives 277 commits by his agents on the team's site (https://newsroom.sgit.ai/articles/ten-days-at-web-summit.md, by Dinis Cruz, 2026-11-14, counting 3 to 13 November). The two count different windows; quote 277 with its source and window, or 309 as 'listed on his dashboard'.",
+  "groups": {
+    "lead": "Leads the team",
+    "building": "Building pages, apps and the factory (including one-off helpers)",
+    "design": "Design and user experience",
+    "research and writing": "Research, writing and prompts",
+    "operations": "Operations: dashboard, tokens, follow-ups, inbox, vaults",
+    "safeguards": "Safeguards and checks: the message, synthetic users, behaviour policies"
   },
-  "also_named_elsewhere": [
+  "groups_note": "Groups are assigned by researcher.indi-gupte@AgentiCCells.dinis from each agent's published description; the source pages do not group them. A proposal, not a published fact.",
+  "teams": [
     {
-      "name": "conductor.fringe@PrompTugal.indi",
-      "does": "owner of the Lisbon Tech Fringe board item '04. Communities page: who runs this week's events, how to join' (done), lane: communities",
-      "source": "https://lisbontechfringe.com/join/",
-      "read": "2026-11-18"
+      "team": "web-summit.indi",
+      "project": "the Web Summit team's site (web-summit.sgit.ai)",
+      "agents": 27,
+      "running": 23,
+      "proposed": 4,
+      "one_off_helpers": 4,
+      "commits_listed": 309,
+      "sources": [
+        {
+          "url": "https://web-summit.sgit.ai/people/indi/index.md",
+          "words": "27 agents (23 running)",
+          "read": "2026-11-18"
+        },
+        {
+          "url": "https://web-summit.sgit.ai/team/everything/index.md",
+          "words": "| Indi Gupte | one of the seven | L6 the vaults: fully wired | 27 | 23 |",
+          "read": "2026-11-18"
+        },
+        {
+          "url": "https://web-summit.sgit.ai/index.md",
+          "words": "Indi Gupte: L6 the vaults: fully wired, 23 agents running",
+          "read": "2026-11-18"
+        },
+        {
+          "url": "https://web-summit.sgit.ai/people/indi/schedules/index.md",
+          "words": "5 on a timetable with 10 wake-ups a day, one planned, and 9 that work when asked",
+          "read": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "team": "PrompTugal.indi",
+      "project": "Lisbon Tech Fringe, a PrompTugal.news site",
+      "agents": 1,
+      "running": null,
+      "commits_listed": null,
+      "sources": [
+        {
+          "url": "https://lisbontechfringe.com/join/",
+          "words": "Owner: conductor.fringe@PrompTugal.indi · lane: communities (Indi)",
+          "read": "2026-11-18"
+        }
+      ],
+      "note": "Only one .indi agent is named on Lisbon Tech Fringe; no commit count is published for it. https://promptugal.news/newsroom/index.md names no .indi agent."
     }
+  ],
+  "schedule": {
+    "source": "https://web-summit.sgit.ai/people/indi/schedules/index.md",
+    "read": "2026-11-18",
+    "words": "Times are UTC",
+    "wakes": {
+      "conductor": [
+        "07:20",
+        "12:20",
+        "17:20"
+      ],
+      "dashboard": [
+        "07:30",
+        "12:30",
+        "17:30"
+      ],
+      "dev": [
+        "09:30",
+        "15:30"
+      ],
+      "social": [
+        "16:00"
+      ],
+      "accountant": [
+        "17:30"
+      ]
+    }
+  },
+  "talks_to": [
+    "Indi Gupte: 161",
+    "Dinis Cruz's conductor: 71",
+    "Dinis Cruz: 29",
+    "teammate B: 13",
+    "teammate B's conductor: 12",
+    "teammate C's conductor: 8",
+    "teammate D's conductor: 8",
+    "teammate A's conductor: 7",
+    "Dinis Cruz's newsroom agent: 5",
+    "teammate C: 2",
+    "Dinis Cruz's security agent: 1"
+  ],
+  "talks_to_note": "Messages from his agents to people and agents outside his team, summed from the edges below. The source chart lists ten recipients: Dinis Cruz, three of Dinis Cruz's agents (conductor, newsroom, security), four teammates' conductors and two teammates (names replaced here).",
+  "heard_from": [
+    "Dinis Cruz's conductor: 44",
+    "teammate A's conductor: 11",
+    "teammate D's conductor: 9",
+    "teammate C's conductor: 2",
+    "teammate B's conductor: 2",
+    "Dinis Cruz's security agent: 1"
+  ],
+  "edges": [
+    {
+      "from": "teammate A's conductor",
+      "to": "conductor@web-summit.indi",
+      "count": 8
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "followups@web-summit.indi",
+      "count": 4
+    },
+    {
+      "from": "Dinis Cruz's conductor",
+      "to": "conductor@web-summit.indi",
+      "count": 33
+    },
+    {
+      "from": "teammate A's conductor",
+      "to": "followups@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "teammate A's conductor",
+      "to": "appdev@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 18
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "Dinis Cruz's conductor",
+      "count": 10
+    },
+    {
+      "from": "dashboard@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 28
+    },
+    {
+      "from": "followups@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "followups@web-summit.indi",
+      "to": "Dinis Cruz's conductor",
+      "count": 1
+    },
+    {
+      "from": "social@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 7
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 68
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "teammate B",
+      "count": 13
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "Dinis Cruz",
+      "count": 20
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "teammate B's conductor",
+      "count": 11
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 12
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 10
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "teammate C's conductor",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "conductor-teamapp@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "conductor-abpmaker@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "conductor-abpmaker@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 1
+    },
+    {
+      "from": "appdev@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 1
+    },
+    {
+      "from": "video-editor@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 4
+    },
+    {
+      "from": "prompter@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 30
+    },
+    {
+      "from": "prompter@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 11
+    },
+    {
+      "from": "conductor-newsapp@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 3
+    },
+    {
+      "from": "conductor-newsapp@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 3
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "conductor-teamapp@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "dashboard@web-summit.indi",
+      "count": 6
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "conductor-newsroom@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "conductor-newsapp@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "education@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "conductor-map@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "prompter@web-summit.indi",
+      "count": 6
+    },
+    {
+      "from": "conductor-newsroom@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "conductor-newsroom@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 1
+    },
+    {
+      "from": "conductor-newsroom@web-summit.indi",
+      "to": "Dinis Cruz",
+      "count": 1
+    },
+    {
+      "from": "conductor-map@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 3
+    },
+    {
+      "from": "conductor-map@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 3
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "Dinis Cruz's conductor",
+      "count": 18
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "teammate C's conductor",
+      "count": 7
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "teammate A's conductor",
+      "count": 7
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "accountant@web-summit.indi",
+      "count": 6
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "conductor-newsroom@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "teammate C",
+      "count": 2
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "prompter@web-summit.indi",
+      "count": 3
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "messaging@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "education@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 1
+    },
+    {
+      "from": "dashboard@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "education@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "conductor-newsapp@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "social@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "prompter@web-summit.indi",
+      "to": "dev@web-summit.indi",
+      "count": 4
+    },
+    {
+      "from": "Dinis Cruz's conductor",
+      "to": "prompter@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "prompter@web-summit.indi",
+      "to": "accountant@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "prompter@web-summit.indi",
+      "to": "Dinis Cruz's conductor",
+      "count": 14
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "conductor-map@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "prompter@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "dev@web-summit.indi",
+      "count": 5
+    },
+    {
+      "from": "Dinis Cruz's conductor",
+      "to": "messaging@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "prompter@web-summit.indi",
+      "to": "Dinis Cruz",
+      "count": 5
+    },
+    {
+      "from": "Dinis Cruz's conductor",
+      "to": "dev@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "social@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "Dinis Cruz",
+      "count": 3
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "Dinis Cruz's newsroom agent",
+      "count": 5
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "Dinis Cruz's conductor",
+      "count": 2
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "dashboard@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "messaging@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "factory@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "builder@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "designer@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "synthetic@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "accountant@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "journalist@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "ux@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "social@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "vault@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "teammate D's conductor",
+      "count": 8
+    },
+    {
+      "from": "social@web-summit.indi",
+      "to": "teammate B's conductor",
+      "count": 1
+    },
+    {
+      "from": "conductor@web-summit.indi",
+      "to": "ux@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "teammate D's conductor",
+      "to": "conductor@web-summit.indi",
+      "count": 5
+    },
+    {
+      "from": "teammate D's conductor",
+      "to": "accountant@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "Dinis Cruz's conductor",
+      "to": "synthetic@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "teammate C's conductor",
+      "to": "ux@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "teammate C's conductor",
+      "to": "conductor@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "teammate C's conductor",
+      "to": "Indi Gupte",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "synthetic@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "journalist@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "ux@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "builder@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "factory@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "messaging@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "teammate B's conductor",
+      "to": "conductor@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "teammate D's conductor",
+      "to": "designer@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "teammate A's conductor",
+      "to": "synthetic@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "dev@web-summit.indi",
+      "to": "Dinis Cruz's security agent",
+      "count": 1
+    },
+    {
+      "from": "Dinis Cruz's conductor",
+      "to": "designer@web-summit.indi",
+      "count": 5
+    },
+    {
+      "from": "synthetic@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 13
+    },
+    {
+      "from": "synthetic@web-summit.indi",
+      "to": "dashboard@web-summit.indi",
+      "count": 3
+    },
+    {
+      "from": "ux@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "messaging@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "factory@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "builder@web-summit.indi",
+      "to": "conductor@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "synthetic@web-summit.indi",
+      "to": "Dinis Cruz's conductor",
+      "count": 5
+    },
+    {
+      "from": "designer@web-summit.indi",
+      "to": "Dinis Cruz's conductor",
+      "count": 21
+    },
+    {
+      "from": "journalist@web-summit.indi",
+      "to": "Indi Gupte",
+      "count": 2
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "dashboard@web-summit.indi",
+      "count": 2
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "designer@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "accountant@web-summit.indi",
+      "to": "dev@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "synthetic@web-summit.indi",
+      "to": "designer@web-summit.indi",
+      "count": 1
+    },
+    {
+      "from": "Dinis Cruz's security agent",
+      "to": "dev@web-summit.indi",
+      "count": 1
+    }
+  ],
+  "edges_source": {
+    "url": "https://web-summit.sgit.ai/people/indi/index.html",
+    "what": "the chart 'Indi Gupte's agents, and who they write to' (svg class 'ch ch-map'), one <title> per line: 'X wrote to Y N times'. Only edges that touch his agents or Indi are kept; edges between other people's agents are left out.",
+    "read": "2026-11-18",
+    "kept": 111,
+    "in_chart": 144
+  },
+  "activity_over_time": null,
+  "activity_note": "No per-day or per-week commit series for his agents was found on the pages read. Each agent's last-commit date is published (below); the ten-days article gives team-wide daily events.",
+  "also_named": [
+    {
+      "handle": "mentor@web-summit.indi",
+      "does": "a mentor agent that wrote notes to Indi and his agents; its last note, 6 November 2026, is a handover: 'This mentor stops here.'",
+      "status": "stopped",
+      "source": "https://web-summit.sgit.ai/people/indi/index.md",
+      "read": "2026-11-18",
+      "note": "not counted in the 27"
+    }
+  ],
+  "conflicts": [
+    "277 commits (newsroom, 3 to 13 November) against 309 listed per agent on his dashboard (to 16 November).",
+    "27 agents on web-summit.indi; with conductor.fringe@PrompTugal.indi and mentor@web-summit.indi, 29 .indi handles appear across the pages read."
   ],
   "agents": [
     {
-      "name": "accountant@web-summit.indi",
+      "handle": "accountant@web-summit.indi",
+      "role": "accountant",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "token accountant: measures the tokens Indi's agents use, finds the waste, proposes changes, briefs Indi and Dinis at 17:30 UTC daily (WS-148)",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 42,
       "last_commit_utc": "2026-11-13 17:38",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "operations",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -31,11 +715,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "appdev@web-summit.indi",
+      "handle": "appdev@web-summit.indi",
+      "role": "appdev",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "not published",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 1,
       "last_commit_utc": "2026-11-11 13:29",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "building",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -43,11 +735,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "builder@web-summit.indi",
+      "handle": "builder@web-summit.indi",
+      "role": "builder",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "another team member's site and learning environment, under that team member's policies",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 1,
       "last_commit_utc": "2026-11-04 22:17",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "building",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -55,11 +755,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "conductor@web-summit.indi",
+      "handle": "conductor@web-summit.indi",
+      "role": "conductor",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "conducts Indi's agents, keeps people/indi/, feeds the stand-ups and briefs Indi",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 90,
       "last_commit_utc": "2026-11-16 13:37",
+      "first_date": "3 November (scheduled task from that day)",
+      "first_date_source": "https://web-summit.sgit.ai/people/indi/schedules/index.md",
+      "group": "lead",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -67,11 +775,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "conductor-abpmaker@web-summit.indi",
+      "handle": "conductor-abpmaker@web-summit.indi",
+      "role": "conductor-abpmaker",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "not published",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 1,
       "last_commit_utc": "2026-11-11 14:34",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "safeguards",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -79,11 +795,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "conductor-map@web-summit.indi",
+      "handle": "conductor-map@web-summit.indi",
+      "role": "conductor-map",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "one-off helper: the venue map screen in the PrompTugal Team app (Apple Maps with our own venue drawing) and venue.geojson",
-      "status": "active",
+      "status": "one-off helper",
+      "status_as_published": "active",
+      "helper": true,
       "commits": 3,
       "last_commit_utc": "2026-11-10 13:48",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "building",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -91,11 +815,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "conductor-newsapp@web-summit.indi",
+      "handle": "conductor-newsapp@web-summit.indi",
+      "role": "conductor-newsapp",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "one-off helper: the UI and UX redesign of the public PrompTugal app (news.promptugal.reader): fewest taps per workflow, original colours, no AI-sounding text",
-      "status": "active",
+      "status": "one-off helper",
+      "status_as_published": "active",
+      "helper": true,
       "commits": 3,
       "last_commit_utc": "2026-11-11 00:20",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "building",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -103,11 +835,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "conductor-newsroom@web-summit.indi",
+      "handle": "conductor-newsroom@web-summit.indi",
+      "role": "conductor-newsroom",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "one-off helper: the unified interview-to-article workflow, its plain-words infographic on the team site, the visual newsroom map, and the pt.news redesign focused on agents",
-      "status": "active",
+      "status": "one-off helper",
+      "status_as_published": "active",
+      "helper": true,
       "commits": 1,
       "last_commit_utc": "2026-11-10 14:51",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "building",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -115,11 +855,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "conductor-teamapp@web-summit.indi",
+      "handle": "conductor-teamapp@web-summit.indi",
+      "role": "conductor-teamapp",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "overnight helper (10 to 11 November): the Team app's light mode, ticked-off tasks with an animation, a bigger venue-map button, every Web Summit event in Plan, and one-tap messaging",
-      "status": "proposed (in the brief), not yet running",
+      "status": "proposed",
+      "status_as_published": "proposed (in the brief), not yet running",
+      "helper": true,
       "commits": 0,
       "last_commit_utc": null,
+      "first_date": null,
+      "first_date_source": null,
+      "group": "building",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -127,11 +875,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "dashboard@web-summit.indi",
+      "handle": "dashboard@web-summit.indi",
+      "role": "dashboard",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "keeps Indi's dashboard (people/indi/dashboard.md) and Indi's to-do infographic's list (people/indi/todo/todo.json, from 4 November)",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 30,
       "last_commit_utc": "2026-11-13 17:33",
+      "first_date": "4 November (to-do list kept from that day)",
+      "first_date_source": "https://web-summit.sgit.ai/people/indi/index.md",
+      "group": "operations",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -139,11 +895,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "demo@web-summit.indi",
+      "handle": "demo@web-summit.indi",
+      "role": "demo",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "at the stand: asks a visitor five questions, researches their company's public facts, and builds a simulation and its ABP for the side-by-side ABP demo",
-      "status": "proposed (in the brief), not yet running",
+      "status": "proposed",
+      "status_as_published": "proposed (in the brief), not yet running",
+      "helper": false,
       "commits": 0,
       "last_commit_utc": null,
+      "first_date": null,
+      "first_date_source": null,
+      "group": "operations",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -151,11 +915,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "designer@web-summit.indi",
+      "handle": "designer@web-summit.indi",
+      "role": "designer",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "RiskMandate business cards for Web Summit: round 1 and round 2 designs, and /cards/ for a phone (WS-48)",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 24,
       "last_commit_utc": "2026-11-05 12:45",
+      "first_date": "4 November 2026 (cards and stickers briefs)",
+      "first_date_source": "https://web-summit.sgit.ai/cards/brief/index.md",
+      "group": "design",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -163,11 +935,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "dev@web-summit.indi",
+      "handle": "dev@web-summit.indi",
+      "role": "dev",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "explorer developer for the factory (WS-27): a page or vault per target company, fast",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 31,
       "last_commit_utc": "2026-11-11 19:42",
+      "first_date": "3 November 2026, 23:30 (the factory, WS-27)",
+      "first_date_source": "https://web-summit.sgit.ai/brief-indi/index.md",
+      "group": "building",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -175,11 +955,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "education@web-summit.indi",
+      "handle": "education@web-summit.indi",
+      "role": "education",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "RiskMandate for education and children (WS-209): the public page /people/indi/education/, the people to meet at Web Summit, the chat with Dinis",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 2,
       "last_commit_utc": "2026-11-10 11:51",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "research and writing",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -187,11 +975,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "factory@web-summit.indi",
+      "handle": "factory@web-summit.indi",
+      "role": "factory",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "for each target company: the analysis, the risk analysis and how RiskMandate helps, as a page or vault (WS-27)",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 2,
       "last_commit_utc": "2026-11-04 22:18",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "building",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -199,11 +995,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "followups@web-summit.indi",
+      "handle": "followups@web-summit.indi",
+      "role": "followups",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "not published",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 2,
       "last_commit_utc": "2026-11-13 17:20",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "operations",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -211,11 +1015,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "inbox@web-summit.indi",
+      "handle": "inbox@web-summit.indi",
+      "role": "inbox",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "reads Indi's Gmail (summit and RiskMandate mail only) and drafts replies in Gmail; never sends",
-      "status": "proposed (in the brief), not yet running",
+      "status": "proposed",
+      "status_as_published": "proposed (in the brief), not yet running",
+      "helper": false,
       "commits": 0,
       "last_commit_utc": null,
+      "first_date": null,
+      "first_date_source": null,
+      "group": "operations",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -223,11 +1035,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "infographic@web-summit.indi",
+      "handle": "infographic@web-summit.indi",
+      "role": "infographic",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "makes plain-word, pastel infographic pages on the team site at Indi's request, each tested on a stranger (a small sub-agent) before Indi sees it",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 1,
       "last_commit_utc": "2026-11-09 12:17",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "design",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -235,11 +1055,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "journalist@web-summit.indi",
+      "handle": "journalist@web-summit.indi",
+      "role": "journalist",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "every wake, reports what happened that matters to Indi, and once a day at the evening wake a digest",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 3,
       "last_commit_utc": "2026-11-04 21:43",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "research and writing",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -247,11 +1075,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "messaging@web-summit.indi",
+      "handle": "messaging@web-summit.indi",
+      "role": "messaging",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "checks every new page and draft against the message",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 3,
       "last_commit_utc": "2026-11-09 17:48",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "safeguards",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -259,11 +1095,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "prompter@web-summit.indi",
+      "handle": "prompter@web-summit.indi",
+      "role": "prompter",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "prompt engineering: writes new prompts and improves existing ones (especially rushed or garbled ones) so Indi's tasks get done in one or two prompts",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 35,
       "last_commit_utc": "2026-11-11 13:16",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "research and writing",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -271,11 +1115,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "recruiter@web-summit.indi",
+      "handle": "recruiter@web-summit.indi",
+      "role": "recruiter",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "not published",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 1,
       "last_commit_utc": "2026-11-06 12:39",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "research and writing",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -283,11 +1135,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "social@web-summit.indi",
+      "handle": "social@web-summit.indi",
+      "role": "social",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "drafts one post a day for RiskMandate's LinkedIn page (company voice, plus a reshare line in Indi's voice), with a picture suggestion and dated sources; Indi posts (WS-126)",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 9,
       "last_commit_utc": "2026-11-12 16:02",
+      "first_date": "7 November (scheduled task from that day)",
+      "first_date_source": "https://web-summit.sgit.ai/team/everything/index.md",
+      "group": "research and writing",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -295,11 +1155,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "synthetic@web-summit.indi",
+      "handle": "synthetic@web-summit.indi",
+      "role": "synthetic",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "synthetic users: invented personas, played by sub-agents, test what Indi works on (first, the RiskMandate business cards); the runs go into a public vault",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 18,
       "last_commit_utc": "2026-11-08 16:27",
+      "first_date": "4 November 2026 (run 1 on the cards, WS-142)",
+      "first_date_source": "https://web-summit.sgit.ai/brief-indi/index.md",
+      "group": "safeguards",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -307,11 +1175,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "ux@web-summit.indi",
+      "handle": "ux@web-summit.indi",
+      "role": "ux",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "the user experience of Indi's dashboard, command centre and to-do page (WS-06)",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 2,
       "last_commit_utc": "2026-11-07 17:59",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "design",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -319,11 +1195,19 @@
       "read": "2026-11-18"
     },
     {
-      "name": "vault@web-summit.indi",
+      "handle": "vault@web-summit.indi",
+      "role": "vault",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "Indi's SGit vaults and their keys (WS-121)",
-      "status": "proposed (in the brief), not yet running",
+      "status": "proposed",
+      "status_as_published": "proposed (in the brief), not yet running",
+      "helper": false,
       "commits": 0,
       "last_commit_utc": null,
+      "first_date": null,
+      "first_date_source": null,
+      "group": "operations",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
@@ -331,14 +1215,41 @@
       "read": "2026-11-18"
     },
     {
-      "name": "video-editor@web-summit.indi",
+      "handle": "video-editor@web-summit.indi",
+      "role": "video-editor",
+      "project": "web-summit",
+      "team": "web-summit.indi",
       "does": "not published",
-      "status": "active",
+      "status": "running",
+      "status_as_published": "active",
+      "helper": false,
       "commits": 4,
       "last_commit_utc": "2026-11-11 13:25",
+      "first_date": null,
+      "first_date_source": null,
+      "group": "design",
       "source": [
         "https://web-summit.sgit.ai/people/indi/index.md",
         "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "handle": "conductor.fringe@PrompTugal.indi",
+      "role": "conductor.fringe",
+      "project": "PrompTugal (Lisbon Tech Fringe)",
+      "team": "PrompTugal.indi",
+      "does": "his conductor on Lisbon Tech Fringe; owner of the board item '04. Communities page: who runs this week's events, how to join', marked done; lane: communities",
+      "status": "ran (item done)",
+      "status_as_published": "done",
+      "helper": false,
+      "commits": null,
+      "last_commit_utc": null,
+      "first_date": "11 November 2026 (Lisbon Tech Fringe went live that day)",
+      "first_date_source": "https://newsroom.sgit.ai/articles/ten-days-at-web-summit.md",
+      "group": "lead",
+      "source": [
+        "https://lisbontechfringe.com/join/"
       ],
       "read": "2026-11-18"
     }

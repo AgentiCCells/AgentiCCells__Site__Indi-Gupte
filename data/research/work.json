@@ -1,0 +1,399 @@
+{
+  "about": "Indi Gupte's work and his agents' work on web-summit.sgit.ai, round 1b. Each shot was checked: no photograph of a person, and no person's name other than Indi Gupte or Dinis Cruz (checked by a text scan of the clipped area and by looking at each image).",
+  "read": "2026-11-18",
+  "items": [
+    {
+      "slug": "business-cards-printed",
+      "title": "The business cards we are printing: three, one per audience",
+      "what": "Three RiskMandate cards for Web Summit Lisbon, colour-coded for Executives (gold), GRC (green) and Security (blue), with no names; every QR goes to the team page.",
+      "agent": "designer@web-summit.indi",
+      "date": "4 November 2026 (brief); Design A chosen by Dinis Cruz on 5 November",
+      "url": "https://web-summit.sgit.ai/cards/index.html",
+      "shot": [
+        "data/research/shots/cards-round4-executives.jpg",
+        "data/research/shots/cards-round4-security.jpg"
+      ],
+      "numbers": {
+        "designs": 3,
+        "each": "about 200",
+        "size": "85 x 55 mm"
+      },
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/cards/index.md",
+        "https://web-summit.sgit.ai/cards/brief/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "business-cards-rounds",
+      "title": "The business cards, earlier rounds: B Seal, six round-2 designs, round 3",
+      "what": "Round 1 'B Seal', chosen by Indi on 4 November; six round-2 designs (Seal, Pass, Record, Boardroom, Terminal, Signature) for Web Summit; round 3 (Record for everyone, Terminal for engineers) after the user tests.",
+      "agent": "designer@web-summit.indi",
+      "date": "4 to 5 November 2026",
+      "url": "https://web-summit.sgit.ai/cards/index.html#earlier",
+      "shot": "data/research/shots/cards-round2-seal.jpg",
+      "numbers": {
+        "round_2_designs": 6
+      },
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/cards/index.md",
+        "https://web-summit.sgit.ai/design/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "business-cards-brief",
+      "title": "Business cards, the brief and the examples",
+      "what": "The brief for the cards and every current example with its print files, in one place for a person or an agent to review. 'The cards: three, one per audience, no names (Indi, 4 November).'",
+      "agent": "designer@web-summit.indi",
+      "date": "4 November 2026",
+      "url": "https://web-summit.sgit.ai/cards/brief/index.html",
+      "shot": null,
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/cards/brief/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "synthetic-users-cards",
+      "title": "Synthetic users for the business cards (WS-142)",
+      "what": "Five invented people get a card, scan it and say what they make of it; Claude sub-agents play the personas; the runs go into vaults published on the site. 'Everybody in it is invented; it is not user research.'",
+      "agent": "synthetic@web-summit.indi",
+      "date": "4 November 2026 (runs 1 and 2)",
+      "url": "https://web-summit.sgit.ai/brief-indi/index.html#issues",
+      "shot": null,
+      "numbers": {
+        "personas": 5,
+        "run_1_steps": 34,
+        "run_1_findings": 51,
+        "run_1_blocking": 6,
+        "run_1_costly": 16,
+        "run_1_minor": 19,
+        "run_1_held": 10,
+        "run_2_record_picked_by": "4 of 5",
+        "run_2_record_mean": "4.0 of 5"
+      },
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/brief-indi/index.md",
+        "https://web-summit.sgit.ai/people/indi/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "laptop-stickers",
+      "title": "Laptop stickers, the brief and the examples",
+      "what": "Four RiskMandate laptop stickers (one corporate, two infographics, one cartoon), revised after Indi's notes on 4 November evening; each checked by a script for margins, text size and contrast.",
+      "agent": "designer@web-summit.indi",
+      "date": "4 November 2026",
+      "url": "https://web-summit.sgit.ai/stickers/index.html",
+      "shot": [
+        "data/research/shots/stickers-overview.jpg",
+        "data/research/shots/sticker-gap.jpg"
+      ],
+      "numbers": {
+        "stickers": 4,
+        "creative_set": 12
+      },
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/stickers/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "digital-card",
+      "title": "The RiskMandate card, on your phone",
+      "what": "The team's digital business card, for when the printed cards are not to hand; 'Add it to Apple Wallet in one tap'.",
+      "agent": "not stated on the pages read",
+      "date": "not stated",
+      "url": "https://web-summit.sgit.ai/card/index.html",
+      "shot": null,
+      "numbers": null,
+      "names_indi": false,
+      "sources": [
+        "https://web-summit.sgit.ai/llms.txt",
+        "https://web-summit.sgit.ai/people/indi/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "education",
+      "title": "Safe AI for learning: RiskMandate for education and children",
+      "what": "'An idea, not yet built: AI helpers for schools that help students learn and keep children safe online, held to plain-language rules that schools and governments set.' From Indi's brief of 4 November.",
+      "agent": "education@web-summit.indi (page); the brief is Indi's own",
+      "date": "brief 4 November 2026; published 10 November 2026",
+      "url": "https://web-summit.sgit.ai/people/indi/education/index.html",
+      "shot": "data/research/shots/education.jpg",
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/education/index.md",
+        "https://web-summit.sgit.ai/brief-indi/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "factory",
+      "title": "The factory: one infographic per company (WS-27)",
+      "what": "'What each target company does, the risks it faces from AI agents and how RiskMandate helps, in pictures and in normal and lay terms.'",
+      "agent": "dev@web-summit.indi built it; factory@web-summit.indi makes the pages; a person reviews each",
+      "date": "started 3 November 2026, 23:30",
+      "url": "https://web-summit.sgit.ai/people/indi/factory/index.html",
+      "shot": "data/research/shots/factory.jpg",
+      "numbers": {
+        "companies": 31
+      },
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/factory/index.md",
+        "https://web-summit.sgit.ai/brief-indi/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "factory-company-page",
+      "title": "A factory company page: a target company",
+      "what": "One company in three pictures (what it does, its risks from AI agents, how RiskMandate helps), each in normal terms and in lay terms; sources read 1 November 2026.",
+      "agent": "factory@web-summit.indi",
+      "date": "sources read 2026-11-01",
+      "url": "https://web-summit.sgit.ai/people/indi/factory/(a target company)/index.html",
+      "shot": "data/research/shots/factory-company.jpg",
+      "numbers": {
+        "pictures": 3
+      },
+      "names_indi": false,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/factory/(a target company)/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "newsroom-workflow",
+      "title": "How an interview reaches PrompTugal.news",
+      "what": "'The newsroom workflow as an infographic: from a handshake at Web Summit to a published interview, who does each step, the hand-overs, and what stays private.' Tested on a stranger (a sub-agent) before publishing.",
+      "agent": "conductor-newsroom@web-summit.indi (a one-off helper started by conductor@web-summit.indi)",
+      "date": "10 November 2026: brief about 12:40 UTC, live at 15:00 (v0.2.1706)",
+      "url": "https://web-summit.sgit.ai/people/indi/helpers/newsroom/index.html",
+      "shot": [
+        "data/research/shots/newsroom-steps.jpg",
+        "data/research/shots/newsroom-workflow.jpg"
+      ],
+      "numbers": {
+        "steps_on_page": 14,
+        "steps_in_example_page": 16,
+        "brief_to_live": "about 2 hours 20 minutes"
+      },
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/helpers/newsroom/index.md",
+        "https://web-summit.sgit.ai/examples/pt-news-newsroom-workflow/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "schedules",
+      "title": "Indi's agents: who wakes when",
+      "what": "'Indi's agents as one picture: 5 on a timetable with 10 wake-ups a day, one planned, and 9 that work when asked. A timeline and a mind map for each.'",
+      "agent": "conductor@web-summit.indi",
+      "date": "checked 8 November 2026, 07:25 UTC",
+      "url": "https://web-summit.sgit.ai/people/indi/schedules/index.html",
+      "shot": "data/research/shots/schedules.jpg",
+      "numbers": {
+        "on_timetable": 5,
+        "wakes_per_day": 10,
+        "on_request": 9
+      },
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/schedules/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "token-efficiency",
+      "title": "Token efficiency: the team's agents",
+      "what": "'264 measured wakes from 37 agents cost 180.5M tokens, 65% of it cache reads. The same output could cost 24% to 53% less. Ten rules, ready for an ABP.' Written at Indi's word, using the accountant's method.",
+      "agent": "accountant@web-summit.indi's method; the page does not name its writer",
+      "date": "8 November 2026",
+      "url": "https://web-summit.sgit.ai/people/indi/token-efficiency/index.html",
+      "shot": null,
+      "numbers": {
+        "wakes": 264,
+        "agents": 37,
+        "tokens": "180.5M",
+        "cache_read_share": "65%",
+        "saving": "24% to 53%",
+        "rules": 10
+      },
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/token-efficiency/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "token-reports",
+      "title": "The accountant's daily token report and the token guide",
+      "what": "'What your agents cost today, how to spend less, and the decisions it needs from you. New every day at 5:30 pm'; and 'One picture: how to get better answers for fewer tokens.' Files not opened.",
+      "agent": "accountant@web-summit.indi",
+      "date": "daily from 4 November 2026 (WS-148)",
+      "url": "https://web-summit.sgit.ai/people/indi/accountant/briefs/latest.pdf",
+      "shot": null,
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "todo",
+      "title": "Indi: everything left to do",
+      "what": "'Indi's open tasks as one picture: 64 Command Centre tasks by when they are due, 7 decisions, and 25 other tasks, rebuilt at every release.'",
+      "agent": "dashboard@web-summit.indi",
+      "date": "rebuilt at every release; read 2026-11-18",
+      "url": "https://web-summit.sgit.ai/people/indi/todo/index.html",
+      "shot": "data/research/shots/todo.jpg",
+      "numbers": {
+        "tasks_open": 64,
+        "late": 62,
+        "decisions": 7,
+        "other": 25
+      },
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/llms.txt",
+        "https://web-summit.sgit.ai/people/indi/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "today",
+      "title": "Indi's day",
+      "what": "'Indi's day on one page in plain words', with what each agent is doing.",
+      "agent": "dashboard@web-summit.indi",
+      "date": "rebuilt at every release",
+      "url": "https://web-summit.sgit.ai/people/indi/today/index.html",
+      "shot": null,
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/llms.txt",
+        "https://web-summit.sgit.ai/people/indi/today/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "command-centre",
+      "title": "Indi Gupte's command centre",
+      "what": "'tasks from the board, agents, workstreams and decisions, built from the repository.' Not captured: its main view shows other people's names.",
+      "agent": "built by the site at every release",
+      "date": "rebuilt at every release",
+      "url": "https://web-summit.sgit.ai/people/indi/app/index.html",
+      "shot": null,
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/llms.txt"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "dashboard",
+      "title": "Indi's dashboard",
+      "what": "'The page Indi reads first', with his 27 agents, the 'who they write to' chart and links to all his pages.",
+      "agent": "dashboard@web-summit.indi (the part below the built block)",
+      "date": "rebuilt at every release",
+      "url": "https://web-summit.sgit.ai/people/indi/index.html",
+      "shot": null,
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "social-drafts",
+      "title": "RiskMandate LinkedIn post drafts",
+      "what": "'drafts one post a day for RiskMandate's LinkedIn page (company voice, plus a reshare line in Indi's voice), with a picture suggestion and dated sources'; 'Friday's LinkedIn post, thank you, Lisbon, is drafted.' No public page of the drafts was found.",
+      "agent": "social@web-summit.indi",
+      "date": "daily at 16:00 UTC from 7 November 2026",
+      "url": null,
+      "shot": null,
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/people/indi/schedules/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "venue-map",
+      "title": "The venue map in the PrompTugal Team app",
+      "what": "'the venue map screen in the PrompTugal Team app (Apple Maps with our own venue drawing, option B of people/indi/wayfinding/05-venue-map.md) and venue.geojson.' people/indi/wayfinding/ is not published (404).",
+      "agent": "conductor-map@web-summit.indi",
+      "date": "last commit 10 November 2026",
+      "url": null,
+      "shot": null,
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "team-app-redesign",
+      "title": "The Team app redesign (overnight helper)",
+      "what": "'the Team app's light mode, ticked-off tasks with an animation, a bigger venue-map button and place details in Where, every Web Summit event in Plan with location and category pills, no app-switcher cover, and one-tap messaging.' Listed as proposed, not yet running; no public page found.",
+      "agent": "conductor-teamapp@web-summit.indi",
+      "date": "10 to 11 November 2026 (planned)",
+      "url": null,
+      "shot": null,
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/index.md",
+        "https://web-summit.sgit.ai/team/everything/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "public-app-redesign",
+      "title": "The public PrompTugal app redesign",
+      "what": "'the UI and UX redesign of the public PrompTugal app (news.promptugal.reader): fewest taps per workflow, the Team app redesign's lessons, original colours, no AI-sounding text.' No public page found.",
+      "agent": "conductor-newsapp@web-summit.indi",
+      "date": "last commit 11 November 2026",
+      "url": null,
+      "shot": null,
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/people/indi/index.md"
+      ],
+      "read": "2026-11-18"
+    },
+    {
+      "slug": "apps-strategy",
+      "title": "Three apps, three lines",
+      "what": "'The product strategy for our apps, at Dinis's word (8 November 2026, with Indi).' Kept by Dinis Cruz's conductor, not by Indi's agents.",
+      "agent": "conductor@web-summit.dinis",
+      "date": "8 November 2026, about 23:45 UTC",
+      "url": "https://web-summit.sgit.ai/apps/index.html",
+      "shot": null,
+      "numbers": null,
+      "names_indi": true,
+      "sources": [
+        "https://web-summit.sgit.ai/apps/index.md"
+      ],
+      "read": "2026-11-18"
+    }
+  ]
+}
