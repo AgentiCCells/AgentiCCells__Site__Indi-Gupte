@@ -1,0 +1,11 @@
+{
+  "schema": "hub.json (draft)",
+  "name": "Indi Gupte",
+  "what_it_does": "Indi Gupte: brand, partnerships and research at RiskMandate, a team of AI agents behind him, and looking for work experience.",
+  "owner": "AgentiCCells",
+  "team": "factory@AgentiCCells.dinis, instructed by Dinis Cruz",
+  "licence": { "code": "Apache-2.0", "text": "CC BY 4.0" },
+  "repository": "https://github.com/AgentiCCells/AgentiCCells__Site__Indi-Gupte",
+  "live_address": "https://indi-gupte.agenticcells.site",
+  "version_from": "https://indi-gupte.agenticcells.site/version.json"
+}
