@@ -32,6 +32,45 @@ for (const f of [...files, 'hub.json', 'README.md']) {
     }
   }
 }
+// Strengthened by conductor.indi-gupte@AgentiCCells.dinis, 2026-11-18 (from the Marc Noah cell's validator, plus the
+// brief's rules for this site: no email address or phone number for Indi, a link preview on every page).
+// The team's own files follow the same wording rules, and every policy passes abp-check.
+if (existsSync('team')) for (const f of walk('team').filter(f => f.endsWith('.md'))) {
+  readFileSync(f, 'utf8').split('\n').forEach((line, i) => {
+    if (line.includes('—')) fail(`${f}:${i + 1}: em dash`);
+    const m = line.match(hype); if (m) fail(`${f}:${i + 1}: hype word "${m[0]}"`);
+  });
+}
+{
+  const { extract, check, policyFiles } = await import('./abp-check.mjs');
+  for (const f of policyFiles()) {
+    const md = readFileSync(f, 'utf8'); const { data, error } = extract(md);
+    if (error) { fail(`${f}: ${error}`); continue; }
+    for (const e of check(data, md).errs) fail(`${f}: ${e}`);
+  }
+}
+// Contact by LinkedIn only: no mailto:, no tel:, no email address other than an agent's name (@AgentiCCells.*).
+const email = /[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/g;
+for (const f of files.filter(f => /\.(html|md|txt|json|xml)$/.test(f))) {
+  const s = readFileSync(f, 'utf8');
+  if (/(href|content)="(mailto|tel):/i.test(s)) fail(`${f}: mailto: or tel: link (contact is by LinkedIn only)`);
+  for (const m of s.matchAll(email)) if (!/@agenticcells\./i.test(m[0])) fail(`${f}: email address ${m[0].replace(/^[^@]+/, '...')} (contact is by LinkedIn only)`);
+}
+// A link preview on every page: og:image and twitter:card, the image hosted here, JPEG or PNG under 300 KB.
+for (const f of files.filter(f => f.endsWith('.html'))) {
+  const s = readFileSync(f, 'utf8');
+  if (/http-equiv="refresh"/i.test(s)) continue;
+  const og = s.match(/<meta property="og:image" content="([^"]+)"/);
+  if (!og) { fail(`${f}: no og:image (every page needs a link preview)`); continue; }
+  if (!/<meta name="twitter:card" content="summary_large_image"/.test(s)) fail(`${f}: no twitter:card summary_large_image`);
+  const m = og[1].match(/^https:\/\/indi-gupte\.agenticcells\.site(\/.+\.(?:jpg|png))$/);
+  if (!m) { fail(`${f}: og:image must be an absolute .jpg or .png on https://indi-gupte.agenticcells.site`); continue; }
+  const img = join('_site', m[1]);
+  if (!existsSync(img)) fail(`${f}: og:image ${m[1]} is missing`);
+  else if (statSync(img).size > 300 * 1024) fail(`${f}: og:image ${m[1]} is over 300 KB`);
+}
+if (!existsSync('_site/behind-the-scenes/index.html')) fail('no /behind-the-scenes/ (scripts/behind.mjs must run in the build)');
+if (!existsSync('_site/d/index.html')) fail('no /d/ design chooser');
 if (!existsSync('_site/version.json')) fail('no version.json');
 if (!existsSync('_site/index.html')) fail('no index.html');
 try {
