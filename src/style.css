@@ -26,6 +26,7 @@ html{font-size:106.25%;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--sans);overflow-x:hidden}
 img,svg{max-width:100%}
 a{color:var(--accent);text-underline-offset:.18em}
+main p,main li,main dd{overflow-wrap:break-word}main a{overflow-wrap:anywhere}
 a:hover{text-decoration-thickness:2px}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
 h1,h2,h3{font-family:var(--head);line-height:1.2;font-weight:600;margin:0 0 .5em}
@@ -89,7 +90,7 @@ blockquote{margin:0;padding:4px 0 4px 18px;border-left:4px solid var(--warm);fon
 
 /* buttons */
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
-.btn{min-height:48px;padding:0 20px;border-radius:8px;font:600 1rem/1 var(--sans);display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn{min-height:48px;padding:8px 20px;border-radius:8px;font:600 1rem/1.2 var(--sans);display:inline-flex;align-items:center;gap:8px;text-decoration:none;max-width:100%;overflow-wrap:anywhere}
 .btn-primary{background:var(--accent);color:var(--on-accent)}
 .btn-secondary{color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
 .btn:focus-visible{outline-offset:3px}
@@ -206,7 +207,7 @@ tbody th{font-weight:600;font-family:var(--mono);font-size:.8rem}
 .wk dt{font-weight:600}.wk dd{margin:0;overflow-wrap:anywhere}
 .morelist{columns:2 22rem;column-gap:32px;padding-left:1.1em}
 .morelist li{break-inside:avoid;margin-bottom:10px}
-pre.prompt{white-space:pre-wrap;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;font:0.85rem/1.5 var(--mono);user-select:all;margin:8px 0}
+pre.prompt{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;font:0.85rem/1.5 var(--mono);user-select:all;margin:8px 0}
 .copy{min-height:44px;min-width:44px;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:8px;font:600 .85rem var(--sans);padding:0 14px;cursor:pointer}
 .toc{display:flex;flex-wrap:wrap;gap:0 18px;list-style:none;padding:0;margin:12px 0}
 .toc a{min-height:44px;display:inline-flex;align-items:center}
@@ -226,3 +227,4 @@ pre.prompt{white-space:pre-wrap;background:var(--surface);border:1px solid var(-
 .vp-ic{width:48px;height:48px;flex:none;color:#F2C29A}
 .video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;display:block}
 .video figcaption{font-size:.9rem;margin-top:10px}.video figcaption p{margin:0 0 6px}
+.bw h3 a,.wk h3 a,.stat a{display:inline-block;padding:10px 0;margin:-10px 0}

@@ -227,7 +227,7 @@ export function languagesFigure(id = 'lf') {
   h += `<path d="M10 236 H560" class="lf-arrow"/><path d="M560 230 l10 6 -10 6z" class="lf-ah"/>` + T(0, 268, `${L.leadsTo.text} (his words)`, { cls: 'lf-lead' });
   h += '</svg>';
   // Vertical, 358 x 540.
-  let v = `<svg class="fig-v lf" viewBox="0 0 358 540" role="img" aria-labelledby="${id}v-t ${id}v-d"><title id="${id}v-t">${esc(F.title)}</title><desc id="${id}v-d">${esc(desc)}</desc>`;
+  let v = `<svg class="fig-v lf" viewBox="0 0 358 560" role="img" aria-labelledby="${id}v-t ${id}v-d"><title id="${id}v-t">${esc(F.title)}</title><desc id="${id}v-d">${esc(desc)}</desc>`;
   v += T(0, 16, F.labels.speaks.toUpperCase(), { cls: 'lf-lab' });
   L.speaks.forEach((l, i) => { v += langTile(0, 26 + i * 72, 358, 62, l, true, false); });
   v += T(0, 264, F.labels.interest.toUpperCase(), { cls: 'lf-lab' });
@@ -235,7 +235,7 @@ export function languagesFigure(id = 'lf') {
   v += `<path d="M330 280 h10 V402 h-10 M340 341 h8" class="lf-br"/>` + T(322, 434, L.sameInterest.text, { cls: 'lf-brt', anchor: 'end' });
   v += T(0, 460, L.learning.text, { cls: 'lf-small' });
   v += `<path d="M6 478 V506" class="lf-arrow"/><path d="M0 504 l6 10 6 -10z" class="lf-ah"/>`;
-  v += T(20, 506, 'Modern Languages and', { cls: 'lf-lead' }) + T(20, 526, 'International Relations, from next autumn (his words)', { cls: 'lf-lead' });
+  v += T(20, 506, 'Modern Languages and International', { cls: 'lf-lead' }) + T(20, 526, 'Relations, from next autumn', { cls: 'lf-lead' }) + T(20, 546, '(his words)', { cls: 'lf-lead' });
   v += '</svg>';
   return `<figure class="langs">${h}${v}<figcaption>${esc(F.caption)}${ref(F.sources)}</figcaption></figure>`;
 }
